@@ -1,33 +1,25 @@
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Game {
 
     private int howManyPlayers;
     private int numberOfRounds;
-    private Player player;
-    private Player player2;
+    private ArrayList<Player> players;
 
 
     public  Game(int howManyPlayers,int numberOfRounds){
 
         this.howManyPlayers=howManyPlayers;
         this.numberOfRounds=numberOfRounds;
+        players=new ArrayList<>();
+        Scanner scanner = new Scanner(System.in);
 
-        if (howManyPlayers==1) {
-            Scanner scanner = new Scanner(System.in);
-            System.out.println("Enter Username:");
-            String username = scanner.nextLine();
-            player = new Player(username);
-        }else if (howManyPlayers==2){
-            Scanner scanner = new Scanner(System.in);
-            System.out.println("Enter Username (Player 1):");
-            String username = scanner.nextLine();
-            player = new Player(username);
+        for(int i=0;i<howManyPlayers;i++){
 
-            Scanner scanner2 = new Scanner(System.in);
-            System.out.println("Enter Username (Player 2):");
-            String username2 = scanner2.nextLine();
-            player2 = new Player(username2);
+            System.out.format("Enter Username (Player %d):",i);
+            String username = scanner.nextLine();
+            players.add(new Player(username));
 
         }
 
@@ -35,25 +27,25 @@ public class Game {
 
     }
 
-    public void printer(){
-
-    }
 
     public void start(){
-        int roundcounter = 0;
-        while (roundcounter <numberOfRounds){
-            if (howManyPlayers==1){
-                player.chooseGamemode(1);
-            }else if (howManyPlayers==2){
-                if(roundcounter %2==0){
-                    player.chooseGamemode(1);
-                }else{
-                    player2.chooseGamemode(2);
 
-                }
+        int numOfPlayers=players.size();
+        int playercounter=0;
+        for(int i=0;i<numberOfRounds;i++){
+            if(playercounter<numOfPlayers) {
+                players.get(playercounter).chooseGamemode(playercounter);
+                playercounter++;
+            }else{
+                playercounter=0;
+                players.get(playercounter).chooseGamemode(playercounter);
+                playercounter++;
             }
-            roundcounter++;
+
         }
+
+
+
     }
 
 

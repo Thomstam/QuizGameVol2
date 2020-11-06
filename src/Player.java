@@ -10,6 +10,7 @@ public class Player {
         this.username=username;
         this.score=0;
 
+
     }
 
     public String getUsername(){

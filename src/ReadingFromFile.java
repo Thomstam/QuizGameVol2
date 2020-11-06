@@ -16,7 +16,7 @@ public class ReadingFromFile {
             Scanner myReader = new Scanner(myObj);
             while (myReader.hasNextLine()) {
                 String data = myReader.nextLine();
-                String[] dataOfStr = data.split("[,/]",5);
+                String[] dataOfStr = data.split("[,/]", 5);
                 dataOfStr[0] =dataOfStr[0].trim();
                 temp.addAll(Arrays.asList(dataOfStr));
             }

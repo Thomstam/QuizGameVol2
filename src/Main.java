@@ -10,9 +10,8 @@ public class Main {
         String howManyPlayers = scanner.nextLine();
 
 
-        Scanner scanner2= new Scanner(System.in);
         System.out.println("How many rounds do you want to play?");
-        String numberOfRounds = scanner2.nextLine();
+        String numberOfRounds = scanner.nextLine();
 
         Game game = new Game(Integer.parseInt(howManyPlayers),Integer.parseInt(numberOfRounds));
 

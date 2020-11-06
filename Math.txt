@@ -1,2 +1,5 @@
 Pythagoras write the famous:    /pythagorean theorem,one,two,three
 Pythagoras write the notorious:    /pythagorean theorem,five,ten,kappa
+1 divided by infinity equals:   /infinity,0,1,2
+infinity divided by infinity equals:    /infinity,1,2,0
+10 in square equals:    /100,1000,10000,100000

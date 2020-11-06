@@ -1,9 +1,20 @@
 import java.util.List;
+import java.util.Scanner;
 
 public class Main {
+
     public static void main(String[] args) {
 
-       Gamemode gamemode = new ChooseTheRight();
-       gamemode.gamemodePlay();
+        Scanner scanner= new Scanner(System.in);
+        System.out.println("Press '1' for One-Player-Mode or '2' for Two-Player-Mode!");
+        String howManyPlayers = scanner.nextLine();
+
+
+        Scanner scanner2= new Scanner(System.in);
+        System.out.println("How many rounds do you want to play?");
+        String numberOfRounds = scanner2.nextLine();
+
+        Game game = new Game(Integer.parseInt(howManyPlayers),Integer.parseInt(numberOfRounds));
+
     }
 }

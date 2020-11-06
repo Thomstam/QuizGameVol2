@@ -1,0 +1,2 @@
+Pythagoras write the famous:    /pythagorean theorem,one,two,three
+Pythagoras write the notorious:    /pythagorean theorem,five,ten,kappa

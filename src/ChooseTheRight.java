@@ -9,7 +9,6 @@ public class ChooseTheRight extends Gamemode {
     void gamemodePlay() {
         List<String> theArrayListWithThequestion;
         Random random = new Random();
-        int rounds = 10;
         List<String> randomPicks = pickNRandom(categories, 2);
         switch (randomPicks.get(0)) {
             case "Math":

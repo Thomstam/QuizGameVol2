@@ -1,24 +1,26 @@
+import java.util.ArrayList;
 
 public class PointBuilder extends Gamemode {
 
     @Override
-    void gamemodePlay() {
+    void gamemodePlay(ArrayList<Player> players) {
         System.out.println(toString(theArrayListWithTheQuestionAnswers));
-        while (!"A".equals(choice) && !"B".equals(choice) && !"C".equals(choice) && !"D".equals(choice)){
-            choice = scanner.nextLine();
+        for (Player player : players) {
+            while (!"A".equals(choice) && !"B".equals(choice) && !"C".equals(choice) && !"D".equals(choice)){
+                choice = scanner.nextLine();
+            }
+            player.setAnswer(choice);
+            choice = "";
         }
-        int indexOfChoice = this.handle(choice);
-        if (theArrayListWithTheQuestionAnswers.get(indexOfChoice).equals(correctAnswer)){
-
-
-
-
+        for (Player player : players) {
+            int indexOfChoice = handle(player.getAnswer());
+            if(theArrayListWithTheQuestionAnswers.get(indexOfChoice).equals(correctAnswer)){
+                  this.handleTheScore(player);
+            }
         }
     }
 
     @Override
-    void handleTheScore(Player player) {
-        player.setScore(player.getScore() + 1000);
-    }
+    void handleTheScore(Player player) { player.setScore(player.getScore() + 1000);}
 
 }

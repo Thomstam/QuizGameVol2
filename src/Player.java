@@ -6,12 +6,12 @@ public class Player {
     private String username;
     private int score;
     private int bet;
+    private String answer;
 
     public Player(String username){
 
         this.username=username;
         this.score=0;
-        this.bet=0;
 
     }
 
@@ -29,25 +29,7 @@ public class Player {
 
     public void setBet(int bet) { this.bet = bet; }
 
-    public String pickAnswer(){
+    public String getAnswer() { return this.answer; }
 
-        String answer=null;
-
-        Scanner scanner = new Scanner(System.in);
-        do {
-            try {
-                answer= scanner.nextLine();
-            }catch (InputMismatchException e){
-                System.out.println("Wrong Input!!!");
-            }
-
-        }while(!(answer.equals("A") && answer.equals("B") && answer.equals("C") && answer.equals("D")));
-
-        return answer;
-
-    }
-
-
-
-
+    public void setAnswer(String answer) { this.answer = answer; }
 }

@@ -43,7 +43,7 @@ public class Main {
                 System.out.println("Wrong Input!!!");
             }
             scanner.nextLine();
-        }while(numberOfQuestions<5 && numberOfQuestions>15);
+        }while((numberOfQuestions<5 || numberOfQuestions>15));
 
 
         Game game = new Game(howManyPlayers,numberOfRounds,numberOfQuestions);

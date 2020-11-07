@@ -55,7 +55,7 @@ public class Game {
     private int gamemodePicker(){
 
         Random rand = new Random();
-        int choice = rand.nextInt(2);
+        int choice = rand.nextInt(1);
         System.out.println(choice);
         return(choice);
 

@@ -5,12 +5,13 @@ public class Player {
 
     private String username;
     private int score;
+    private int bet;
 
     public Player(String username){
 
         this.username=username;
         this.score=0;
-
+        this.bet=0;
 
     }
 
@@ -24,24 +25,29 @@ public class Player {
 
     public void setScore(int score){this.score=score;}
 
-    public int chooseGamemode(int player){
+    public int getBet() { return this.bet; }
+
+    public void setBet(int bet) { this.bet = bet; }
+
+    public String pickAnswer(){
+
+        String answer=null;
 
         Scanner scanner = new Scanner(System.in);
-        int choice=0;
-
         do {
             try {
-                System.out.format("Choose a Gamemode (Player %d): \n1.ChooseTheRight\n2.StopTheClock\n",player);
-                choice = scanner.nextInt();
+                answer= scanner.nextLine();
             }catch (InputMismatchException e){
                 System.out.println("Wrong Input!!!");
             }
-            scanner.nextLine();
-        }while (!(choice==1||choice==2));
 
-        return choice;
+        }while(!(answer.equals("A") && answer.equals("B") && answer.equals("C") && answer.equals("D")));
+
+        return answer;
 
     }
+
+
 
 
 }

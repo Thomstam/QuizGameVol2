@@ -1,17 +1,20 @@
 import java.util.ArrayList;
 import java.util.Scanner;
+import java.util.Random;
 
 public class Game {
 
     private int howManyPlayers;
     private int numberOfRounds;
+    private int numberOfQuestions;
     private ArrayList<Player> players;
 
 
-    public  Game(int howManyPlayers,int numberOfRounds){
+    public  Game(int howManyPlayers,int numberOfRounds,int numberOfQuestions){
 
         this.howManyPlayers=howManyPlayers;
         this.numberOfRounds=numberOfRounds;
+        this.numberOfQuestions=numberOfQuestions;
         players=new ArrayList<>();
         Scanner scanner = new Scanner(System.in);
 
@@ -28,36 +31,37 @@ public class Game {
 
     public void start(){
         int choice;
-        int numOfPlayers=players.size();
-        int playercounter=0;
+        int numberOfQuestions;
+
 
         for(int i=0;i<numberOfRounds;i++){
             System.out.println("Press ENTER to start the round!!!");
             try {
                 System.in.read();
             }catch (Exception e){}
-            if(playercounter<numOfPlayers) {
-                choice = players.get(playercounter).chooseGamemode(playercounter);
-                playercounter++;
-            }else{
-                playercounter=0;
-                choice = players.get(playercounter).chooseGamemode(playercounter);
-                playercounter++;
-            }
-
+            choice=gamemodePicker();
             switch (choice){
+                case 0:
+                    //Gamemode gamemode = new PointBuilder();
+                    //gamemode.gamemodeSetUp(players,questions,numberOfQuestions);
                 case 1:
-                    //Gamemode gamemode = new ChooseTheRight();
-                    //gamemode.gamemodeSetUp();
-                case 2:
+
 
             }
 
         }
 
+    }
 
+    private int gamemodePicker(){
+
+        Random rand = new Random();
+        int choice = rand.nextInt(2);
+        System.out.println(choice);
+        return(choice);
 
     }
+
 
 
 

@@ -34,10 +34,20 @@ public class Main {
             scanner.nextLine();
         }while(numberOfRounds<=0);
 
-        Game game = new Game(howManyPlayers,numberOfRounds);
+        int numberOfQuestions=0;
+        do {
+            try {
+                System.out.println("Max number of questions in a round?");
+                numberOfQuestions= scanner.nextInt();
+            }catch (InputMismatchException e){
+                System.out.println("Wrong Input!!!");
+            }
+            scanner.nextLine();
+        }while(numberOfQuestions<5 && numberOfQuestions>15);
+
+
+        Game game = new Game(howManyPlayers,numberOfRounds,numberOfQuestions);
         game.start();
 
-//        Gamemode gamemode = new ChooseTheRight();
-//        gamemode.gamemodeSetUp();
     }
 }

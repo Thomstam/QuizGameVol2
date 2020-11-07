@@ -10,6 +10,9 @@ public class PointBuilder extends Gamemode {
         int indexOfChoice = this.handle(choice);
         if (theArrayListWithTheQuestionAnswers.get(indexOfChoice).equals(correctAnswer)){
 
+
+
+
         }
     }
 

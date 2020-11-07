@@ -52,14 +52,15 @@ public abstract class Gamemode {
 
     protected void gamemodeSetUp(ArrayList<Player> players, int numberOfQuestions){
         for (int i = 0; i < numberOfQuestions; i++) {
+            int indexOfQuestion = 0;
             categoriesToAsk = categories.get(random.nextInt(categories.size()));
             switch (categoriesToAsk) {
                 case "Math":
                     if (mathArray.isEmpty()){
                         initializeOfMathArray();
                     }
-                    theArrayListWithTheQuestion = new ArrayList<>((this.randomSelectedQuestion(mathArray)));
-//                    theArrayListWithTheQuestion = this.randomSelectedQuestion(mathArray);
+                    indexOfQuestion = random.nextInt(mathArray.size());
+                    theArrayListWithTheQuestion = new ArrayList<>(mathArray.get(indexOfQuestion));
                     theArrayListWithTheQuestionAnswers = new ArrayList<>(theArrayListWithTheQuestion);
                     this.setUpQuestionTemplate(theArrayListWithTheQuestionAnswers);
                     gamemodePlay(players);
@@ -89,9 +90,9 @@ public abstract class Gamemode {
                     gamemodePlay(players);
                     break;
             }
-            resetTheArraysForQuestionTemplate();
+            resetTheArraysForQuestionTemplate(indexOfQuestion);
         }
-
+        scoreSumUp(players);
     }
 
     private void setUpQuestionTemplate(List<String> listWithTheQuestion) {
@@ -129,9 +130,10 @@ public abstract class Gamemode {
 
     abstract void handleTheScore(ArrayList<Player> players);
 
-    private void resetTheArraysForQuestionTemplate(){
+    private void resetTheArraysForQuestionTemplate(int indexOfQuestion){
         theArrayListWithTheQuestionAnswers.clear();
         theArrayListWithTheQuestion.clear();
+        mathArray.remove(indexOfQuestion);
     }
 
     protected ArrayList<Player> settingPlayersChoice(ArrayList<Player> players){
@@ -143,6 +145,12 @@ public abstract class Gamemode {
             choice = "";
         }
         return players;
+    }
+
+    protected void scoreSumUp(ArrayList<Player> players){
+        for (Player player: players) {
+            System.out.println("The Player " + player.getUsername() + " has total points of " + player.getScore());
+        }
     }
 }
 

@@ -31,7 +31,6 @@ public class Game {
 
     public void start(){
         int choice;
-        int numberOfQuestions;
 
 
         for(int i=0;i<numberOfRounds;i++){
@@ -42,8 +41,8 @@ public class Game {
             choice=gamemodePicker();
             switch (choice){
                 case 0:
-                    //Gamemode gamemode = new PointBuilder();
-                    //gamemode.gamemodeSetUp(players,questions,numberOfQuestions);
+                    Gamemode gamemode = new PointBuilder();
+                    gamemode.gamemodeSetUp(players,numberOfQuestions);
                 case 1:
 
 

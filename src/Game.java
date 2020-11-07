@@ -30,20 +30,25 @@ public class Game {
         int choice;
         int numOfPlayers=players.size();
         int playercounter=0;
+
         for(int i=0;i<numberOfRounds;i++){
+            System.out.println("Press ENTER to start the round!!!");
+            try {
+                System.in.read();
+            }catch (Exception e){}
             if(playercounter<numOfPlayers) {
-                 choice = players.get(playercounter).chooseGamemode(playercounter);
+                choice = players.get(playercounter).chooseGamemode(playercounter);
                 playercounter++;
             }else{
                 playercounter=0;
-                 choice = players.get(playercounter).chooseGamemode(playercounter);
+                choice = players.get(playercounter).chooseGamemode(playercounter);
                 playercounter++;
             }
 
             switch (choice){
                 case 1:
-                    Gamemode gamemode = new ChooseTheRight();
-                    gamemode.gamemodeSetUp();
+                    //Gamemode gamemode = new ChooseTheRight();
+                    //gamemode.gamemodeSetUp();
                 case 2:
 
             }

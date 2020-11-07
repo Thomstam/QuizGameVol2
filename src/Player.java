@@ -1,3 +1,4 @@
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class Player {
@@ -24,14 +25,19 @@ public class Player {
     public void setScore(int score){this.score=score;}
 
     public int chooseGamemode(int player){
-        System.out.format("Choose a Gamemode (Player %d): \n1.ChooseTheRight\n2.StopTheClock\n",player);
+
         Scanner scanner = new Scanner(System.in);
-        int choice = scanner.nextInt();;
-        while(!(choice==1||choice==2)){
-            System.out.println("Wrong Input!!!");
-            System.out.format("Choose a Gamemode (Player %d): \n1.ChooseTheRight\n2.StopTheClock\n",player);
-            choice = scanner.nextInt();
-        }
+        int choice=0;
+
+        do {
+            try {
+                System.out.format("Choose a Gamemode (Player %d): \n1.ChooseTheRight\n2.StopTheClock\n",player);
+                choice = scanner.nextInt();
+            }catch (InputMismatchException e){
+                System.out.println("Wrong Input!!!");
+            }
+            scanner.nextLine();
+        }while (!(choice==1||choice==2));
 
         return choice;
 

@@ -42,8 +42,8 @@ public class Game {
 
             switch (choice){
                 case 1:
-                    Gamemode gamemode = new ChooseTheRight();
-                    gamemode.gamemodeSetUp();
+                    Gamemode gamemode = new PointBuilder();
+                    gamemode.gamemodeSetUp(players);
                 case 2:
 
             }

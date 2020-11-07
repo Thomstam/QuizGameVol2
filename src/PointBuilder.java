@@ -1,5 +1,5 @@
 
-public class ChooseTheRight extends Gamemode {
+public class PointBuilder extends Gamemode {
 
     @Override
     void gamemodePlay() {
@@ -9,13 +9,13 @@ public class ChooseTheRight extends Gamemode {
         }
         int indexOfChoice = this.handle(choice);
         if (theArrayListWithTheQuestionAnswers.get(indexOfChoice).equals(correctAnswer)){
-            System.out.println("congrats");
+
         }
     }
 
     @Override
     void handleTheScore(Player player) {
-
+        player.setScore(player.getScore() + 1000);
     }
 
 }

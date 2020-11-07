@@ -18,11 +18,11 @@ public abstract class Gamemode {
 
 
     public Gamemode() {
-        categories = Arrays.asList("Math", "Science", "General Knowledge","Movies");
+//        categories = Arrays.asList("Math", "Science", "General Knowledge","Movies");
         scanner = new Scanner(System.in);
         random = new Random();
         choice = "";
-//        categories = Arrays.asList("Math", "Math");
+        categories = Arrays.asList("Math", "Math");
         mathArray = new LinkedList<>();
         generalKnowledgeArray = new LinkedList<>();
         scienceArray = new LinkedList<>();
@@ -48,7 +48,10 @@ public abstract class Gamemode {
     abstract void gamemodePlay();
 
 
-    protected void gamemodeSetUp(){
+    protected void gamemodeSetUp(ArrayList<Player> players){
+        for (Player player: players) {
+
+        }
         randomPicks = pickRandom(categories, 2);
         switch (randomPicks.get(0)) {
             case "Math":

@@ -22,6 +22,6 @@ public class Main {
         game.start();
 
 //        Gamemode gamemode = new ChooseTheRight();
-//        gamemode.gamemodePlay();
+//        gamemode.gamemodeSetUp();
     }
 }

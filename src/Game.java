@@ -23,23 +23,29 @@ public class Game {
 
         }
 
-        start();
-
     }
 
 
     public void start(){
-
+        int choice;
         int numOfPlayers=players.size();
         int playercounter=0;
         for(int i=0;i<numberOfRounds;i++){
             if(playercounter<numOfPlayers) {
-                players.get(playercounter).chooseGamemode(playercounter);
+                 choice = players.get(playercounter).chooseGamemode(playercounter);
                 playercounter++;
             }else{
                 playercounter=0;
-                players.get(playercounter).chooseGamemode(playercounter);
+                 choice = players.get(playercounter).chooseGamemode(playercounter);
                 playercounter++;
+            }
+
+            switch (choice){
+                case 1:
+                    Gamemode gamemode = new ChooseTheRight();
+                    gamemode.gamemodeSetUp();
+                case 2:
+
             }
 
         }

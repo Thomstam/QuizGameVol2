@@ -17,22 +17,23 @@ public class Player {
         return this.username;
     }
 
-    public void chooseGamemode(int player){
+    public void setUsername(String username){this.username=username;}
+
+    public int getScore(){return this.score;}
+
+    public void setScore(int score){this.score=score;}
+
+    public int chooseGamemode(int player){
         System.out.format("Choose a Gamemode (Player %d): \n1.ChooseTheRight\n2.StopTheClock\n",player);
         Scanner scanner = new Scanner(System.in);
-        String choice = scanner.nextLine();;
-        while(!(choice.equals("1")||choice.equals("2"))){
+        int choice = scanner.nextInt();;
+        while(!(choice==1||choice==2)){
             System.out.println("Wrong Input!!!");
             System.out.format("Choose a Gamemode (Player %d): \n1.ChooseTheRight\n2.StopTheClock\n",player);
-            choice = scanner.nextLine();
+            choice = scanner.nextInt();
         }
 
-        if (choice.equals("1")){
-            Gamemode gamemode = new ChooseTheRight();
-            gamemode.gamemodePlay();
-        }else if (choice.equals("2")){
-
-        }
+        return choice;
 
     }
 

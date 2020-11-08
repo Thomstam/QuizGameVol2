@@ -56,7 +56,6 @@ public class Game {
 
         Random rand = new Random();
         int choice = rand.nextInt(2);
-        System.out.println(choice);
         return(choice);
 
     }

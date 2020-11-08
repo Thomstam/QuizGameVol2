@@ -7,6 +7,8 @@ public class Betting extends Gamemode{
 
     }
 
+
+
     @Override
     void handleTheScore(Player player) {
 

@@ -20,6 +20,10 @@ public class PointBuilder extends Gamemode {
         }
     }
 
+
+
+
+
     @Override
     void handleTheScore(Player player) { player.setScore(player.getScore() + 1000);}
 

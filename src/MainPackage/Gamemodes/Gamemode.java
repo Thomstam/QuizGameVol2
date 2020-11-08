@@ -155,7 +155,7 @@ public abstract class Gamemode {
 
     protected void scoreSumUp(ArrayList<Player> players){
         for (Player player: players) {
-            System.out.println("The MainPackage.Player " + player.getUsername() + " has total points of " + player.getScore());
+            System.out.println("The Player " + player.getUsername() + " has total points of " + player.getScore());
         }
     }
 }

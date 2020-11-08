@@ -3,12 +3,14 @@ package MainPackage;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
+
 public class Player {
 
     private String username;
     private int score;
     private int bet;
     private String answer;
+
 
     public Player(String username){
 

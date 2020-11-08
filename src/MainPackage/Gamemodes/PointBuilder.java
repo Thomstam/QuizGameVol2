@@ -19,7 +19,8 @@ public class PointBuilder extends Gamemode {
             int indexOfChoice = handle(player.getAnswer());
             if (theArrayListWithTheQuestionAnswers.get(indexOfChoice).equals(correctAnswer)) {
                 player.setScore(player.getScore() + 1000);
-            }
+                System.out.format("CORRECT ANSWER --- Your Score is: %d\n",player.getScore());
+            }else{System.out.format("WRONG ANSWER --- Your Score is: %d\n",player.getScore());}
         }
     }
 }

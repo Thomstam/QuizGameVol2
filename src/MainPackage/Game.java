@@ -1,5 +1,6 @@
 package MainPackage;
 
+import MainPackage.Gamemodes.Betting;
 import MainPackage.Gamemodes.Gamemode;
 import MainPackage.Gamemodes.PointBuilder;
 
@@ -25,7 +26,7 @@ public class Game {
 
         for(int i=0;i<howManyPlayers;i++){
 
-            System.out.format("Enter Username (MainPackage.Player %d):",i);
+            System.out.format("Enter Username (Player %d):",i);
             String username = scanner.nextLine();
             players.add(new Player(username));
 
@@ -44,13 +45,14 @@ public class Game {
                 System.in.read();
             }catch (Exception e){}
             choice=gamemodePicker();
-            switch (choice){
-                case 0:
-                    Gamemode gamemode = new PointBuilder();
-                    gamemode.gamemodeSetUp(players,numberOfQuestions);
-                case 1:
-
-
+            if(choice==0){
+                System.out.println("POINTBUILDER : Choose the correct answer and win 1000 points!");
+                Gamemode gamemode1 = new PointBuilder();
+                gamemode1.gamemodeSetUp(players,numberOfQuestions);
+            }else if(choice==1){
+                System.out.println("BETTING");
+                Gamemode gamemode2=new Betting();
+                gamemode2.gamemodeSetUp(players,numberOfQuestions);
             }
 
         }
@@ -60,7 +62,7 @@ public class Game {
     private int gamemodePicker(){
 
         Random rand = new Random();
-        int choice = rand.nextInt(1);
+        int choice = rand.nextInt(2);
         return(choice);
 
     }

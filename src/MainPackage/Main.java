@@ -1,5 +1,6 @@
+package MainPackage;
+
 import java.util.InputMismatchException;
-import java.util.List;
 import java.util.Scanner;
 
 public class Main {
@@ -10,7 +11,7 @@ public class Main {
         int howManyPlayers=0;
         do{
             try {
-                System.out.println("Press '1' for One-Player-Mode!");
+                System.out.println("Press '1' for One-MainPackage.Player-Mode!");
                 howManyPlayers = scanner.nextInt();
                 if (howManyPlayers!=1){
                     System.out.println("Wrong Input!!!");

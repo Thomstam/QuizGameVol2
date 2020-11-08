@@ -1,5 +1,13 @@
+package MainPackage.Gamemodes;
+
+
 import java.util.*;
 import java.util.ArrayList;
+
+import MainPackage.Player;
+import MainPackage.ReadingFromFile;
+
+
 
 public abstract class Gamemode {
 
@@ -17,7 +25,6 @@ public abstract class Gamemode {
     protected Random random;
     protected String categoriesToAsk;
     protected int initialBet;
-
 
 
     public Gamemode() {
@@ -40,8 +47,7 @@ public abstract class Gamemode {
         scienceArray = ReadingFromFile.fillingTheData("Science.txt");
     }
 
-    protected void initializeOfGeneralKnowledgeArray() {
-        generalKnowledgeArray = ReadingFromFile.fillingTheData("General Knowledge.txt");
+    protected void initializeOfGeneralKnowledgeArray() { generalKnowledgeArray = ReadingFromFile.fillingTheData("General Knowledge.txt");
     }
 
     protected void initializeOfMoviesArray() {
@@ -50,7 +56,7 @@ public abstract class Gamemode {
 
     abstract void gamemodePlay(ArrayList<Player> players);
 
-    protected void gamemodeSetUp(ArrayList<Player> players, int numberOfQuestions){
+    public void gamemodeSetUp(ArrayList<Player> players, int numberOfQuestions){
         for (int i = 0; i < numberOfQuestions; i++) {
             int indexOfQuestion = 0;
             categoriesToAsk = categories.get(random.nextInt(categories.size()));
@@ -149,7 +155,7 @@ public abstract class Gamemode {
 
     protected void scoreSumUp(ArrayList<Player> players){
         for (Player player: players) {
-            System.out.println("The Player " + player.getUsername() + " has total points of " + player.getScore());
+            System.out.println("The MainPackage.Player " + player.getUsername() + " has total points of " + player.getScore());
         }
     }
 }

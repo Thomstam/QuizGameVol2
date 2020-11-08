@@ -1,3 +1,6 @@
+package MainPackage.Gamemodes;
+
+import MainPackage.Player;
 
 import java.util.ArrayList;
 

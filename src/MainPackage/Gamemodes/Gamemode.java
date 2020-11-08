@@ -1,5 +1,13 @@
+package MainPackage.Gamemodes;
+
+
 import java.util.*;
 import java.util.ArrayList;
+
+import MainPackage.Player;
+import MainPackage.ReadingFromFile;
+
+
 
 public abstract class Gamemode {
 
@@ -16,7 +24,7 @@ public abstract class Gamemode {
     protected String choice;
     protected Random random;
     protected String categoriesToAsk;
-
+    protected int initialBet;
 
 
     public Gamemode() {
@@ -39,8 +47,7 @@ public abstract class Gamemode {
         scienceArray = ReadingFromFile.fillingTheData("Science.txt");
     }
 
-    protected void initializeOfGeneralKnowledgeArray() {
-        generalKnowledgeArray = ReadingFromFile.fillingTheData("General Knowledge.txt");
+    protected void initializeOfGeneralKnowledgeArray() { generalKnowledgeArray = ReadingFromFile.fillingTheData("General Knowledge.txt");
     }
 
     protected void initializeOfMoviesArray() {
@@ -49,16 +56,19 @@ public abstract class Gamemode {
 
     abstract void gamemodePlay(ArrayList<Player> players);
 
-    protected void gamemodeSetUp(ArrayList<Player> players, int numberOfQuestions){
+    public void gamemodeSetUp(ArrayList<Player> players, int numberOfQuestions){
         for (int i = 0; i < numberOfQuestions; i++) {
+            int indexOfQuestion = 0;
             categoriesToAsk = categories.get(random.nextInt(categories.size()));
             switch (categoriesToAsk) {
                 case "Math":
                     if (mathArray.isEmpty()){
                         initializeOfMathArray();
                     }
-                    theArrayListWithTheQuestion = this.randomSelectedQuestion(mathArray);
-                    theArrayListWithTheQuestionAnswers = this.setUpQuestionTemplate(theArrayListWithTheQuestion);
+                    indexOfQuestion = random.nextInt(mathArray.size());
+                    theArrayListWithTheQuestion = new ArrayList<>(mathArray.get(indexOfQuestion));
+                    theArrayListWithTheQuestionAnswers = new ArrayList<>(theArrayListWithTheQuestion);
+                    this.setUpQuestionTemplate(theArrayListWithTheQuestionAnswers);
                     gamemodePlay(players);
                     break;
                 case "General Knowledge":
@@ -66,7 +76,7 @@ public abstract class Gamemode {
                         initializeOfGeneralKnowledgeArray();
                     }
                     theArrayListWithTheQuestion = this.randomSelectedQuestion(generalKnowledgeArray);
-                    theArrayListWithTheQuestionAnswers = this.setUpQuestionTemplate(theArrayListWithTheQuestion);
+                    this.setUpQuestionTemplate(theArrayListWithTheQuestionAnswers);
                     gamemodePlay(players);
                     break;
                 case "Science":
@@ -74,7 +84,7 @@ public abstract class Gamemode {
                         initializeOfScienceArray();
                     }
                     theArrayListWithTheQuestion = this.randomSelectedQuestion(scienceArray);
-                    theArrayListWithTheQuestionAnswers = this.setUpQuestionTemplate(theArrayListWithTheQuestion);
+                    this.setUpQuestionTemplate(theArrayListWithTheQuestionAnswers);
                     gamemodePlay(players);
                     break;
                 case "Movies":
@@ -82,21 +92,20 @@ public abstract class Gamemode {
                         initializeOfMoviesArray();
                     }
                     theArrayListWithTheQuestion = this.randomSelectedQuestion(moviesArray);
-                    theArrayListWithTheQuestionAnswers = this.setUpQuestionTemplate(theArrayListWithTheQuestion);
+                    this.setUpQuestionTemplate(theArrayListWithTheQuestionAnswers);
                     gamemodePlay(players);
                     break;
             }
-            resetTheArraysForQuestionTemplate();
+            resetTheArraysForQuestionTemplate(indexOfQuestion);
         }
-
+        scoreSumUp(players);
     }
 
-    private List<String> setUpQuestionTemplate(List<String> listWithTheQuestion) {
+    private void setUpQuestionTemplate(List<String> listWithTheQuestion) {
         question = listWithTheQuestion.get(0);
         correctAnswer = listWithTheQuestion.get(1);
         listWithTheQuestion.remove(0);
         Collections.shuffle(listWithTheQuestion);
-        return listWithTheQuestion;
     }
 
     protected String toString(List<String> possibleAnswers) {
@@ -125,11 +134,29 @@ public abstract class Gamemode {
         return categoryList.get(random.nextInt(mathArray.size()));
     }
 
-    abstract void handleTheScore(Player player);
+    abstract void handleTheScore(ArrayList<Player> players);
 
-    private void resetTheArraysForQuestionTemplate(){
-        theArrayListWithTheQuestion.clear();
+    private void resetTheArraysForQuestionTemplate(int indexOfQuestion){
         theArrayListWithTheQuestionAnswers.clear();
+        theArrayListWithTheQuestion.clear();
+        mathArray.remove(indexOfQuestion);
+    }
+
+    protected ArrayList<Player> settingPlayersChoice(ArrayList<Player> players){
+        for (Player player : players) {
+            while (!"A".equals(choice) && !"B".equals(choice) && !"C".equals(choice) && !"D".equals(choice)){
+                choice = scanner.nextLine();
+            }
+            player.setAnswer(choice);
+            choice = "";
+        }
+        return players;
+    }
+
+    protected void scoreSumUp(ArrayList<Player> players){
+        for (Player player: players) {
+            System.out.println("The MainPackage.Player " + player.getUsername() + " has total points of " + player.getScore());
+        }
     }
 }
 

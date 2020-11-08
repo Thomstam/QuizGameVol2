@@ -1,3 +1,8 @@
+package MainPackage;
+
+import MainPackage.Gamemodes.Gamemode;
+import MainPackage.Gamemodes.PointBuilder;
+
 import java.util.ArrayList;
 import java.util.Scanner;
 import java.util.Random;
@@ -20,7 +25,7 @@ public class Game {
 
         for(int i=0;i<howManyPlayers;i++){
 
-            System.out.format("Enter Username (Player %d):",i);
+            System.out.format("Enter Username (MainPackage.Player %d):",i);
             String username = scanner.nextLine();
             players.add(new Player(username));
 
@@ -55,7 +60,8 @@ public class Game {
     private int gamemodePicker(){
 
         Random rand = new Random();
-        int choice = rand.nextInt(2);
+        int choice = rand.nextInt(1);
+        System.out.println(choice);
         return(choice);
 
     }

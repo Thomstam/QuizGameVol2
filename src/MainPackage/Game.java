@@ -29,11 +29,9 @@ public class Game {
             System.out.format("Enter Username (Player %d):",i);
             String username = scanner.nextLine();
             players.add(new Player(username));
-
         }
 
     }
-
 
     public void start(){
         int choice;
@@ -66,8 +64,4 @@ public class Game {
         return(choice);
 
     }
-
-
-
-
 }

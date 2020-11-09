@@ -7,10 +7,10 @@ import java.util.List;
 
 public class Question {
 
-    private List<String> possibleAnswers;
-    private String correctAnswer;
+    private List<String> possibleAnswers; //Contains all the wrong answers for the question.
+    private String correctAnswer; //This is the correct answer for the question.
     private String questionToASk;
-    private List<String> possibleAnswersToAsk;
+    private List<String> possibleAnswersToAsk; //Contains 3 of the possible answers and the correct one.
 
     public Question(){
         possibleAnswers = new ArrayList<>();
@@ -37,12 +37,21 @@ public class Question {
         return questionToASk;
     }
 
+    /**
+     * From all the possible answers that we might have for a question we pick 3 in random, we add the correct one
+     * and then we shuffle so we dont get the same position of the answers every time.
+     */
     public void setPossibleAnswersToAsk() {
         possibleAnswersToAsk = this.pickNRandom(possibleAnswers);
         possibleAnswersToAsk.add(this.getCorrectAnswer());
         Collections.shuffle(possibleAnswersToAsk);
     }
 
+    /**
+     * We check if the list with the possible question might have not been initialized and if so
+     * we call the appropriate method to do so.
+     * @return List with the possible answers we are going to show to the players
+     */
     public List<String> getPossibleAnswersToAsk(){
         if(possibleAnswersToAsk == null){
             setPossibleAnswersToAsk();
@@ -50,6 +59,10 @@ public class Question {
         return possibleAnswersToAsk;
     }
 
+    /**
+     * @param lst List contains all the possible answers to a question
+     * @return 3 random (Wrong)answers from the list of possible answers for a specific question.
+     */
     private List<String> pickNRandom(List<String> lst) {
         List<String> copy = new LinkedList<>(lst);
         Collections.shuffle(copy);

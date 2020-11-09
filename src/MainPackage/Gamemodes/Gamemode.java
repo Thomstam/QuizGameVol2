@@ -13,9 +13,6 @@ public abstract class Gamemode {
     protected List<Question> scienceArray;
     protected List<Question> moviesArray;
     protected List<String> categories;
-    protected List<String> theArrayListWithThePossibleAnswers;
-    protected String question;
-    protected String correctAnswer;
     protected Scanner scanner;
     protected String choice;
     protected Random random;
@@ -36,8 +33,8 @@ public abstract class Gamemode {
     }
 
     /**
-     * @param fileToRead The file with all the questions.
-     * @return A List of Lists. Each List has a list which contains the question with all the possible answers.
+     * @param fileToRead The file with all the questions depending on the category.
+     * @return A List of Questions. All the question we read from the file are now objects Question inside a list.
      */
     protected List<Question> initializeTheArrayWithTheQuestions(String fileToRead){ return ReadingFromFile.fillingTheData(fileToRead); }
 
@@ -48,11 +45,10 @@ public abstract class Gamemode {
     abstract void gamemodePlay(ArrayList<Player> players, Question question);
 
     /**
-     * Managing the gamemode initialization. For each question we choose a random category, it handles if it is empty,
-     * Then we choose one random position from the List of the category we chose and copy it into a new List(X).
-     * The copied List(X) contains 5 String elements.The question and the 4 possible answers.
-     * Then we sent the List(X) to @setUpTheQuestionTemplate to extract the data for the question.
-     * We remove the question we got from the List with all the question so we dont get it again and we start the game.
+     * Managing the gamemode initialization. For each question we choose a random category. If the list of
+     * the category we choose is empty we initialize fill it from a txt full of questions.
+     * Then we choose one random position from the List of the category we chose and we copy the object Question that
+     * we randomly got. We remove the question we got from the List with all the question so we dont get it again and we start the game.
      * @param players <String> elements with the names of all the players.
      * @param numberOfQuestions The numbers of questions we going to ask for this round.
      */
@@ -103,7 +99,10 @@ public abstract class Gamemode {
         scoreSumUp(players);
     }
 
-
+    /**
+     * @param question The current question of the game.
+     * @return A template of the how we are showing the player each question and his choices.
+     */
     protected String toString(Question question) {
         List<String> possibleAnswers = question.getPossibleAnswersToAsk();
         return "        " + question.getQuestionToASk() + "\n" +
@@ -114,7 +113,7 @@ public abstract class Gamemode {
 
     /**
      * @param choice The choice we got from the player
-     * @return We return an int that points to the @theArrayWithTheQuestion position that now only contains only the answers,
+     * @return We return an int that points to the @getPossibleAnswersToAsk position
      *         so we can check if the given answer is the same with the correct one.
      */
     protected int handlePlayerChoice(String choice) {
@@ -137,13 +136,6 @@ public abstract class Gamemode {
      * @param players List with all the players.
      */
     abstract void handleTheScore(ArrayList<Player> players, Question question);
-
-    /**
-     * At the end of round we clear the List with the question we made so we can take the next question from
-     * the next rounds.
-     */
-//    private void resetTheArraysForQuestionTemplate(){
-//        theArrayListWithThePossibleAnswers.clear();}
 
     /**
      * Each players has to choose between the possible answers of the question A-D.

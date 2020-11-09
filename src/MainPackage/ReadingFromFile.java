@@ -10,6 +10,15 @@ import java.util.Scanner;// Import the Scanner class to read text files
 
 public class ReadingFromFile {
 
+    /**
+     * Here we open the given file. We read every line and we split each and every one them with a specific format that
+     * we gave to the file so we can separate the question and then every possible answer for it.
+     * From our format for the file we know that the question is going to be on the first position of each row following
+     * of the correct answer and all the possible correct ones that we might use.
+     * So for each row we create a new Object of Question so we can store the data and use them later.
+     * @param nameOfFile Contains the name of the category we are going to get all the questions.
+     * @return List of @Questions that we got from our file.
+     */
     public static List<Question> fillingTheData(String nameOfFile){
         List<Question> arrayWithAllTheQuestion = new ArrayList<>(1);
         try {

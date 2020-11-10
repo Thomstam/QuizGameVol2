@@ -5,6 +5,7 @@ import MainPackage.Gamemodes.Gamemode;
 import MainPackage.Gamemodes.PointBuilder;
 
 import java.util.ArrayList;
+import java.util.InputMismatchException;
 import java.util.Scanner;
 import java.util.Random;
 
@@ -60,6 +61,29 @@ public class Game {
                     break;
             }
         }
+    }
+
+
+    public boolean end(){
+        String playAgain="";
+        Scanner scanner= new Scanner(System.in);
+        System.out.format("GAME ENDED AFTER %d ROUNDS!\n",numberOfRounds);
+        for(Player player:players){
+            System.out.format("Player %s has a final score of: %d points\n",player.getUsername(),player.getScore());
+        }
+        System.out.println("Would you like to play again?(Y/N)");
+        do {
+            try{
+                playAgain=scanner.nextLine();
+                if(!(playAgain.equals("Y")||playAgain.equals("N"))){
+                    System.out.println("Wrong Input!!!");
+                }
+            }catch (InputMismatchException e){
+                System.out.println("Wrong Input!!!");
+            }
+        }while(!(playAgain.equals("Y")||playAgain.equals("N")));
+        if(playAgain.equals("Y"))return false;
+        else return true;
     }
 
     /***

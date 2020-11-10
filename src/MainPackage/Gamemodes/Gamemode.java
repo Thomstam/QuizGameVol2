@@ -21,10 +21,9 @@ public abstract class Gamemode {
     protected Question questionToBeHandled;
 
     public Gamemode() {
-//        categories = Arrays.asList("Math", "Science", "General Knowledge","Movies");
+        categories = Arrays.asList("Math", "Science", "General Knowledge","Movies");
         scanner = new Scanner(System.in);
         random = new Random();
-        categories = Arrays.asList("Math", "Math");
         mathArray = new LinkedList<>();
         generalKnowledgeArray = new LinkedList<>();
         scienceArray = new LinkedList<>();
@@ -71,8 +70,8 @@ public abstract class Gamemode {
                     if (generalKnowledgeArray.isEmpty()){
                         generalKnowledgeArray = initializeTheArrayWithTheQuestions("General Knowledge.txt");
                     }
-                    indexOfQuestion = random.nextInt(mathArray.size());
-                    questionToBeHandled = mathArray.get(indexOfQuestion);
+                    indexOfQuestion = random.nextInt(generalKnowledgeArray.size());
+                    questionToBeHandled = generalKnowledgeArray.get(indexOfQuestion);
                     generalKnowledgeArray.remove(indexOfQuestion);
                     gamemodePlay(players, questionToBeHandled);
                     break;
@@ -80,8 +79,8 @@ public abstract class Gamemode {
                     if (scienceArray.isEmpty()){
                         scienceArray = initializeTheArrayWithTheQuestions("Science.txt");
                     }
-                    indexOfQuestion = random.nextInt(mathArray.size());
-                    questionToBeHandled = mathArray.get(indexOfQuestion);
+                    indexOfQuestion = random.nextInt(scienceArray.size());
+                    questionToBeHandled = scienceArray.get(indexOfQuestion);
                     scienceArray.remove(indexOfQuestion);
                     gamemodePlay(players, questionToBeHandled);
                     break;
@@ -89,8 +88,8 @@ public abstract class Gamemode {
                     if (moviesArray.isEmpty()){
                         moviesArray = initializeTheArrayWithTheQuestions("Movies.txt");
                     }
-                    indexOfQuestion = random.nextInt(mathArray.size());
-                    questionToBeHandled = mathArray.get(indexOfQuestion);
+                    indexOfQuestion = random.nextInt(moviesArray.size());
+                    questionToBeHandled = moviesArray.get(indexOfQuestion);
                     moviesArray.remove(indexOfQuestion);
                     gamemodePlay(players, questionToBeHandled);
                     break;

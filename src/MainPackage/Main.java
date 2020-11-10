@@ -55,7 +55,6 @@ public class Main {
 
 
             Game game = new Game(howManyPlayers,numberOfRounds,numberOfQuestions);
-
             game.start();
             endGame=game.end();
         }while(!endGame);

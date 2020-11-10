@@ -33,6 +33,10 @@ public class Game {
 
     }
 
+    /****
+     * starts the game which will be played for how many rounds the player chose and for each round
+     * a different game mode is chosen randomly .
+     */
     public void start(){
         int choice;
 
@@ -43,20 +47,25 @@ public class Game {
                 System.in.read();
             }catch (Exception e){}
             choice=gamemodePicker();
-            if(choice==0){
-                System.out.println("POINTBUILDER : Choose the correct answer and win 1000 points!");
-                Gamemode gamemode1 = new PointBuilder();
-                gamemode1.gamemodeSetUp(players,numberOfQuestions);
-            }else if(choice==1){
-                System.out.println("BETTING");
-                Gamemode gamemode2=new Betting();
-                gamemode2.gamemodeSetUp(players,numberOfQuestions);
+            switch (choice){
+                case 0:
+                    System.out.println("POINTBUILDER : Choose the correct answer and win 1000 points!");
+                    Gamemode gamemode1 = new PointBuilder();
+                    gamemode1.gamemodeSetUp(players,numberOfQuestions);
+                    break;
+                case 1:
+                    System.out.println("BETTING : Win or lose the amount points you bet!");
+                    Gamemode gamemode2=new Betting();
+                    gamemode2.gamemodeSetUp(players,numberOfQuestions);
+                    break;
             }
-
         }
-
     }
 
+    /***
+     *
+     * @return a random number which corresponds to the game mode which will be played in this round
+     */
     private int gamemodePicker(){
 
         Random rand = new Random();

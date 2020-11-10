@@ -8,10 +8,12 @@ public class Main {
     public static void main(String[] args) {
 
         Scanner scanner= new Scanner(System.in);
+
+        //user input for the number of players that want to play
         int howManyPlayers=0;
         do{
             try {
-                System.out.println("Press '1' for One-MainPackage.Player-Mode!");
+                System.out.println("Press '1' for One-Player-Mode!");
                 howManyPlayers = scanner.nextInt();
                 if (howManyPlayers!=1){
                     System.out.println("Wrong Input!!!");
@@ -24,7 +26,7 @@ public class Main {
 
 
 
-
+        //user input for the number of rounds that will be played
         int numberOfRounds = 0;
         do {
             try {
@@ -36,10 +38,12 @@ public class Main {
             scanner.nextLine();
         }while(numberOfRounds<=0);
 
+
+        //user input for the number of questions tha each round will have
         int numberOfQuestions=0;
         do {
             try {
-                System.out.println("Max number of questions in a round?");
+                System.out.println("How many questions do you want to play per round?");
                 numberOfQuestions= scanner.nextInt();
             }catch (InputMismatchException e){
                 System.out.println("Wrong Input!!!");

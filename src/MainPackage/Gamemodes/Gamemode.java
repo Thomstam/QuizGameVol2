@@ -56,6 +56,7 @@ public abstract class Gamemode {
         for (int i = 0; i < numberOfQuestions; i++) {
             int indexOfQuestion;
             categoriesToAsk = categories.get(random.nextInt(categories.size()));
+            System.out.format("The category is %s\n",categoriesToAsk);
             switch (categoriesToAsk) {
                 case "Math":
                     if (mathArray.isEmpty()){

@@ -4,6 +4,7 @@ import MainPackage.Player;
 import MainPackage.Question;
 
 import java.util.ArrayList;
+import java.util.InputMismatchException;
 
 public class Betting extends Gamemode {
 
@@ -21,12 +22,19 @@ public class Betting extends Gamemode {
      */
     @Override
     void gamemodePlay(ArrayList<Player> players, Question question) {
-        System.out.println(categoriesToAsk);
         System.out.println("Place Your Bets Choosing Between: 250, 500, 750, 1000");
         for (Player player : players) {
-            while (initialBet != 250 && initialBet != 500 && initialBet != 750 && initialBet != 1000){
-                initialBet = scanner.nextInt();
-            }
+            do {
+                try {
+                    initialBet = scanner.nextInt();
+                    if(initialBet != 250 && initialBet != 500 && initialBet != 750 && initialBet != 1000){
+                        System.out.println("Wrong Input!!!");
+                    }
+                }catch (InputMismatchException e){
+                    System.out.println("Wrong Input!!!");
+                }
+                scanner.nextLine();
+            }while (initialBet != 250 && initialBet != 500 && initialBet != 750 && initialBet != 1000);
             player.setBet(initialBet);
             initialBet = 0;
         }

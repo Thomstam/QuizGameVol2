@@ -170,7 +170,4 @@ public abstract class Gamemode {
             System.out.println("The Player " + player.getUsername() + " has total points of " + player.getScore());
         }
     }
-
-
-
 }

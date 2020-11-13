@@ -45,9 +45,8 @@ public abstract class Gamemode {
 
     /**
      * Managing the gamemode initialization. For each question we choose a random category. If the list of
-     * the category we choose is empty we initialize fill it from a txt full of questions.
-     * Then we choose one random position from the List of the category we chose and we copy the object Question that
-     * we randomly got. We remove the question we got from the List with all the question so we dont get it again and we start the game.
+     * the category we choose is empty we initialize and we fill it from a txt full of questions.
+     * Then we just pass it to @setUpQuestion and then we start the game.
      * @param players <String> elements with the names of all the players.
      * @param numberOfQuestions The numbers of questions we going to ask for this round.
      */
@@ -124,6 +123,7 @@ public abstract class Gamemode {
     /**
      * We apply the score for each gamemode separately.
      * @param players List with all the players.
+     * @param question The question we asked.
      */
     abstract void handleTheScore(ArrayList<Player> players, Question question);
 
@@ -161,6 +161,12 @@ public abstract class Gamemode {
         }
     }
 
+    /**
+     *We take the a list from a specific category which contains all the questions.
+     * We pick one in random and we pass it to @questionToBeHandled to take care of the rest.
+     * Then we delete it so it doenst come up again.
+     * @param questionsList Is the list of question from a particular category.
+     */
     protected void setUpQuestion(List<Question> questionsList){
         int indexOfQuestion = random.nextInt(questionsList.size());
         questionToBeHandled = questionsList.get(indexOfQuestion);

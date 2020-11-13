@@ -28,7 +28,6 @@ public abstract class Gamemode {
         generalKnowledgeArray = new LinkedList<>();
         scienceArray = new LinkedList<>();
         moviesArray = new LinkedList<>();
-        questionToBeHandled = new Question();
     }
 
     /**
@@ -169,7 +168,8 @@ public abstract class Gamemode {
      */
     protected void setUpQuestion(List<Question> questionsList){
         int indexOfQuestion = random.nextInt(questionsList.size());
-        questionToBeHandled = questionsList.get(indexOfQuestion);
+        questionToBeHandled = new Question();
+        questionToBeHandled =  questionsList.get(indexOfQuestion);
         questionsList.remove(indexOfQuestion);
     }
 }

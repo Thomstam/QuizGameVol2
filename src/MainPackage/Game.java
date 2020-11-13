@@ -63,7 +63,11 @@ public class Game {
         }
     }
 
-
+    /***
+     * displays the number of rounds played and the final score of the player, while also
+     * giving the option to play again if the player wants
+     * @return false if the player wants to play again and true if the player wants to end the game
+     */
     public boolean end(){
 
         String playAgain="";

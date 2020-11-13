@@ -1,5 +1,6 @@
-Pythagoras write the famous:    /pythagorean theorem,one,two,three
-Pythagoras write the notorious:    /pythagorean theorem,five,ten,kappa
+What is 1004 divided by 2?:    /502,52,520,5200
+All natural numbers and 0 are called the:    /whole numbers,prime numbers,integer numbers,rational numbers
 1 divided by infinity equals:   /infinity,0,1,2
 infinity divided by infinity equals:    /infinity,1,2,0
-10 in square equals:    /100,1000,10000,100000
+10 squared equals:    /100,1000,10000,100000
+10^(-2) means:    /centi,milli,micro,deci

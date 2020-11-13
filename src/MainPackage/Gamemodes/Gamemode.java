@@ -5,14 +5,10 @@ import java.util.ArrayList;
 import MainPackage.Player;
 import MainPackage.Question;
 import MainPackage.ReadingFromFile;
+import MainPackage.Categories;
 
 public abstract class Gamemode {
 
-    protected List<Question> mathArray;
-    protected List<Question> generalKnowledgeArray;
-    protected List<Question> scienceArray;
-    protected List<Question> moviesArray;
-    protected List<String> categories;
     protected Scanner scanner;
     protected String choice;
     protected Random random;
@@ -21,21 +17,10 @@ public abstract class Gamemode {
     protected Question questionToBeHandled;
 
     public Gamemode() {
-        categories = Arrays.asList("Math", "Science", "General Knowledge","Movies");
         scanner = new Scanner(System.in);
         random = new Random();
-        mathArray = new LinkedList<>();
-        generalKnowledgeArray = new LinkedList<>();
-        scienceArray = new LinkedList<>();
-        moviesArray = new LinkedList<>();
         questionToBeHandled = new Question();
     }
-
-    /**
-     * @param fileToRead The file with all the questions depending on the category.
-     * @return A List of Questions. All the question we read from the file are now objects Question inside a list.
-     */
-    protected List<Question> initializeTheArrayWithTheQuestions(String fileToRead){ return ReadingFromFile.fillingTheData(fileToRead); }
 
     /**
      * We control each game mode's difference.
@@ -50,38 +35,38 @@ public abstract class Gamemode {
      * @param players <String> elements with the names of all the players.
      * @param numberOfQuestions The numbers of questions we going to ask for this round.
      */
-    public void gamemodeSetUp(ArrayList<Player> players, int numberOfQuestions){
+    public void gamemodeSetUp(ArrayList<Player> players, int numberOfQuestions, Categories categories){
         for (int i = 0; i < numberOfQuestions; i++) {
-            categoriesToAsk = categories.get(random.nextInt(categories.size()));
+            categoriesToAsk = categories.getRandomCategory();
             Question questionToBeAsked;
             System.out.format("The category is %s\n",categoriesToAsk);
             switch (categoriesToAsk) {
                 case "Math":
-                    if (mathArray.isEmpty()){
-                        mathArray = initializeTheArrayWithTheQuestions("Math.txt");
+                    if (categories.getMathArray().isEmpty()){
+                        categories.initializeTheArrayWithMathQuestions();
                     }
-                    questionToBeAsked = this.setUpQuestion(mathArray);
+                    questionToBeAsked = this.setUpQuestion(categories.getMathArray());
                     gamemodePlay(players, questionToBeAsked);
                     break;
                 case "General Knowledge":
-                    if (generalKnowledgeArray.isEmpty()){
-                        generalKnowledgeArray = initializeTheArrayWithTheQuestions("General Knowledge.txt");
+                    if (categories.getGeneralKnowledgeArray().isEmpty()){
+                        categories.initializeTheArrayWithGeneralKnowledgeQuestions();
                     }
-                    questionToBeAsked = this.setUpQuestion(generalKnowledgeArray);
+                    questionToBeAsked = this.setUpQuestion(categories.getGeneralKnowledgeArray());
                     gamemodePlay(players, questionToBeAsked);
                     break;
                 case "Science":
-                    if (scienceArray.isEmpty()){
-                        scienceArray = initializeTheArrayWithTheQuestions("Science.txt");
+                    if (categories.getScienceArray().isEmpty()){
+                        categories.initializeTheArrayWithScienceQuestions();
                     }
-                    questionToBeAsked = this.setUpQuestion(scienceArray);
+                    questionToBeAsked = this.setUpQuestion(categories.getScienceArray());
                     gamemodePlay(players, questionToBeAsked);
                     break;
                 case "Movies":
-                    if (moviesArray.isEmpty()){
-                        moviesArray = initializeTheArrayWithTheQuestions("Movies.txt");
+                    if (categories.getMathArray().isEmpty()){
+                        categories.initializeTheArrayWithMoviesQuestions();
                     }
-                    questionToBeAsked = this.setUpQuestion(moviesArray);
+                    questionToBeAsked = this.setUpQuestion(categories.getMoviesArray());
                     gamemodePlay(players, questionToBeAsked);
                     break;
             }

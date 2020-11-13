@@ -15,6 +15,7 @@ public class Game {
     private int numberOfRounds;
     private int numberOfQuestions;
     private ArrayList<Player> players;
+    private Categories categories;
 
 
     public  Game(int howManyPlayers,int numberOfRounds,int numberOfQuestions){
@@ -24,6 +25,7 @@ public class Game {
         this.numberOfQuestions=numberOfQuestions;
         players=new ArrayList<>();
         Scanner scanner = new Scanner(System.in);
+        categories = new Categories();
 
         for(int i=0;i<howManyPlayers;i++){
 
@@ -52,12 +54,12 @@ public class Game {
                 case 0:
                     System.out.println("POINTBUILDER : Choose the correct answer and win 1000 points!");
                     Gamemode gamemode1 = new PointBuilder();
-                    gamemode1.gamemodeSetUp(players,numberOfQuestions);
+                    gamemode1.gamemodeSetUp(players,numberOfQuestions, categories);
                     break;
                 case 1:
                     System.out.println("BETTING : Win or lose the amount points you bet!");
                     Gamemode gamemode2=new Betting();
-                    gamemode2.gamemodeSetUp(players,numberOfQuestions);
+                    gamemode2.gamemodeSetUp(players,numberOfQuestions, categories);
                     break;
             }
         }

@@ -28,6 +28,7 @@ public abstract class Gamemode {
         generalKnowledgeArray = new LinkedList<>();
         scienceArray = new LinkedList<>();
         moviesArray = new LinkedList<>();
+        questionToBeHandled = new Question();
     }
 
     /**
@@ -52,35 +53,36 @@ public abstract class Gamemode {
     public void gamemodeSetUp(ArrayList<Player> players, int numberOfQuestions){
         for (int i = 0; i < numberOfQuestions; i++) {
             categoriesToAsk = categories.get(random.nextInt(categories.size()));
+            Question questionToBeAsked;
             System.out.format("The category is %s\n",categoriesToAsk);
             switch (categoriesToAsk) {
                 case "Math":
                     if (mathArray.isEmpty()){
                         mathArray = initializeTheArrayWithTheQuestions("Math.txt");
                     }
-                    this.setUpQuestion(mathArray);
-                    gamemodePlay(players, questionToBeHandled);
+                    questionToBeAsked = this.setUpQuestion(mathArray);
+                    gamemodePlay(players, questionToBeAsked);
                     break;
                 case "General Knowledge":
                     if (generalKnowledgeArray.isEmpty()){
                         generalKnowledgeArray = initializeTheArrayWithTheQuestions("General Knowledge.txt");
                     }
-                    this.setUpQuestion(generalKnowledgeArray);
-                    gamemodePlay(players, questionToBeHandled);
+                    questionToBeAsked = this.setUpQuestion(generalKnowledgeArray);
+                    gamemodePlay(players, questionToBeAsked);
                     break;
                 case "Science":
                     if (scienceArray.isEmpty()){
                         scienceArray = initializeTheArrayWithTheQuestions("Science.txt");
                     }
-                    this.setUpQuestion(scienceArray);
-                    gamemodePlay(players, questionToBeHandled);
+                    questionToBeAsked = this.setUpQuestion(scienceArray);
+                    gamemodePlay(players, questionToBeAsked);
                     break;
                 case "Movies":
                     if (moviesArray.isEmpty()){
                         moviesArray = initializeTheArrayWithTheQuestions("Movies.txt");
                     }
-                    this.setUpQuestion(moviesArray);
-                    gamemodePlay(players, questionToBeHandled);
+                    questionToBeAsked = this.setUpQuestion(moviesArray);
+                    gamemodePlay(players, questionToBeAsked);
                     break;
             }
         }
@@ -166,10 +168,10 @@ public abstract class Gamemode {
      * Then we delete it so it doenst come up again.
      * @param questionsList Is the list of question from a particular category.
      */
-    protected void setUpQuestion(List<Question> questionsList){
+    protected Question setUpQuestion(List<Question> questionsList){
         int indexOfQuestion = random.nextInt(questionsList.size());
-        questionToBeHandled = new Question();
         questionToBeHandled =  questionsList.get(indexOfQuestion);
         questionsList.remove(indexOfQuestion);
+        return questionToBeHandled;
     }
 }

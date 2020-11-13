@@ -63,7 +63,7 @@ public abstract class Gamemode {
                     gamemodePlay(players, questionToBeAsked);
                     break;
                 case "Movies":
-                    if (categories.getMathArray().isEmpty()){
+                    if (categories.getMoviesArray().isEmpty()){
                         categories.initializeTheArrayWithMoviesQuestions();
                     }
                     questionToBeAsked = this.setUpQuestion(categories.getMoviesArray());

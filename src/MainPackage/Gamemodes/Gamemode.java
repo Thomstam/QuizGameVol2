@@ -53,7 +53,6 @@ public abstract class Gamemode {
      */
     public void gamemodeSetUp(ArrayList<Player> players, int numberOfQuestions){
         for (int i = 0; i < numberOfQuestions; i++) {
-            int indexOfQuestion;
             categoriesToAsk = categories.get(random.nextInt(categories.size()));
             System.out.format("The category is %s\n",categoriesToAsk);
             switch (categoriesToAsk) {
@@ -61,40 +60,31 @@ public abstract class Gamemode {
                     if (mathArray.isEmpty()){
                         mathArray = initializeTheArrayWithTheQuestions("Math.txt");
                     }
-                    indexOfQuestion = random.nextInt(mathArray.size());
-                    questionToBeHandled = mathArray.get(indexOfQuestion);
-                    mathArray.remove(indexOfQuestion);
+                    this.setUpQuestion(mathArray);
                     gamemodePlay(players, questionToBeHandled);
                     break;
                 case "General Knowledge":
                     if (generalKnowledgeArray.isEmpty()){
                         generalKnowledgeArray = initializeTheArrayWithTheQuestions("General Knowledge.txt");
                     }
-                    indexOfQuestion = random.nextInt(generalKnowledgeArray.size());
-                    questionToBeHandled = generalKnowledgeArray.get(indexOfQuestion);
-                    generalKnowledgeArray.remove(indexOfQuestion);
+                    this.setUpQuestion(generalKnowledgeArray);
                     gamemodePlay(players, questionToBeHandled);
                     break;
                 case "Science":
                     if (scienceArray.isEmpty()){
                         scienceArray = initializeTheArrayWithTheQuestions("Science.txt");
                     }
-                    indexOfQuestion = random.nextInt(scienceArray.size());
-                    questionToBeHandled = scienceArray.get(indexOfQuestion);
-                    scienceArray.remove(indexOfQuestion);
+                    this.setUpQuestion(scienceArray);
                     gamemodePlay(players, questionToBeHandled);
                     break;
                 case "Movies":
                     if (moviesArray.isEmpty()){
                         moviesArray = initializeTheArrayWithTheQuestions("Movies.txt");
                     }
-                    indexOfQuestion = random.nextInt(moviesArray.size());
-                    questionToBeHandled = moviesArray.get(indexOfQuestion);
-                    moviesArray.remove(indexOfQuestion);
+                    this.setUpQuestion(moviesArray);
                     gamemodePlay(players, questionToBeHandled);
                     break;
             }
-//            resetTheArraysForQuestionTemplate();
         }
         scoreSumUp(players);
     }
@@ -169,5 +159,11 @@ public abstract class Gamemode {
         for (Player player: players) {
             System.out.println("The Player " + player.getUsername() + " has total points of " + player.getScore());
         }
+    }
+
+    protected void setUpQuestion(List<Question> questionsList){
+        int indexOfQuestion = random.nextInt(questionsList.size());
+        questionToBeHandled = questionsList.get(indexOfQuestion);
+        questionsList.remove(indexOfQuestion);
     }
 }

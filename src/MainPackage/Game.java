@@ -1,9 +1,12 @@
 package MainPackage;
 
+
 import MainPackage.Gamemodes.Betting;
 import MainPackage.Gamemodes.Gamemode;
 import MainPackage.Gamemodes.PointBuilder;
 
+
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.InputMismatchException;
 import java.util.Scanner;
@@ -27,12 +30,16 @@ public class Game {
         Scanner scanner = new Scanner(System.in);
         categories = new Categories();
 
+
+
+
         for(int i=0;i<howManyPlayers;i++){
 
             System.out.format("Enter Username (Player %d):",i);
             String username = scanner.nextLine();
             players.add(new Player(username));
         }
+
 
     }
 

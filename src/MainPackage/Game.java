@@ -21,24 +21,24 @@ public class Game {
     private Categories categories;
 
 
-    public  Game(int howManyPlayers,int numberOfRounds,int numberOfQuestions){
+    public  Game(int howManyPlayers, int numberOfRounds, int numberOfQuestions, ArrayList<Player> players){
 
         this.howManyPlayers=howManyPlayers;
         this.numberOfRounds=numberOfRounds;
         this.numberOfQuestions=numberOfQuestions;
-        players=new ArrayList<>();
-        Scanner scanner = new Scanner(System.in);
+        this.players=players;
+        //Scanner scanner = new Scanner(System.in);
         categories = new Categories();
 
 
 
 
-        for(int i=0;i<howManyPlayers;i++){
-
-            System.out.format("Enter Username (Player %d):",i);
-            String username = scanner.nextLine();
-            players.add(new Player(username));
-        }
+//        for(int i=0;i<howManyPlayers;i++){
+//
+//            System.out.format("Enter Username (Player %d):",i);
+//            String username = scanner.nextLine();
+//            players.add(new Player(username));
+//        }
 
 
     }

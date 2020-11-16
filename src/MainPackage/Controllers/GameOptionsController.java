@@ -17,6 +17,8 @@ import java.io.IOException;
 
 public class GameOptionsController {
 
+    private final Stage thisStage;
+
     @FXML
     private TextField numberOfPlayers;
     @FXML
@@ -32,20 +34,31 @@ public class GameOptionsController {
     @FXML
     private Label questionsError;
 
+    public GameOptionsController(){
+        thisStage = new Stage();
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("../resources/GameOptions.fxml"));
+            loader.setController(this);
+            thisStage.setScene(new Scene(loader.load()));
+            thisStage.setTitle("Buzz Quiz");
+        }catch (IOException e){
+            e.printStackTrace();
+        }
+    }
+
+    public void showStage(){
+        thisStage.showAndWait();
+    }
+
+
     public void onMouseClick(MouseEvent mouseEvent) throws IOException {
         int players = Integer.parseInt(numberOfPlayers.getText());
         int questions = Integer.parseInt(numberOfQuestions.getText());
         int rounds = Integer.parseInt(numberOfRounds.getText());
 
         if((players==1||players==2)&&(questions>=3 && questions<=6)&&(rounds>=3 && rounds<=6)){
-            Parent root;
-            root=FXMLLoader.load(getClass().getResource("../resources/UsernameInput.fxml"));
-            Stage stage = new Stage();
-            stage.setTitle("New Game");
-            stage.setScene(new Scene(root,600,400));
-            stage.show();
             ((Node)(mouseEvent.getSource())).getScene().getWindow().hide();
-
+            openUsernameInput();
         }
         if(!(players==1||players==2)){
             playersError.setText("Wrong Input");
@@ -64,4 +77,25 @@ public class GameOptionsController {
         }
 
     }
+
+    private void openUsernameInput(){
+        UsernameInputController userController = new UsernameInputController(this);
+        userController.showStage();
+
+    }
+
+    public int getPlayers(){
+        return Integer.parseInt(numberOfPlayers.getText());
+    }
+
+    public int getRounds(){
+        return Integer.parseInt(numberOfRounds.getText());
+    }
+
+    public int getQuestions(){
+        return Integer.parseInt(numberOfQuestions.getText());
+    }
+
+
+
 }

@@ -79,7 +79,7 @@ public class UsernameInputController {
 //    }
 
     private void typeOfGamemode(){
-        GamemodeType nameController = new GamemodeType(controller,this);
+        GamemodeTypeController nameController = new GamemodeTypeController(controller,this);
         nameController.showStage();
     }
 

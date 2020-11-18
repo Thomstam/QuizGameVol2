@@ -12,12 +12,14 @@ public class PointBuilder extends Gamemode {
      * choice and then we pass it out to handle the players score
      * @param players List with all the players
      * @param question The question we are going to ask the players
+     * @return
      */
     @Override
-    void gamemodePlay(ArrayList<Player> players, Question question) {
-        System.out.println(toString(question));
-        players = settingPlayersChoice(players);
-        handleTheScore(players, question);
+    Question gamemodePlay(ArrayList<Player> players, Question question) {
+        //System.out.println(toString(question));
+        //players = settingPlayersChoice(players);
+        //handleTheScore(players, question);
+        return question;
     }
 
     /**

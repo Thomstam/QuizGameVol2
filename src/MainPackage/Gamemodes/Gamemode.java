@@ -4,7 +4,6 @@ import java.util.*;
 import java.util.ArrayList;
 import MainPackage.Player;
 import MainPackage.Question;
-import MainPackage.ReadingFromFile;
 import MainPackage.Categories;
 
 public abstract class Gamemode {
@@ -25,8 +24,9 @@ public abstract class Gamemode {
     /**
      * We control each game mode's difference.
      * @param players List with all the players
+     * @return
      */
-    abstract void gamemodePlay(ArrayList<Player> players, Question question);
+    abstract Question gamemodePlay(ArrayList<Player> players, Question question);
 
     /**
      * Managing the gamemode initialization. For each question we choose a random category. If the list of
@@ -35,10 +35,11 @@ public abstract class Gamemode {
      * @param players <String> elements with the names of all the players.
      * @param numberOfQuestions The numbers of questions we going to ask for this round.
      */
-    public void gamemodeSetUp(ArrayList<Player> players, int numberOfQuestions, Categories categories){
-        for (int i = 0; i < numberOfQuestions; i++) {
+    public Question gamemodeSetUp(ArrayList<Player> players, int numberOfQuestions, Categories categories){
+        //for (int i = 0; i < numberOfQuestions; i++) {
             categoriesToAsk = categories.getRandomCategory();
-            Question questionToBeAsked;
+            Question questionToBeAsked ;
+            Question question = null;
             System.out.format("The category is %s\n",categoriesToAsk);
             switch (categoriesToAsk) {
                 case "Math":
@@ -46,33 +47,34 @@ public abstract class Gamemode {
                         categories.initializeTheArrayWithMathQuestions();
                     }
                     questionToBeAsked = this.setUpQuestion(categories.getMathArray());
-                    gamemodePlay(players, questionToBeAsked);
+                    question=gamemodePlay(players, questionToBeAsked);
                     break;
                 case "General Knowledge":
                     if (categories.getGeneralKnowledgeArray().isEmpty()){
                         categories.initializeTheArrayWithGeneralKnowledgeQuestions();
                     }
                     questionToBeAsked = this.setUpQuestion(categories.getGeneralKnowledgeArray());
-                    gamemodePlay(players, questionToBeAsked);
+                    question=gamemodePlay(players, questionToBeAsked);
                     break;
                 case "Science":
                     if (categories.getScienceArray().isEmpty()){
                         categories.initializeTheArrayWithScienceQuestions();
                     }
                     questionToBeAsked = this.setUpQuestion(categories.getScienceArray());
-                    gamemodePlay(players, questionToBeAsked);
+                    question=gamemodePlay(players, questionToBeAsked);
                     break;
                 case "Movies":
                     if (categories.getMoviesArray().isEmpty()){
                         categories.initializeTheArrayWithMoviesQuestions();
                     }
                     questionToBeAsked = this.setUpQuestion(categories.getMoviesArray());
-                    gamemodePlay(players, questionToBeAsked);
+                    question=gamemodePlay(players, questionToBeAsked);
                     break;
             }
+            return question;
         }
-        scoreSumUp(players);
-    }
+        //scoreSumUp(players);
+    //}
 
     /**
      * @param question The current question of the game.

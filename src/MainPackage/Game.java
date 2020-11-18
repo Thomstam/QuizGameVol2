@@ -18,7 +18,7 @@ public class Game {
     private int numberOfRounds;
     private int numberOfQuestions;
     private ArrayList<Player> players;
-    private Categories categories;
+    //private Categories categories;
 
 
     public  Game(int howManyPlayers, int numberOfRounds, int numberOfQuestions, ArrayList<Player> players){
@@ -28,7 +28,7 @@ public class Game {
         this.numberOfQuestions=numberOfQuestions;
         this.players=players;
         //Scanner scanner = new Scanner(System.in);
-        categories = new Categories();
+        //categories = new Categories();
 
 
 
@@ -47,30 +47,30 @@ public class Game {
      * starts the game which will be played for how many rounds the player chose and for each round
      * a different game mode is chosen randomly .
      */
-    public void start(){
-        int choice;
+    public Gamemode start(int choice){
+        //int choice;
 
 
-        for(int i=0;i<numberOfRounds;i++){
-            System.out.println("Press ENTER to start the round!!!");
-            try {
-                System.in.read();
-            }catch (Exception e){}
-            choice=gamemodePicker();
-            switch (choice){
-                case 0:
-                    System.out.println("POINTBUILDER : Choose the correct answer and win 1000 points!");
-                    Gamemode gamemode1 = new PointBuilder();
-                    gamemode1.gamemodeSetUp(players,numberOfQuestions, categories);
-                    break;
-                case 1:
-                    System.out.println("BETTING : Win or lose the amount points you bet!");
-                    Gamemode gamemode2=new Betting();
-                    gamemode2.gamemodeSetUp(players,numberOfQuestions, categories);
-                    break;
-            }
+        //for(int i=0;i<numberOfRounds;i++){
+//            System.out.println("Press ENTER to start the round!!!");
+//            try {
+//                System.in.read();
+//            }catch (Exception e){}
+        choice=gamemodePicker();
+        switch (choice){
+            case 0:
+                //System.out.println("POINTBUILDER : Choose the correct answer and win 1000 points!");
+                return new PointBuilder();
+                //gamemode1.gamemodeSetUp(players,numberOfQuestions, categories);
+            case 1:
+                //System.out.println("BETTING : Win or lose the amount points you bet!");
+                return new Betting();
+                //gamemode2.gamemodeSetUp(players,numberOfQuestions, categories);
         }
+
+        return null;
     }
+    //}
 
     /***
      * displays the number of rounds played and the final score of the player, while also
@@ -104,10 +104,10 @@ public class Game {
      *
      * @return a random number which corresponds to the game mode which will be played in this round
      */
-    private int gamemodePicker(){
+    public int gamemodePicker(){
 
         Random rand = new Random();
-        int choice = rand.nextInt(2);
+        int choice = rand.nextInt(1);
         return(choice);
 
     }

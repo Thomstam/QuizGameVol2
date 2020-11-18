@@ -1,6 +1,6 @@
 package MainPackage.Controllers;
 
-import MainPackage.Game;
+import MainPackage.Categories;
 import MainPackage.Player;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -18,6 +18,7 @@ public class UsernameInputController {
     private Stage thisStage;
     private ArrayList<Player> players;
     public int counter=0;
+    private Categories categories;
 
     private final GameOptionsController controller;
 
@@ -31,6 +32,7 @@ public class UsernameInputController {
         this.controller=controller;
 
         thisStage = new Stage();
+        categories = new Categories();
 
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("../resources/UsernameInput.fxml"));
@@ -59,20 +61,36 @@ public class UsernameInputController {
         players.add(new Player(username.getText()));
         username.setText("");
         if (counter==controller.getPlayers()){
-            printPlayers();
+            //printPlayers();
             ((Node)mouseEvent.getSource()).getScene().getWindow().hide();
-            Game game = new Game(controller.getPlayers(),controller.getRounds(),controller.getQuestions(),players);
-            game.start();
+//            Game game = new Game(controller.getPlayers(),controller.getRounds(),controller.getQuestions(),players);
+//            game.start();
+            typeOfGamemode();
+
 
         }
 
     }
 
-    public void printPlayers(){
-        for (Player player:players){
-            System.out.println("player:"+player.getUsername());
-        }
+//    public void printPlayers(){
+//        for (Player player:players){
+//            System.out.println("player:"+player.getUsername());
+//        }
+//    }
+
+    private void typeOfGamemode(){
+        GamemodeType nameController = new GamemodeType(controller,this);
+        nameController.showStage();
     }
+
+    public ArrayList<Player> listOfPlayers(){
+        return players;
+    }
+
+    public Categories getCategories(){
+        return categories;
+    }
+
 
 
 }

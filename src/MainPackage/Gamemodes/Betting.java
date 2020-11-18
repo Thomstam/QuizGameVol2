@@ -19,9 +19,10 @@ public class Betting extends Gamemode {
      * and after question answer their score changes affected by their bet.
      * @param players List with all the players
      * @param question The question we are going to ask the players
+     * @return
      */
     @Override
-    void gamemodePlay(ArrayList<Player> players, Question question) {
+    Question gamemodePlay(ArrayList<Player> players, Question question) {
         System.out.println("Place Your Bets Choosing Between: 250, 500, 750, 1000");
         for (Player player : players) {
             do {
@@ -41,6 +42,7 @@ public class Betting extends Gamemode {
         System.out.println(toString(question));
         players = settingPlayersChoice(players);
         handleTheScore(players, question);
+        return question;
     }
 
     /**

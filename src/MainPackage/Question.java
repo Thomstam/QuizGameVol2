@@ -11,6 +11,8 @@ public class Question {
     private String correctAnswer; //This is the correct answer for the question.
     private String questionToASk;
     private List<String> possibleAnswersToAsk; //Contains 3 of the possible answers and the correct one.
+    private String nameOfImage;
+
 
     public Question(){
         possibleAnswers = new ArrayList<>();
@@ -67,5 +69,13 @@ public class Question {
         List<String> copy = new LinkedList<>(lst);
         Collections.shuffle(copy);
         return copy.subList(0, 3);
+    }
+
+    public void setNameOfImage(String nameOfImage) {
+        this.nameOfImage = nameOfImage;
+    }
+
+    public String getNameOfImage() {
+        return nameOfImage;
     }
 }

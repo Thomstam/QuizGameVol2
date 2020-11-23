@@ -26,7 +26,6 @@ public abstract class Gamemode {
      * @param players List with all the players
      * @return
      */
-    abstract Question gamemodePlay(ArrayList<Player> players, Question question);
 
     /**
      * Managing the gamemode initialization. For each question we choose a random category. If the list of
@@ -38,8 +37,7 @@ public abstract class Gamemode {
     public Question gamemodeSetUp(ArrayList<Player> players, int numberOfQuestions, Categories categories){
         //for (int i = 0; i < numberOfQuestions; i++) {
             categoriesToAsk = categories.getRandomCategory();
-            Question questionToBeAsked ;
-            Question question = null;
+            Question questionToBeAsked = null;
             System.out.format("The category is %s\n",categoriesToAsk);
             switch (categoriesToAsk) {
                 case "Math":
@@ -47,31 +45,28 @@ public abstract class Gamemode {
                         categories.initializeTheArrayWithMathQuestions();
                     }
                     questionToBeAsked = this.setUpQuestion(categories.getMathArray());
-                    question=gamemodePlay(players, questionToBeAsked);
                     break;
                 case "General Knowledge":
                     if (categories.getGeneralKnowledgeArray().isEmpty()){
                         categories.initializeTheArrayWithGeneralKnowledgeQuestions();
                     }
                     questionToBeAsked = this.setUpQuestion(categories.getGeneralKnowledgeArray());
-                    question=gamemodePlay(players, questionToBeAsked);
+
                     break;
                 case "Science":
                     if (categories.getScienceArray().isEmpty()){
                         categories.initializeTheArrayWithScienceQuestions();
                     }
                     questionToBeAsked = this.setUpQuestion(categories.getScienceArray());
-                    question=gamemodePlay(players, questionToBeAsked);
                     break;
                 case "Movies":
                     if (categories.getMoviesArray().isEmpty()){
                         categories.initializeTheArrayWithMoviesQuestions();
                     }
                     questionToBeAsked = this.setUpQuestion(categories.getMoviesArray());
-                    question=gamemodePlay(players, questionToBeAsked);
                     break;
             }
-            return question;
+            return questionToBeAsked;
         }
         //scoreSumUp(players);
     //}
@@ -80,13 +75,13 @@ public abstract class Gamemode {
      * @param question The current question of the game.
      * @return A template of the how we are showing the player each question and his choices.
      */
-    protected String toString(Question question) {
-        List<String> possibleAnswers = question.getPossibleAnswersToAsk();
-        return "        " + question.getQuestionToASk() + "\n" +
-                "A)" + possibleAnswers.get(0) + "                                                    " + "B)" + possibleAnswers.get(1) + "\n" +
-                "C)" + possibleAnswers.get(2) + "                                                    " + "D)" + possibleAnswers.get(3) + "\n" +
-                "           " + "Choose Between A,B,C,D";
-    }
+//    protected String toString(Question question) {
+//        List<String> possibleAnswers = question.getPossibleAnswersToAsk();
+//        return "        " + question.getQuestionToASk() + "\n" +
+//                "A)" + possibleAnswers.get(0) + "                                                    " + "B)" + possibleAnswers.get(1) + "\n" +
+//                "C)" + possibleAnswers.get(2) + "                                                    " + "D)" + possibleAnswers.get(3) + "\n" +
+//                "           " + "Choose Between A,B,C,D";
+//    }
 
     /**
      * @param choice The choice we got from the player
@@ -115,29 +110,29 @@ public abstract class Gamemode {
      */
     abstract void handleTheScore(ArrayList<Player> players, Question question);
 
-    /**
-     * Each players has to choose between the possible answers of the question A-D.
-     * @param players List with all the players.
-     * @return List with all the players choices updated
-     */
-    protected ArrayList<Player> settingPlayersChoice(ArrayList<Player> players){
-        for (Player player : players) {
-            do{
-                try {
-                    choice = scanner.nextLine();
-                    if (!"A".equals(choice) && !"B".equals(choice) && !"C".equals(choice) && !"D".equals(choice)){
-                        System.out.println("Wrong Input!!!");
-                    }
-                }catch (InputMismatchException e){
-                    System.out.println("Wrong Input!!!");
-                    System.out.println("Choose Between A,B,C,D");
-                }
-            }while(!"A".equals(choice) && !"B".equals(choice) && !"C".equals(choice) && !"D".equals(choice));
-            player.setAnswer(choice);
-            choice = "";
-        }
-        return players;
-    }
+//    /**
+//     * Each players has to choose between the possible answers of the question A-D.
+//     * @param players List with all the players.
+//     * @return List with all the players choices updated
+//     */
+//    protected ArrayList<Player> settingPlayersChoice(ArrayList<Player> players){
+//        for (Player player : players) {
+//            do{
+//                try {
+//                    choice = scanner.nextLine();
+//                    if (!"A".equals(choice) && !"B".equals(choice) && !"C".equals(choice) && !"D".equals(choice)){
+//                        System.out.println("Wrong Input!!!");
+//                    }
+//                }catch (InputMismatchException e){
+//                    System.out.println("Wrong Input!!!");
+//                    System.out.println("Choose Between A,B,C,D");
+//                }
+//            }while(!"A".equals(choice) && !"B".equals(choice) && !"C".equals(choice) && !"D".equals(choice));
+//            player.setAnswer(choice);
+//            choice = "";
+//        }
+//        return players;
+//    }
 
     /**
      * Here we present each player's score

@@ -7,20 +7,6 @@ import java.util.ArrayList;
 
 public class PointBuilder extends Gamemode {
 
-    /**
-     * In this game mode all that we are doing is we ask a question, we get a players
-     * choice and then we pass it out to handle the players score
-     * @param players List with all the players
-     * @param question The question we are going to ask the players
-     * @return
-     */
-    @Override
-    Question gamemodePlay(ArrayList<Player> players, Question question) {
-        //System.out.println(toString(question));
-        //players = settingPlayersChoice(players);
-        //handleTheScore(players, question);
-        return question;
-    }
 
     /**
      * For each player we are getting his answer we and we compare it with the correct one.

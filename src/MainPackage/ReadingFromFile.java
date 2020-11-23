@@ -32,7 +32,12 @@ public class ReadingFromFile {
                 question.setQuestionToASk(dataOfStr[0]);
                 question.setCorrectAnswer(dataOfStr[1]);
                 for (int i = 2; i < dataOfStr.length; i++) {
-                    question.setPossibleAnswers(dataOfStr[i]);
+                    if(dataOfStr[i].contains(".png") || dataOfStr[i].contains(".jpg")){
+                        question.setNameOfImage(dataOfStr[i]);
+                        
+                    }else {
+                        question.setPossibleAnswers(dataOfStr[i]);
+                    }
                 }
                 arrayWithAllTheQuestion.add(question);
             }

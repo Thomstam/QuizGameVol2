@@ -17,8 +17,8 @@ public class AskQuestionController {
 
 
 
-    private final GameOptionsController controller;
-    private final UsernameInputController usernameController;
+
+
     private final Gamemode gamemode;
     @FXML
     private Label question;
@@ -32,9 +32,9 @@ public class AskQuestionController {
     private Label answerFour;
     private Stage thisStage;
 
-    public AskQuestionController(GameOptionsController controller, UsernameInputController usernameController, Gamemode gamemode) {
-        this.controller=controller;
-        this.usernameController=usernameController;
+    public AskQuestionController(Gamemode gamemode) {
+
+
         this.gamemode=gamemode;
         thisStage = new Stage();
         try{
@@ -49,7 +49,7 @@ public class AskQuestionController {
 
     @FXML
     private void initialize(){
-         Question questionSetUp=gamemode.gamemodeSetUp(usernameController.listOfPlayers(),controller.getQuestions(), usernameController.getCategories());
+         Question questionSetUp=gamemode.gamemodeSetUp(GameOptionsController.userController.listOfPlayers(),WelcomeController.controller.getQuestions(), GameOptionsController.userController.getCategories());
          List<String> possibleAnswers = questionSetUp.getPossibleAnswersToAsk();
          question.setText(questionSetUp.getQuestionToASk());
          answerOne.setText(possibleAnswers.get(0));

@@ -11,10 +11,12 @@ import java.io.IOException;
 
 public class WelcomeController {
 
+    public static GameOptionsController controller;
+
     public void goToMenu(MouseEvent mouseEvent) {
 
         ((Node)(mouseEvent.getSource())).getScene().getWindow().hide();
-        GameOptionsController controller = new GameOptionsController();
+        controller= new GameOptionsController();
         controller.showStage();
 
     }

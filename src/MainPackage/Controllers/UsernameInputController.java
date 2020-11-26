@@ -1,6 +1,7 @@
 package MainPackage.Controllers;
 
 import MainPackage.Categories;
+import MainPackage.Game;
 import MainPackage.Player;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -18,18 +19,21 @@ public class UsernameInputController {
     private Stage thisStage;
     private ArrayList<Player> players;
     public int counter=0;
-    private Categories categories;
 
-    private final GameOptionsController controller;
+    private Categories categories;
+    public static Game game;
+
+
+
 
     @FXML
     private TextField username;
 
-    public UsernameInputController(GameOptionsController controller) {
+    public UsernameInputController() {
         //
         players=new ArrayList<>();
 
-        this.controller=controller;
+
 
         thisStage = new Stage();
         categories = new Categories();
@@ -60,9 +64,10 @@ public class UsernameInputController {
         counter++;
         players.add(new Player(username.getText()));
         username.setText("");
-        if (counter==controller.getPlayers()){
+        if (counter==WelcomeController.controller.getPlayers()){
             //printPlayers();
             ((Node)mouseEvent.getSource()).getScene().getWindow().hide();
+            game = new Game(WelcomeController.controller.getPlayers(),WelcomeController.controller.getRounds(),WelcomeController.controller.getQuestions(),GameOptionsController.userController.listOfPlayers());
 //            Game game = new Game(controller.getPlayers(),controller.getRounds(),controller.getQuestions(),players);
 //            game.start();
             typeOfGamemode();
@@ -72,15 +77,12 @@ public class UsernameInputController {
 
     }
 
-//    public void printPlayers(){
-//        for (Player player:players){
-//            System.out.println("player:"+player.getUsername());
-//        }
-//    }
 
     private void typeOfGamemode(){
-        GamemodeTypeController nameController = new GamemodeTypeController(controller,this);
-        nameController.showStage();
+
+        GamemodeTypeController typeController = new GamemodeTypeController();
+        typeController.showStage();
+
     }
 
     public ArrayList<Player> listOfPlayers(){

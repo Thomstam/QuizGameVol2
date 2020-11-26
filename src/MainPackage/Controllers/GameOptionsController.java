@@ -16,6 +16,7 @@ import java.io.IOException;
 public class GameOptionsController {
 
     private final Stage thisStage;
+    public static UsernameInputController userController;
 
     @FXML
     private TextField numberOfPlayers;
@@ -33,6 +34,7 @@ public class GameOptionsController {
     private Label questionsError;
 
     public GameOptionsController(){
+
         thisStage = new Stage();
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("../resources/GameOptions.fxml"));
@@ -77,7 +79,7 @@ public class GameOptionsController {
     }
 
     private void openUsernameInput(){
-        UsernameInputController userController = new UsernameInputController(this);
+        userController = new UsernameInputController();
         userController.showStage();
 
     }

@@ -4,9 +4,11 @@ import MainPackage.Gamemodes.Gamemode;
 import MainPackage.Question;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
+import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 
 import java.awt.*;
@@ -17,8 +19,8 @@ public class AskQuestionController {
 
 
 
-
-
+    Question questionSetUp;
+    public int qcounter=1;
     private final Gamemode gamemode;
     @FXML
     private Label question;
@@ -49,7 +51,7 @@ public class AskQuestionController {
 
     @FXML
     private void initialize(){
-         Question questionSetUp=gamemode.gamemodeSetUp(GameOptionsController.userController.listOfPlayers(),WelcomeController.controller.getQuestions(), GameOptionsController.userController.getCategories());
+         questionSetUp=gamemode.gamemodeSetUp(GameOptionsController.userController.listOfPlayers(),WelcomeController.controller.getQuestions(), GameOptionsController.userController.getCategories());
          List<String> possibleAnswers = questionSetUp.getPossibleAnswersToAsk();
          question.setText(questionSetUp.getQuestionToASk());
          answerOne.setText(possibleAnswers.get(0));
@@ -61,5 +63,17 @@ public class AskQuestionController {
 
     public void showStage(){
         thisStage.show();
+    }
+
+    public void onMouseClick(MouseEvent mouseEvent) {
+
+        if (qcounter<WelcomeController.controller.getQuestions()){
+            qcounter++;
+            initialize();
+        }
+        else{
+            ((Node)(mouseEvent.getSource())).getScene().getWindow().hide();
+        }
+
     }
 }

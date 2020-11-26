@@ -107,7 +107,7 @@ public class Game {
     public int gamemodePicker(){
 
         Random rand = new Random();
-        int choice = rand.nextInt(1);
+        int choice = rand.nextInt(2);
         return(choice);
 
     }

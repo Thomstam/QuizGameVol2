@@ -44,22 +44,30 @@ public class GamemodeTypeController {
     }
 
     @FXML
-    private void initialize(){
-        if(roundcounter<WelcomeController.controller.getRounds()) {
-            if (UsernameInputController.game.gamemodePicker() == 0) {
-                GamemodeType.setText("POINTBUILDER : Choose the correct answer \nand win 1000 points!");
-                gamemode = UsernameInputController.game.start(UsernameInputController.game.gamemodePicker());
-                //gamemode.gamemodeSetUp(usernameController.listOfPlayers(),controller.getQuestions(),usernameController.getCategories());
-            } else {
-                GamemodeType.setText("BETTING : Win or lose the amount \nof points you bet!");
-            }
+    private void initialize() {
+        System.out.println(roundcounter);
+        if (UsernameInputController.game.gamemodePicker() == 0) {
+            GamemodeType.setText("POINTBUILDER : Choose the correct answer \nand win 1000 points!");
+            gamemode = UsernameInputController.game.start(UsernameInputController.game.gamemodePicker());
+            //gamemode.gamemodeSetUp(usernameController.listOfPlayers(),controller.getQuestions(),usernameController.getCategories());
+        } else {
+            GamemodeType.setText("BETTING : Win or lose the amount \nof points you bet!");
         }
-        roundcounter++;
     }
 
+
     public void onMouseClick(MouseEvent mouseEvent)  {
-        ((Node)(mouseEvent.getSource())).getScene().getWindow().hide();
-        startAskingQuestions(gamemode);
+
+
+        if(roundcounter<WelcomeController.controller.getRounds()) {
+            roundcounter++;
+            startAskingQuestions(gamemode);
+            initialize();
+        }else {
+            ((Node)(mouseEvent.getSource())).getScene().getWindow().hide();
+        }
+
+
     }
 
     private void startAskingQuestions(Gamemode gamemode){

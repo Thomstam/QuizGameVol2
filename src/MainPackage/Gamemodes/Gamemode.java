@@ -4,17 +4,15 @@ import java.util.*;
 import java.util.ArrayList;
 import MainPackage.Player;
 import MainPackage.Question;
-import MainPackage.ReadingFromFile;
 import MainPackage.Categories;
 
 public abstract class Gamemode {
 
     protected Scanner scanner;
-    protected String choice;
-    protected Random random;
-    protected String categoriesToAsk;
+    private String choice;
+    private final Random random;
     protected int initialBet;
-    protected Question questionToBeHandled;
+    private Question questionToBeHandled;
 
     public Gamemode() {
         scanner = new Scanner(System.in);
@@ -22,10 +20,6 @@ public abstract class Gamemode {
         questionToBeHandled = new Question();
     }
 
-    /**
-     * We control each game mode's difference.
-     * @param players List with all the players
-     */
     abstract void gamemodePlay(ArrayList<Player> players, Question question);
 
     /**
@@ -34,12 +28,13 @@ public abstract class Gamemode {
      * Then we just pass it to @setUpQuestion and then we start the game.
      * @param players <String> elements with the names of all the players.
      * @param numberOfQuestions The numbers of questions we going to ask for this round.
+     * @param categories An object that contains all the categories and all the answers we are going to ask.
      */
     public void gamemodeSetUp(ArrayList<Player> players, int numberOfQuestions, Categories categories){
         for (int i = 0; i < numberOfQuestions; i++) {
-            categoriesToAsk = categories.getRandomCategory();
+            String categoriesToAsk = categories.getRandomCategory();
             Question questionToBeAsked;
-            System.out.format("The category is %s\n",categoriesToAsk);
+            System.out.format("The category is %s\n", categoriesToAsk);
             switch (categoriesToAsk) {
                 case "Math":
                     if (categories.getMathArray().isEmpty()){
@@ -141,7 +136,7 @@ public abstract class Gamemode {
      * Here we present each player's score
      * @param players List with all the players
      */
-    protected void scoreSumUp(ArrayList<Player> players){
+    private void scoreSumUp(ArrayList<Player> players){
         for (Player player: players) {
             System.out.println("The Player " + player.getUsername() + " has total points of " + player.getScore());
         }
@@ -153,7 +148,7 @@ public abstract class Gamemode {
      * Then we delete it so it doenst come up again.
      * @param questionsList Is the list of question from a particular category.
      */
-    protected Question setUpQuestion(List<Question> questionsList){
+    private Question setUpQuestion(List<Question> questionsList){
         int indexOfQuestion = random.nextInt(questionsList.size());
         questionToBeHandled =  questionsList.get(indexOfQuestion);
         questionsList.remove(indexOfQuestion);

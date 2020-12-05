@@ -145,7 +145,7 @@ public abstract class Gamemode {
     /**
      *We take the a list from a specific category which contains all the questions.
      * We pick one in random and we pass it to @questionToBeHandled to take care of the rest.
-     * Then we delete it so it doenst come up again.
+     * Then we delete it so it doesnt come up again.
      * @param questionsList Is the list of question from a particular category.
      */
     private Question setUpQuestion(List<Question> questionsList){

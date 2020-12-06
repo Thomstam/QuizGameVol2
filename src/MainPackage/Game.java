@@ -9,18 +9,29 @@ import java.util.InputMismatchException;
 import java.util.Scanner;
 import java.util.Random;
 
+
+/**
+ * This class handles how the game works. A game mode is chosen randomly and an object of that game mode gets
+ * created. Then the method that sets it up gets called so that the round can start. When the game is over the player is
+ * asked if he wants to play again and his answer gets returned to the main class, so that the game can end or restart.
+ */
 public class Game {
 
-    private int howManyPlayers;
-    private int numberOfRounds;
-    private int numberOfQuestions;
-    private ArrayList<Player> players;
-    private Categories categories;
+    private final int numberOfRounds;
+    private final int numberOfQuestions;
+    private final ArrayList<Player> players;
+    private final Categories categories;
 
-
+    /**
+     * Constructor
+     * New player objects get created with the usernames that the users picked as input.
+     * Categories object gets created
+     * @param howManyPlayers The number of players that are going to be playing
+     * @param numberOfRounds The number of rounds that are going to be played
+     * @param numberOfQuestions The number of questions that are going to be asked per round
+     */
     public  Game(int howManyPlayers,int numberOfRounds,int numberOfQuestions){
 
-        this.howManyPlayers=howManyPlayers;
         this.numberOfRounds=numberOfRounds;
         this.numberOfQuestions=numberOfQuestions;
         players=new ArrayList<>();
@@ -36,19 +47,17 @@ public class Game {
 
     }
 
-    /****
+    /***
      * starts the game which will be played for how many rounds the player chose and for each round
      * a different game mode is chosen randomly .
      */
     public void start(){
         int choice;
-
-
         for(int i=0;i<numberOfRounds;i++){
             System.out.println("Press ENTER to start the round!!!");
             try {
                 System.in.read();
-            }catch (Exception e){}
+            }catch (Exception ignored){}
             choice=gamemodePicker();
             switch (choice){
                 case 0:
@@ -89,8 +98,7 @@ public class Game {
                 System.out.println("Wrong Input!!!");
             }
         }while(!(playAgain.equals("Y")||playAgain.equals("N")));
-        if(playAgain.equals("Y"))return false;
-        else return true;
+        return !playAgain.equals("Y");
     }
 
     /***
@@ -100,8 +108,7 @@ public class Game {
     private int gamemodePicker(){
 
         Random rand = new Random();
-        int choice = rand.nextInt(2);
-        return(choice);
+        return(rand.nextInt(2));
 
     }
 }

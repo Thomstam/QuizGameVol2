@@ -5,6 +5,10 @@ import java.util.Collections;
 import java.util.LinkedList;
 import java.util.List;
 
+/**
+ * This class represents a question of the game with her attributes(the possible answers, the correct answer,
+ * the question we are going to ask and all the possible answers that comes with is).
+ */
 public class Question {
 
     private List<String> possibleAnswers; //Contains all the wrong answers for the question.

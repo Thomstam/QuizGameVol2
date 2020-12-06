@@ -5,6 +5,10 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Random;
 
+/**
+ * In this class we have all the possible categories that we have on our game. All the categories have their own
+ * Arraylist so they can be stored from a file that contains the questions about the specific category.
+ */
 public class Categories {
 
     private List<Question> mathArray;

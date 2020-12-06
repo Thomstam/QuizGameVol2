@@ -6,6 +6,10 @@ import MainPackage.Player;
 import MainPackage.Question;
 import MainPackage.Categories;
 
+/**
+ *  This class contains all the basic methods to how the game works. How the question is being handled, how all
+ *  the rest of the game modes work and generally how the game flows.
+ */
 public abstract class Gamemode {
 
     protected Scanner scanner;

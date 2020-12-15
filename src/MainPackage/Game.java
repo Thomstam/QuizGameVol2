@@ -56,7 +56,7 @@ public class Game {
 //            try {
 //                System.in.read();
 //            }catch (Exception e){}
-        choice=gamemodePicker();
+        //choice=gamemodePicker();
         switch (choice){
             case 0:
                 //System.out.println("POINTBUILDER : Choose the correct answer and win 1000 points!");
@@ -96,8 +96,7 @@ public class Game {
                 System.out.println("Wrong Input!!!");
             }
         }while(!(playAgain.equals("Y")||playAgain.equals("N")));
-        if(playAgain.equals("Y"))return false;
-        else return true;
+        return !playAgain.equals("Y");
     }
 
     /***
@@ -107,8 +106,7 @@ public class Game {
     public int gamemodePicker(){
 
         Random rand = new Random();
-        int choice = rand.nextInt(2);
-        return(choice);
+        return(rand.nextInt(2));
 
     }
 }

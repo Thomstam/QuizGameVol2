@@ -12,9 +12,11 @@ public class Player {
     private String placement;
     private boolean scoreAchieved;
     private ArrayList<Integer> timeLeftFromEachAnswer;
+    private boolean isTheAnswerCorrect;
 
 
     public Player(String username){
+        this.isTheAnswerCorrect=false;
         this.username=username;
         this.score=0;
         timeLeftFromEachAnswer = new ArrayList<>();
@@ -78,5 +80,12 @@ public class Player {
 
     public void resetArrayWithTimLeft(){
         this.timeLeftFromEachAnswer.clear();
+    }
+
+    public void setIsTheAnswerCorrect(boolean isTheAnswerCorrect){
+        this.isTheAnswerCorrect=isTheAnswerCorrect;
+    }
+    public boolean getIsTheAnswerCorrect(){
+        return isTheAnswerCorrect;
     }
 }

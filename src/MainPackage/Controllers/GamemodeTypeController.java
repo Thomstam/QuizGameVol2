@@ -43,29 +43,34 @@ public class GamemodeTypeController {
         thisStage.show();
     }
 
+
+
     @FXML
     private void initialize() {
-        System.out.println(roundcounter);
-        if (UsernameInputController.game.gamemodePicker() == 0) {
-            GamemodeType.setText("POINTBUILDER : Choose the correct answer \nand win 1000 points!");
-            gamemode = UsernameInputController.game.start(UsernameInputController.game.gamemodePicker());
-            //gamemode.gamemodeSetUp(usernameController.listOfPlayers(),controller.getQuestions(),usernameController.getCategories());
-        } else {
-            GamemodeType.setText("BETTING : Win or lose the amount \nof points you bet!");
-        }
+        displayGamemode();
     }
 
+    private boolean displayGamemode(){
+        if(roundcounter<WelcomeController.controller.getRounds()) {
+            if (UsernameInputController.game.gamemodePicker() == 0) {
+                GamemodeType.setText("POINTBUILDER : Choose the correct answer \nand win 1000 points!");
+                gamemode = UsernameInputController.game.start(UsernameInputController.game.gamemodePicker());
+                //gamemode.gamemodeSetUp(usernameController.listOfPlayers(),controller.getQuestions(),usernameController.getCategories());
+            } else {
+                GamemodeType.setText("BETTING : Win or lose the amount \nof points you bet!");
+                gamemode = UsernameInputController.game.start(UsernameInputController.game.gamemodePicker());
+            }
+            return true;
+        }else return false;
+    }
 
     public void onMouseClick(MouseEvent mouseEvent)  {
-
-
-        if(roundcounter<WelcomeController.controller.getRounds()) {
-            roundcounter++;
-            startAskingQuestions(gamemode);
-            initialize();
-        }else {
-            ((Node)(mouseEvent.getSource())).getScene().getWindow().hide();
+        roundcounter++;
+        startAskingQuestions(gamemode);
+        if(!displayGamemode()){
+            ((Node)mouseEvent.getSource()).getScene().getWindow().hide();
         }
+
 
 
     }

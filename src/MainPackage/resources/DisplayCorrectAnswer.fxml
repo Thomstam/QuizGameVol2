@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane onMouseClicked="#clickToContinue" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" >
+   <children>
+      <Label layoutX="34.0" layoutY="292.0" prefHeight="30.0" prefWidth="140.0" text="Correct Answer:">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Label>
+      <Label fx:id="answerField" layoutX="198.0" layoutY="299.0" prefHeight="63.0" prefWidth="350.0">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <Label fx:id="playerName1" layoutX="34.0" layoutY="58.0" prefHeight="30.0" prefWidth="100.0">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Label>
+      <Label fx:id="correctAnswer1" layoutX="34.0" layoutY="122.0" prefHeight="30.0" prefWidth="140.0">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Label>
+      <Label fx:id="playerScore1" layoutX="34.0" layoutY="185.0" prefHeight="30.0" prefWidth="100.0">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Label>
+      <Label fx:id="playerName2" layoutX="344.0" layoutY="58.0" prefHeight="30.0" prefWidth="100.0">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Label>
+      <Label fx:id="correctAnswer2" layoutX="324.0" layoutY="122.0" prefHeight="30.0" prefWidth="140.0">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Label>
+      <Label fx:id="playerScore2" layoutX="323.0" layoutY="185.0" prefHeight="30.0" prefWidth="100.0">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Label>
+      <Label layoutX="125.0" layoutY="360.0" prefHeight="26.0" prefWidth="350.0" text="CLICK ANYWHERE TO CONTINUE">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Label>
+   </children>
+</AnchorPane>

@@ -156,4 +156,8 @@ public abstract class Gamemode {
         questionsList.remove(indexOfQuestion);
         return questionToBeHandled;
     }
+
+    public void callHandleTheScore(ArrayList<Player> players, Question question){
+        handleTheScore(players,question);
+    }
 }

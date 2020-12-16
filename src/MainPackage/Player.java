@@ -13,12 +13,14 @@ public class Player {
     private boolean scoreAchieved;
     private ArrayList<Integer> timeLeftFromEachAnswer;
     private boolean isTheAnswerCorrect;
+    private int numberOfCorrectAnswers;
 
 
     public Player(String username){
         this.isTheAnswerCorrect=false;
         this.username=username;
         this.score=0;
+        this.numberOfCorrectAnswers=0;
         timeLeftFromEachAnswer = new ArrayList<>();
     }
 
@@ -85,7 +87,12 @@ public class Player {
     public void setIsTheAnswerCorrect(boolean isTheAnswerCorrect){
         this.isTheAnswerCorrect=isTheAnswerCorrect;
     }
+
     public boolean getIsTheAnswerCorrect(){
         return isTheAnswerCorrect;
     }
+
+    public void setNumberOfCorrectAnswers(int numberOfCorrectAnswers){this.numberOfCorrectAnswers=numberOfCorrectAnswers;}
+
+    public int getNumberOfCorrectAnswers(){return numberOfCorrectAnswers;}
 }

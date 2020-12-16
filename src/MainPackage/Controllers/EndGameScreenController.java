@@ -1,5 +1,7 @@
 package MainPackage.Controllers;
 
+import MainPackage.Player;
+import MainPackage.ScoreSaving;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
@@ -23,6 +25,7 @@ public class EndGameScreenController {
     private Label playerUsername2;
 
     private Stage thisStage;
+
 
     public EndGameScreenController(){
 
@@ -63,6 +66,20 @@ public class EndGameScreenController {
     }
 
     public void clickToQuit(MouseEvent mouseEvent) {
+        ScoreSaving score = new ScoreSaving();
+        if(GameOptionsController.userController.listOfPlayers().size()==1){
+            score.scoreToSave(GameOptionsController.userController.listOfPlayers().get(0),1);
+        }else{
+            double score1=GameOptionsController.userController.listOfPlayers().get(0).getScore();
+            double score2=GameOptionsController.userController.listOfPlayers().get(1).getScore();
+            if(score1>score2){
+                score.scoreToSave(GameOptionsController.userController.listOfPlayers().get(0),2);
+            }else{
+                score.scoreToSave(GameOptionsController.userController.listOfPlayers().get(1),2);
+            }
+
+        }
+
         ((Node)mouseEvent.getSource()).getScene().getWindow().hide();
     }
 }

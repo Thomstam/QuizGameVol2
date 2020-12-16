@@ -30,6 +30,7 @@ public class ScoreSaving {
                 FileWriter fileWriter = new FileWriter("SinglePlayerFileScore.txt", true);
                 BufferedWriter bufferedWriter = new BufferedWriter(fileWriter);
                 String stringToBeWritten = formattedStringToWrite(player, positionForSingleGames);
+                positionForSingleGames++;
                 bufferedWriter.write("\n");
                 bufferedWriter.write(stringToBeWritten);
                 bufferedWriter.close();
@@ -72,6 +73,7 @@ public class ScoreSaving {
                     fileWriter.write(" Winners Name\t\t\t\t\t\t\t\tScore\n");
                     BufferedWriter bufferedWriter = new BufferedWriter(fileWriter);
                     String stringToBeWritten = formattedStringToWrite(player, positionForMultiplayerGames);
+                    positionForMultiplayerGames++;
                     bufferedWriter.write(stringToBeWritten);
                     bufferedWriter.close();
                     fileWriter.close();

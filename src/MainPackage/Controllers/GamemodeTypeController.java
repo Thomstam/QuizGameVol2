@@ -21,15 +21,8 @@ public class GamemodeTypeController {
     private Stage thisStage;
     public Gamemode gamemode;
 
-
-
-
     public GamemodeTypeController(){
-
-
-
         thisStage=new Stage();
-
         try{
             FXMLLoader loader = new FXMLLoader(getClass().getResource("../resources/GamemodeType.fxml"));
             loader.setController(this);
@@ -45,7 +38,6 @@ public class GamemodeTypeController {
     }
 
     public void closeStage(){thisStage.close();}
-
 
 
     @FXML
@@ -81,17 +73,10 @@ public class GamemodeTypeController {
         roundcounter++;
         ((Node)mouseEvent.getSource()).getScene().getWindow().hide();
         startAskingQuestions(gamemode);
-
-
-
-
-
-
     }
 
     private void startAskingQuestions(Gamemode gamemode){
         AskQuestionController questionController = new AskQuestionController(gamemode);
-        //questionController.showStage();
 
     }
 

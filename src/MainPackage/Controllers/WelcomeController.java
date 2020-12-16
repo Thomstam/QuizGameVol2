@@ -20,4 +20,9 @@ public class WelcomeController {
         controller.showStage();
 
     }
+
+    public void goToHelp(MouseEvent mouseEvent) {
+        HelpController help=new HelpController();
+        help.showStage();
+    }
 }

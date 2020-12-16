@@ -1,10 +1,12 @@
 package MainPackage.Controllers;
 
+import MainPackage.Gamemodes.Betting;
 import MainPackage.Gamemodes.Gamemode;
 import MainPackage.Player;
 import MainPackage.Question;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.print.JobSettings;
 import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
@@ -58,6 +60,11 @@ public class AskQuestionController {
 
     @FXML
     private void initialize(){
+        if(gamemode instanceof Betting){
+            SetBetController setBet=new SetBetController();
+            setBet.showStage();
+        }
+
         displayQuestion();
     }
 
@@ -76,11 +83,11 @@ public class AskQuestionController {
     }
 
     public void showStage(){
-        thisStage.show();
+        thisStage.showAndWait();
     }
 
     public void onAnswerPicked(KeyEvent keyEvent) {
-        qcounter++;
+
         if(WelcomeController.controller.getPlayers()==1){
             if(keyEvent.getCode()== KeyCode.A||keyEvent.getCode()== KeyCode.S||keyEvent.getCode()== KeyCode.D||keyEvent.getCode()== KeyCode.F){
                 if(keyEvent.getCode()== KeyCode.A){
@@ -93,7 +100,15 @@ public class AskQuestionController {
                     GameOptionsController.userController.listOfPlayers().get(0).setAnswer("D");
                 }
                 gamemode.callHandleTheScore(GameOptionsController.userController.listOfPlayers(),questionSetUp);
+                for(Player player:GameOptionsController.userController.listOfPlayers()){
+                    System.out.println(player.getUsername()+" : "+player.getIsTheAnswerCorrect());
+                }
+                qcounter++;
                 displayIfTheAnswerWasCorrect();
+                if(gamemode instanceof Betting && qcounter<WelcomeController.controller.getQuestions()){
+                    SetBetController setBet=new SetBetController();
+                    setBet.showStage();
+                }
                 if(!displayQuestion()){
                     thisStage.close();
                 }
@@ -125,14 +140,17 @@ public class AskQuestionController {
             }
             if(firstAnswered&&secondAnswered){
                 gamemode.callHandleTheScore(GameOptionsController.userController.listOfPlayers(),questionSetUp);
+                qcounter++;
                 displayIfTheAnswerWasCorrect();
                 firstAnswered=false;
                 secondAnswered=false;
-                for(Player player:GameOptionsController.userController.listOfPlayers()){
-                    System.out.println(player.getUsername()+" : "+player.getIsTheAnswerCorrect());
+                if(gamemode instanceof Betting && qcounter<WelcomeController.controller.getQuestions()){
+                    SetBetController setBet=new SetBetController();
+                    setBet.showStage();
                 }
                 if(!displayQuestion()){
                     thisStage.close();
+
                 }
             }
         }
@@ -141,7 +159,8 @@ public class AskQuestionController {
     }
 
     private void displayIfTheAnswerWasCorrect() {
-        DisplayCorrectAnswerController answerController=new DisplayCorrectAnswerController(questionSetUp.getCorrectAnswer());
+        DisplayCorrectAnswerController answerController=new DisplayCorrectAnswerController(questionSetUp.getCorrectAnswer(),qcounter);
         answerController.showStage();
+
     }
 }

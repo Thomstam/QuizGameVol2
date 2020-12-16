@@ -23,10 +23,12 @@ public class Betting extends Gamemode {
             int indexOfChoice = handlePlayerChoice(player.getAnswer());
             if (question.getPossibleAnswersToAsk().get(indexOfChoice).equals(question.getCorrectAnswer())) {
                 player.setScore(player.getScore() + player.getBet());
-                System.out.format("CORRECT ANSWER --- Your Score is: %s\n",player.getScore());
+                player.setIsTheAnswerCorrect(true);
+                //System.out.format("CORRECT ANSWER --- Your Score is: %s\n",player.getScore());
             }else {
                 player.setScore(player.getScore() - player.getBet());
-                System.out.format("WRONG ANSWER --- Your Score is: %s\n",player.getScore());
+                player.setIsTheAnswerCorrect(false);
+                //System.out.format("WRONG ANSWER --- Your Score is: %s\n",player.getScore());
             }
         }
     }

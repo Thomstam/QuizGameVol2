@@ -22,6 +22,7 @@ public class UsernameInputController {
 
     private Categories categories;
     public static Game game;
+    public static GamemodeTypeController typeController;
 
 
 
@@ -80,8 +81,8 @@ public class UsernameInputController {
 
     private void typeOfGamemode(){
 
-        GamemodeTypeController typeController = new GamemodeTypeController();
-        typeController.showStage();
+        typeController = new GamemodeTypeController();
+        //typeController.showStage();
 
     }
 

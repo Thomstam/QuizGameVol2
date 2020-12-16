@@ -23,6 +23,7 @@ public class GamemodeTypeController {
 
 
 
+
     public GamemodeTypeController(){
 
 
@@ -43,6 +44,8 @@ public class GamemodeTypeController {
         thisStage.show();
     }
 
+    public void closeStage(){thisStage.close();}
+
 
 
     @FXML
@@ -50,26 +53,30 @@ public class GamemodeTypeController {
         displayGamemode();
     }
 
-    private boolean displayGamemode(){
+    public boolean displayGamemode(){
+        showStage();
+        System.out.println((roundcounter));
         if(roundcounter<WelcomeController.controller.getRounds()) {
-            if (UsernameInputController.game.gamemodePicker() == 0) {
+            int choice=UsernameInputController.game.gamemodePicker();
+            if (choice == 0) {
                 GamemodeType.setText("POINTBUILDER : Choose the correct answer \nand win 1000 points!");
-                gamemode = UsernameInputController.game.start(UsernameInputController.game.gamemodePicker());
                 //gamemode.gamemodeSetUp(usernameController.listOfPlayers(),controller.getQuestions(),usernameController.getCategories());
             } else {
                 GamemodeType.setText("BETTING : Win or lose the amount \nof points you bet!");
-                gamemode = UsernameInputController.game.start(UsernameInputController.game.gamemodePicker());
             }
+            gamemode = UsernameInputController.game.start(choice);
+
             return true;
         }else return false;
     }
 
     public void onMouseClick(MouseEvent mouseEvent)  {
         roundcounter++;
+        ((Node)mouseEvent.getSource()).getScene().getWindow().hide();
         startAskingQuestions(gamemode);
-        if(!displayGamemode()){
-            ((Node)mouseEvent.getSource()).getScene().getWindow().hide();
-        }
+
+
+
 
 
 
@@ -78,6 +85,7 @@ public class GamemodeTypeController {
     private void startAskingQuestions(Gamemode gamemode){
         AskQuestionController questionController = new AskQuestionController(gamemode);
         questionController.showStage();
+
     }
 
 }

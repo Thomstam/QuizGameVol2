@@ -1,6 +1,7 @@
 package MainPackage;
 
 import javafx.application.Application;
+import javafx.application.Platform;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -14,6 +15,7 @@ public class Main extends Application{
 
     @Override
     public void start(Stage stage) throws Exception {
+        Platform.setImplicitExit(false);
         Parent root;
         root= FXMLLoader.load(getClass().getResource("resources/Welcome.fxml"));
         stage = new Stage();

@@ -27,20 +27,6 @@ public class Game {
         this.numberOfRounds=numberOfRounds;
         this.numberOfQuestions=numberOfQuestions;
         this.players=players;
-        //Scanner scanner = new Scanner(System.in);
-        //categories = new Categories();
-
-
-
-
-//        for(int i=0;i<howManyPlayers;i++){
-//
-//            System.out.format("Enter Username (Player %d):",i);
-//            String username = scanner.nextLine();
-//            players.add(new Player(username));
-//        }
-
-
     }
 
     /****
@@ -48,24 +34,11 @@ public class Game {
      * a different game mode is chosen randomly .
      */
     public Gamemode start(int choice){
-        //int choice;
-
-
-        //for(int i=0;i<numberOfRounds;i++){
-//            System.out.println("Press ENTER to start the round!!!");
-//            try {
-//                System.in.read();
-//            }catch (Exception e){}
-        //choice=gamemodePicker();
         switch (choice){
             case 0:
-                //System.out.println("POINTBUILDER : Choose the correct answer and win 1000 points!");
                 return new PointBuilder();
-                //gamemode1.gamemodeSetUp(players,numberOfQuestions, categories);
             case 1:
-                //System.out.println("BETTING : Win or lose the amount points you bet!");
                 return new Betting();
-                //gamemode2.gamemodeSetUp(players,numberOfQuestions, categories);
         }
 
         return null;

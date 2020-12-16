@@ -27,9 +27,11 @@ public class DisplayCorrectAnswerController {
     private Label playerScore2;
     private final Stage thisStage;
     private String correctAnswer;
+    private int qcounter;
 
-    public DisplayCorrectAnswerController(String correctAnswer){
+    public DisplayCorrectAnswerController(String correctAnswer,int qcounter){
         thisStage=new Stage();
+        this.qcounter=qcounter;
         this.correctAnswer=correctAnswer;
         try{
             FXMLLoader loader = new FXMLLoader(getClass().getResource("../resources/DisplayCorrectAnswer.fxml"));
@@ -42,7 +44,7 @@ public class DisplayCorrectAnswerController {
     }
 
     public void showStage(){
-        thisStage.show();
+        thisStage.showAndWait();
     }
 
     @FXML
@@ -67,7 +69,13 @@ public class DisplayCorrectAnswerController {
     }
 
     public void clickToContinue(MouseEvent mouseEvent) {
-
         ((Node)mouseEvent.getSource()).getScene().getWindow().hide();
+        if(qcounter==WelcomeController.controller.getQuestions()){
+            boolean display=UsernameInputController.typeController.displayGamemode();
+            System.out.println(display);
+            if(!display){
+                UsernameInputController.typeController.closeStage();
+            }
+        }
     }
 }

@@ -26,7 +26,7 @@ public class ReadingFromFile {
             Scanner myReader = new Scanner(myObj);
             while (myReader.hasNextLine()) {
                 String data = myReader.nextLine();
-                String[] dataOfStr = data.split("[,/]", 5);
+                String[] dataOfStr = data.split("[,/]", 10);
                 dataOfStr[0] =dataOfStr[0].trim();
                 Question question = new Question();
                 question.setQuestionToASk(dataOfStr[0]);

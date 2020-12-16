@@ -6,7 +6,7 @@
 
 <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#onMouseClick" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <Label fx:id="GamemodeType" alignment="CENTER" contentDisplay="CENTER" layoutX="14.0" layoutY="31.0" prefHeight="148.0" prefWidth="573.0" text="">
+      <Label fx:id="GamemodeType" alignment="CENTER" contentDisplay="CENTER" layoutX="14.0" layoutY="31.0" prefHeight="148.0" prefWidth="573.0" text="" wrapText="true">
          <font>
             <Font name="System Bold" size="32.0" />
          </font>

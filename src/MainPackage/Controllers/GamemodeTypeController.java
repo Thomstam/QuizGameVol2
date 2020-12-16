@@ -84,7 +84,7 @@ public class GamemodeTypeController {
 
     private void startAskingQuestions(Gamemode gamemode){
         AskQuestionController questionController = new AskQuestionController(gamemode);
-        questionController.showStage();
+        //questionController.showStage();
 
     }
 

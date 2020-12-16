@@ -5,7 +5,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" >
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <Label layoutX="168.0" layoutY="34.0" text="SELECT YOUR BET!!!">
          <font>
@@ -32,9 +32,9 @@
             <Font size="15.0" />
          </font>
       </Button>
-      <Label fx:id="playerUsername" layoutX="257.0" layoutY="76.0" prefHeight="28.0" prefWidth="86.0">
+      <Label fx:id="playerUsername" layoutX="247.0" layoutY="80.0" prefHeight="28.0" prefWidth="106.0">
          <font>
-            <Font size="15.0" />
+            <Font size="20.0" />
          </font>
       </Label>
    </children>

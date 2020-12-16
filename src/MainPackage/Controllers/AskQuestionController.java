@@ -40,6 +40,8 @@ public class AskQuestionController {
     @FXML
     private Label answerFour;
     private Stage thisStage;
+    private String categoriesToAsk;
+
 
     public AskQuestionController(Gamemode gamemode) {
 
@@ -60,6 +62,8 @@ public class AskQuestionController {
 
     @FXML
     private void initialize(){
+
+        displayTheCategory();
         if(gamemode instanceof Betting){
             SetBetController setBet=new SetBetController();
             setBet.showStage();
@@ -70,7 +74,8 @@ public class AskQuestionController {
 
     private boolean displayQuestion(){
         if (qcounter<WelcomeController.controller.getQuestions()) {
-            questionSetUp = gamemode.gamemodeSetUp(GameOptionsController.userController.listOfPlayers(), WelcomeController.controller.getQuestions(), GameOptionsController.userController.getCategories());
+            showStage();
+            questionSetUp = gamemode.gamemodeSetUp(GameOptionsController.userController.listOfPlayers(), WelcomeController.controller.getQuestions(),GameOptionsController.userController.getCategories(),categoriesToAsk );
             List<String> possibleAnswers = questionSetUp.getPossibleAnswersToAsk();
             question.setText(questionSetUp.getQuestionToASk());
             answerOne.setText("A : "+possibleAnswers.get(0));
@@ -83,13 +88,14 @@ public class AskQuestionController {
     }
 
     public void showStage(){
-        thisStage.showAndWait();
+        thisStage.show();
     }
 
     public void onAnswerPicked(KeyEvent keyEvent) {
 
         if(WelcomeController.controller.getPlayers()==1){
             if(keyEvent.getCode()== KeyCode.A||keyEvent.getCode()== KeyCode.S||keyEvent.getCode()== KeyCode.D||keyEvent.getCode()== KeyCode.F){
+                thisStage.close();
                 if(keyEvent.getCode()== KeyCode.A){
                     GameOptionsController.userController.listOfPlayers().get(0).setAnswer("A");
                 }else if(keyEvent.getCode()== KeyCode.S){
@@ -100,11 +106,9 @@ public class AskQuestionController {
                     GameOptionsController.userController.listOfPlayers().get(0).setAnswer("D");
                 }
                 gamemode.callHandleTheScore(GameOptionsController.userController.listOfPlayers(),questionSetUp);
-                for(Player player:GameOptionsController.userController.listOfPlayers()){
-                    System.out.println(player.getUsername()+" : "+player.getIsTheAnswerCorrect());
-                }
                 qcounter++;
                 displayIfTheAnswerWasCorrect();
+                displayTheCategory();
                 if(gamemode instanceof Betting && qcounter<WelcomeController.controller.getQuestions()){
                     SetBetController setBet=new SetBetController();
                     setBet.showStage();
@@ -139,11 +143,13 @@ public class AskQuestionController {
                 secondAnswered=true;
             }
             if(firstAnswered&&secondAnswered){
+                thisStage.close();
                 gamemode.callHandleTheScore(GameOptionsController.userController.listOfPlayers(),questionSetUp);
                 qcounter++;
                 displayIfTheAnswerWasCorrect();
                 firstAnswered=false;
                 secondAnswered=false;
+                displayTheCategory();
                 if(gamemode instanceof Betting && qcounter<WelcomeController.controller.getQuestions()){
                     SetBetController setBet=new SetBetController();
                     setBet.showStage();
@@ -157,6 +163,15 @@ public class AskQuestionController {
 
 
     }
+
+    private void displayTheCategory(){
+        if(qcounter<WelcomeController.controller.getQuestions()) {
+            categoriesToAsk = GameOptionsController.userController.getCategories().getRandomCategory();
+            DisplayCategoryController displayCategory = new DisplayCategoryController(categoriesToAsk);
+            displayCategory.showStage();
+        }
+    }
+
 
     private void displayIfTheAnswerWasCorrect() {
         DisplayCorrectAnswerController answerController=new DisplayCorrectAnswerController(questionSetUp.getCorrectAnswer(),qcounter);

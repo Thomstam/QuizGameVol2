@@ -34,11 +34,11 @@ public abstract class Gamemode {
      * @param players <String> elements with the names of all the players.
      * @param numberOfQuestions The numbers of questions we going to ask for this round.
      */
-    public Question gamemodeSetUp(ArrayList<Player> players, int numberOfQuestions, Categories categories){
+    public Question gamemodeSetUp(ArrayList<Player> players, int numberOfQuestions,Categories categories,String categoriesToAsk){
         //for (int i = 0; i < numberOfQuestions; i++) {
-            categoriesToAsk = categories.getRandomCategory();
+            //categoriesToAsk = categories.getRandomCategory();
             Question questionToBeAsked = null;
-            System.out.format("The category is %s\n",categoriesToAsk);
+            //System.out.format("The category is %s\n",categoriesToAsk);
             switch (categoriesToAsk) {
                 case "Math":
                     if (categories.getMathArray().isEmpty()){

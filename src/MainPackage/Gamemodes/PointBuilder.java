@@ -20,10 +20,8 @@ public class PointBuilder extends Gamemode {
             if (question.getPossibleAnswersToAsk().get(indexOfChoice).equals(question.getCorrectAnswer())) {
                 player.setScore(player.getScore() + 1000);
                 player.setIsTheAnswerCorrect(true);
-                //System.out.format("CORRECT ANSWER --- Your Score is: %.0f\n",player.getScore());
             }else{
                 player.setIsTheAnswerCorrect(false);
-                //System.out.format("WRONG ANSWER --- Your Score is: %.0f\n",player.getScore());
             }
         }
     }

@@ -24,11 +24,9 @@ public class Betting extends Gamemode {
             if (question.getPossibleAnswersToAsk().get(indexOfChoice).equals(question.getCorrectAnswer())) {
                 player.setScore(player.getScore() + player.getBet());
                 player.setIsTheAnswerCorrect(true);
-                //System.out.format("CORRECT ANSWER --- Your Score is: %s\n",player.getScore());
             }else {
                 player.setScore(player.getScore() - player.getBet());
                 player.setIsTheAnswerCorrect(false);
-                //System.out.format("WRONG ANSWER --- Your Score is: %s\n",player.getScore());
             }
         }
     }

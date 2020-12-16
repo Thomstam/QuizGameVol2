@@ -2,14 +2,30 @@
 
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane onKeyPressed="#onAnswerPicked" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" >
+<AnchorPane onKeyPressed="#onAnswerPicked" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <Label fx:id="answerOne" layoutX="26.0" layoutY="200.0" prefHeight="56.0" prefWidth="223.0" />
-      <Label fx:id="answerThree" layoutX="26.0" layoutY="295.0" prefHeight="56.0" prefWidth="223.0" />
-      <Label fx:id="answerTwo" layoutX="354.0" layoutY="200.0" prefHeight="56.0" prefWidth="223.0" />
-      <Label fx:id="answerFour" layoutX="354.0" layoutY="295.0" prefHeight="56.0" prefWidth="223.0" />
-      <Label fx:id="question" layoutX="25.0" layoutY="36.0" prefHeight="113.0" prefWidth="551.0" />
+      <Label fx:id="answerOne" layoutX="26.0" layoutY="200.0" prefHeight="56.0" prefWidth="223.0">
+         <font>
+            <Font size="20.0" />
+         </font></Label>
+      <Label fx:id="answerThree" layoutX="26.0" layoutY="295.0" prefHeight="56.0" prefWidth="223.0">
+         <font>
+            <Font size="20.0" />
+         </font></Label>
+      <Label fx:id="answerTwo" layoutX="354.0" layoutY="200.0" prefHeight="56.0" prefWidth="223.0">
+         <font>
+            <Font size="20.0" />
+         </font></Label>
+      <Label fx:id="answerFour" layoutX="354.0" layoutY="295.0" prefHeight="56.0" prefWidth="223.0">
+         <font>
+            <Font size="20.0" />
+         </font></Label>
+      <Label fx:id="question" layoutX="25.0" layoutY="36.0" prefHeight="113.0" prefWidth="551.0" wrapText="true">
+         <font>
+            <Font size="20.0" />
+         </font></Label>
 
    </children>
 </AnchorPane>

@@ -72,9 +72,10 @@ public class DisplayCorrectAnswerController {
         ((Node)mouseEvent.getSource()).getScene().getWindow().hide();
         if(qcounter==WelcomeController.controller.getQuestions()){
             boolean display=UsernameInputController.typeController.displayGamemode();
-            System.out.println(display);
             if(!display){
                 UsernameInputController.typeController.closeStage();
+                EndGameScreenController endGameScreen=new EndGameScreenController();
+                endGameScreen.showStage();
             }
         }
     }

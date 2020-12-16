@@ -4,16 +4,16 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane onMouseClicked="#clickToContinue" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" >
+<AnchorPane onMouseClicked="#clickToContinue" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <Label layoutX="34.0" layoutY="292.0" prefHeight="30.0" prefWidth="140.0" text="Correct Answer:">
          <font>
             <Font size="20.0" />
          </font>
       </Label>
-      <Label fx:id="answerField" layoutX="198.0" layoutY="299.0" prefHeight="63.0" prefWidth="350.0">
+      <Label fx:id="answerField" layoutX="198.0" layoutY="276.0" prefHeight="63.0" prefWidth="350.0" wrapText="true">
          <font>
-            <Font size="14.0" />
+            <Font size="20.0" />
          </font>
       </Label>
       <Label fx:id="playerName1" layoutX="34.0" layoutY="58.0" prefHeight="30.0" prefWidth="100.0">

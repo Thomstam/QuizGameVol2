@@ -1,10 +1,7 @@
 package MainPackage;
 
 
-import MainPackage.Gamemodes.Betting;
-import MainPackage.Gamemodes.FastestWins;
-import MainPackage.Gamemodes.Gamemode;
-import MainPackage.Gamemodes.PointBuilder;
+import MainPackage.Gamemodes.*;
 
 
 import java.io.IOException;
@@ -42,6 +39,8 @@ public class Game {
                 return new Betting();
             case 2:
                 return new FastestWins();
+            case 3:
+                return new HeatUp();
         }
 
         return null;

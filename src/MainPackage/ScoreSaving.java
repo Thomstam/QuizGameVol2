@@ -17,20 +17,19 @@ public class ScoreSaving {
 
     public void scoreToSave(Player player, int typeOfTheGame){
         if (typeOfTheGame == 1){
-            scoreToSaveInSinglePlayer(player);
+            scoreToSaveInSinglePlayer(player, typeOfTheGame);
         }else {
-            scoreToSaveInMultiplayer(player);
+            scoreToSaveInMultiplayer(player, typeOfTheGame);
         }
     }
 
-    private void scoreToSaveInSinglePlayer(Player player) {
+    private void scoreToSaveInSinglePlayer(Player player, int typeOfTheGame) {
         try {
             File singlePlayerScoreFile = new File("SinglePlayerFileScore.txt");
             if (singlePlayerScoreFile.exists() && !singlePlayerScoreFile.isDirectory()) {
                 FileWriter fileWriter = new FileWriter("SinglePlayerFileScore.txt", true);
                 BufferedWriter bufferedWriter = new BufferedWriter(fileWriter);
-                String stringToBeWritten = formattedStringToWrite(player, positionForSingleGames);
-                positionForSingleGames++;
+                String stringToBeWritten = formattedStringToWrite(player, typeOfTheGame);
                 bufferedWriter.write("\n");
                 bufferedWriter.write(stringToBeWritten);
                 bufferedWriter.close();
@@ -39,10 +38,9 @@ public class ScoreSaving {
                 if (singlePlayerScoreFile.createNewFile()) {
                     FileWriter fileWriter = new FileWriter("SinglePlayerFileScore.txt", true);
                     fileWriter.write(" \t\t\t\tSingle Player Winners\n\n");
-                    fileWriter.write(" Winners Name\t\t\t\t\t\t\t\tScore\n");
+                    fileWriter.write(" Winners Name\t\t\t\t\t\t\t\t  Score\n");
                     BufferedWriter bufferedWriter = new BufferedWriter(fileWriter);
-                    String stringToBeWritten = formattedStringToWrite(player, positionForSingleGames);
-                    positionForSingleGames++;
+                    String stringToBeWritten = formattedStringToWrite(player, typeOfTheGame);
                     bufferedWriter.write(stringToBeWritten);
                     bufferedWriter.close();
                     fileWriter.close();
@@ -54,14 +52,13 @@ public class ScoreSaving {
         }
     }
 
-    private void scoreToSaveInMultiplayer(Player player){
+    private void scoreToSaveInMultiplayer(Player player, int typeOfTheGame){
         try {
             File multiplayerScoreFile = new File("MultiplayerFileScore.txt");
             if (multiplayerScoreFile.exists() && !multiplayerScoreFile.isDirectory()) {
                 FileWriter fileWriter = new FileWriter("MultiplayerFileScore.txt", true);
                 BufferedWriter bufferedWriter = new BufferedWriter(fileWriter);
-                String stringToBeWritten = formattedStringToWrite(player, positionForMultiplayerGames);
-                positionForMultiplayerGames++;
+                String stringToBeWritten = formattedStringToWrite(player, typeOfTheGame);
                 bufferedWriter.write("\n");
                 bufferedWriter.write(stringToBeWritten);
                 bufferedWriter.close();
@@ -70,10 +67,9 @@ public class ScoreSaving {
                 if (multiplayerScoreFile.createNewFile()) {
                     FileWriter fileWriter = new FileWriter("MultiplayerFileScore.txt");
                     fileWriter.write(" \t\t\t\t  Multiplayer Winners\n\n");
-                    fileWriter.write(" Winners Name\t\t\t\t\t\t\t\tScore\n");
+                    fileWriter.write(" Winners Name\t\t\t\t\t\t\t\t  Score\n");
                     BufferedWriter bufferedWriter = new BufferedWriter(fileWriter);
-                    String stringToBeWritten = formattedStringToWrite(player, positionForMultiplayerGames);
-                    positionForMultiplayerGames++;
+                    String stringToBeWritten = formattedStringToWrite(player, typeOfTheGame);
                     bufferedWriter.write(stringToBeWritten);
                     bufferedWriter.close();
                     fileWriter.close();
@@ -85,13 +81,21 @@ public class ScoreSaving {
         }
     }
 
-    private String formattedStringToWrite(Player player, int position){
+    private String formattedStringToWrite(Player player, int typeOfTheGame){
         StringBuilder stringBuilder= new StringBuilder();
-        stringBuilder.append(position).append(".").append(player.getUsername());
+        if (typeOfTheGame == 1){
+            stringBuilder.append(positionForSingleGames).append(".").append(player.getUsername());
+            positionForSingleGames++;
+        }else {
+            stringBuilder.append(positionForMultiplayerGames).append(".").append(player.getUsername());
+            positionForMultiplayerGames++;
+        }
         for (int i = 0; i < 44 - player.getUsername().length() ; i++) {
             stringBuilder.append(" ");
         }
         stringBuilder.append(":").append(player.getScore());
         return String.valueOf(stringBuilder);
     }
+
+
 }

@@ -10,12 +10,26 @@ public class FastestWins extends Gamemode {
     @Override
     void handleTheScore(ArrayList<Player> players, Question question) {
         for (Player player: players) {
+            int indexOfChoice;
             switch (player.getPlacement()){
                 case "First":
-                    player.setScore(player.getScore() + 1000);
+                    indexOfChoice = handlePlayerChoice(player.getAnswer());
+                    if (question.getPossibleAnswersToAsk().get(indexOfChoice).equals(question.getCorrectAnswer())){
+                        player.setScore(player.getScore() + 1000);
+                        player.setIsTheAnswerCorrect(true);
+                    }else{
+                        player.setIsTheAnswerCorrect(false);
+                    }
                     break;
                 case "Second":
-                    player.setScore(player.getScore() + 500);
+                    indexOfChoice = handlePlayerChoice(player.getAnswer());
+                    if (question.getPossibleAnswersToAsk().get(indexOfChoice).equals(question.getCorrectAnswer())){
+                        player.setScore(player.getScore() + 500);
+                        player.setIsTheAnswerCorrect(true);
+                    }else{
+                        player.setIsTheAnswerCorrect(false);
+                    }
+
             }
         }
     }

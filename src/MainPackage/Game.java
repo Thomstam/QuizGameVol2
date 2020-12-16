@@ -2,6 +2,7 @@ package MainPackage;
 
 
 import MainPackage.Gamemodes.Betting;
+import MainPackage.Gamemodes.FastestWins;
 import MainPackage.Gamemodes.Gamemode;
 import MainPackage.Gamemodes.PointBuilder;
 
@@ -39,6 +40,8 @@ public class Game {
                 return new PointBuilder();
             case 1:
                 return new Betting();
+            case 2:
+                return new FastestWins();
         }
 
         return null;
@@ -76,10 +79,10 @@ public class Game {
      *
      * @return a random number which corresponds to the game mode which will be played in this round
      */
-    public int gamemodePicker(){
+    public int gamemodePicker(int bound){
 
         Random rand = new Random();
-        return(rand.nextInt(2));
+        return(rand.nextInt(bound));
 
     }
 }

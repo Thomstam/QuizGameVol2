@@ -27,15 +27,16 @@ public class ScoreSaving {
         try {
             File singlePlayerScoreFile = new File("SinglePlayerFileScore.txt");
             if (singlePlayerScoreFile.exists() && !singlePlayerScoreFile.isDirectory()) {
-                FileWriter fileWriter = new FileWriter("SinglePlayerFileScore.txt");
+                FileWriter fileWriter = new FileWriter("SinglePlayerFileScore.txt", true);
                 BufferedWriter bufferedWriter = new BufferedWriter(fileWriter);
                 String stringToBeWritten = formattedStringToWrite(player, positionForSingleGames);
+                bufferedWriter.write("\n");
                 bufferedWriter.write(stringToBeWritten);
                 bufferedWriter.close();
                 fileWriter.close();
             } else {
                 if (singlePlayerScoreFile.createNewFile()) {
-                    FileWriter fileWriter = new FileWriter("SinglePlayerFileScore.txt");
+                    FileWriter fileWriter = new FileWriter("SinglePlayerFileScore.txt", true);
                     fileWriter.write(" \t\t\t\tSingle Player Winners\n\n");
                     fileWriter.write(" Winners Name\t\t\t\t\t\t\t\tScore\n");
                     BufferedWriter bufferedWriter = new BufferedWriter(fileWriter);
@@ -56,10 +57,11 @@ public class ScoreSaving {
         try {
             File multiplayerScoreFile = new File("MultiplayerFileScore.txt");
             if (multiplayerScoreFile.exists() && !multiplayerScoreFile.isDirectory()) {
-                FileWriter fileWriter = new FileWriter("MultiplayerFileScore.txt");
+                FileWriter fileWriter = new FileWriter("MultiplayerFileScore.txt", true);
                 BufferedWriter bufferedWriter = new BufferedWriter(fileWriter);
                 String stringToBeWritten = formattedStringToWrite(player, positionForMultiplayerGames);
                 positionForMultiplayerGames++;
+                bufferedWriter.write("\n");
                 bufferedWriter.write(stringToBeWritten);
                 bufferedWriter.close();
                 fileWriter.close();

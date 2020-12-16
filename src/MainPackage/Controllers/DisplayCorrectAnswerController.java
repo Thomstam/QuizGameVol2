@@ -1,5 +1,7 @@
 package MainPackage.Controllers;
 
+import MainPackage.Gamemodes.Gamemode;
+import MainPackage.Gamemodes.HeatUp;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
@@ -25,12 +27,19 @@ public class DisplayCorrectAnswerController {
     private Label correctAnswer2;
     @FXML
     private Label playerScore2;
+    @FXML
+    private Label heatUpScore1;
+    @FXML
+    private Label heatUpScore2;
+
     private final Stage thisStage;
     private String correctAnswer;
     private int qcounter;
+    private Gamemode gamemode;
 
-    public DisplayCorrectAnswerController(String correctAnswer,int qcounter){
+    public DisplayCorrectAnswerController(String correctAnswer, int qcounter, Gamemode gamemode){
         thisStage=new Stage();
+        this.gamemode=gamemode;
         this.qcounter=qcounter;
         this.correctAnswer=correctAnswer;
         try{
@@ -56,6 +65,9 @@ public class DisplayCorrectAnswerController {
             correctAnswer1.setText("Wrong Answer");
         }
         playerScore1.setText(Double.toString(GameOptionsController.userController.listOfPlayers().get(0).getScore()));
+        if(gamemode instanceof HeatUp){
+            heatUpScore1.setText(Integer.toString(GameOptionsController.userController.listOfPlayers().get(0).getNumberOfCorrectAnswers()));
+        }
         if(GameOptionsController.userController.listOfPlayers().size()==2){
             playerName2.setText(GameOptionsController.userController.listOfPlayers().get(1).getUsername());
             if(GameOptionsController.userController.listOfPlayers().get(1).getIsTheAnswerCorrect()){
@@ -64,19 +76,35 @@ public class DisplayCorrectAnswerController {
                 correctAnswer2.setText("Wrong Answer");
             }
             playerScore2.setText(Double.toString(GameOptionsController.userController.listOfPlayers().get(1).getScore()));
+            if(gamemode instanceof HeatUp){
+                heatUpScore2.setText(Integer.toString(GameOptionsController.userController.listOfPlayers().get(1).getNumberOfCorrectAnswers()));
+            }
+
         }
         answerField.setText(correctAnswer);
     }
 
     public void clickToContinue(MouseEvent mouseEvent) {
         ((Node)mouseEvent.getSource()).getScene().getWindow().hide();
-        if(qcounter==WelcomeController.controller.getQuestions()){
-            boolean display=UsernameInputController.typeController.displayGamemode();
-            if(!display){
-                UsernameInputController.typeController.closeStage();
-                EndGameScreenController endGameScreen=new EndGameScreenController();
-                endGameScreen.showStage();
+        if(gamemode instanceof HeatUp){
+            if(GameOptionsController.userController.listOfPlayers().get(0).getNumberOfCorrectAnswers()<5&&GameOptionsController.userController.listOfPlayers().get(1).getNumberOfCorrectAnswers()<5){
+                boolean display=UsernameInputController.typeController.displayGamemode();
+                if(!display){
+                    UsernameInputController.typeController.closeStage();
+                    EndGameScreenController endGameScreen=new EndGameScreenController();
+                    endGameScreen.showStage();
+                }
+            }
+        }else{
+            if(qcounter==WelcomeController.controller.getQuestions()){
+                boolean display=UsernameInputController.typeController.displayGamemode();
+                if(!display){
+                    UsernameInputController.typeController.closeStage();
+                    EndGameScreenController endGameScreen=new EndGameScreenController();
+                    endGameScreen.showStage();
+                }
             }
         }
+
     }
 }

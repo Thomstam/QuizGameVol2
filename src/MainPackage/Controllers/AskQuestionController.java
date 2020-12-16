@@ -2,6 +2,7 @@ package MainPackage.Controllers;
 
 import MainPackage.Gamemodes.Betting;
 import MainPackage.Gamemodes.Gamemode;
+import MainPackage.Gamemodes.HeatUp;
 import MainPackage.Player;
 import MainPackage.Question;
 import javafx.fxml.FXML;
@@ -73,18 +74,39 @@ public class AskQuestionController {
     }
 
     private boolean displayQuestion(){
-        if (qcounter<WelcomeController.controller.getQuestions()) {
-            showStage();
-            questionSetUp = gamemode.gamemodeSetUp(GameOptionsController.userController.listOfPlayers(), WelcomeController.controller.getQuestions(),GameOptionsController.userController.getCategories(),categoriesToAsk );
-            List<String> possibleAnswers = questionSetUp.getPossibleAnswersToAsk();
-            question.setText(questionSetUp.getQuestionToASk());
-            answerOne.setText("A : "+possibleAnswers.get(0));
-            answerTwo.setText("B : "+possibleAnswers.get(1));
-            answerThree.setText("C : "+possibleAnswers.get(2));
-            answerFour.setText("D : "+possibleAnswers.get(3));
-            return true;
+
+        if(gamemode instanceof HeatUp){
+            if(GameOptionsController.userController.listOfPlayers().get(0).getNumberOfCorrectAnswers()<5&&GameOptionsController.userController.listOfPlayers().get(1).getNumberOfCorrectAnswers()<5){
+                showStage();
+                questionSetUp = gamemode.gamemodeSetUp(GameOptionsController.userController.listOfPlayers(), WelcomeController.controller.getQuestions(),GameOptionsController.userController.getCategories(),categoriesToAsk );
+                List<String> possibleAnswers = questionSetUp.getPossibleAnswersToAsk();
+                question.setText(questionSetUp.getQuestionToASk());
+                answerOne.setText("A : "+possibleAnswers.get(0));
+                answerTwo.setText("B : "+possibleAnswers.get(1));
+                answerThree.setText("C : "+possibleAnswers.get(2));
+                answerFour.setText("D : "+possibleAnswers.get(3));
+                return true;
+            }else{
+                GameOptionsController.userController.listOfPlayers().get(0).setNumberOfCorrectAnswers(0);
+                GameOptionsController.userController.listOfPlayers().get(1).setNumberOfCorrectAnswers(0);
+                return false;
+            }
+        }else{
+            if (qcounter<WelcomeController.controller.getQuestions()) {
+                showStage();
+                questionSetUp = gamemode.gamemodeSetUp(GameOptionsController.userController.listOfPlayers(), WelcomeController.controller.getQuestions(),GameOptionsController.userController.getCategories(),categoriesToAsk );
+                List<String> possibleAnswers = questionSetUp.getPossibleAnswersToAsk();
+                question.setText(questionSetUp.getQuestionToASk());
+                answerOne.setText("A : "+possibleAnswers.get(0));
+                answerTwo.setText("B : "+possibleAnswers.get(1));
+                answerThree.setText("C : "+possibleAnswers.get(2));
+                answerFour.setText("D : "+possibleAnswers.get(3));
+                return true;
+            }
+            return false;
         }
-        return false;
+
+
     }
 
     public void showStage(){
@@ -172,16 +194,25 @@ public class AskQuestionController {
     }
 
     private void displayTheCategory(){
-        if(qcounter<WelcomeController.controller.getQuestions()) {
-            categoriesToAsk = GameOptionsController.userController.getCategories().getRandomCategory();
-            DisplayCategoryController displayCategory = new DisplayCategoryController(categoriesToAsk);
-            displayCategory.showStage();
+        if(gamemode instanceof HeatUp){
+            if(GameOptionsController.userController.listOfPlayers().get(0).getNumberOfCorrectAnswers()<5&&GameOptionsController.userController.listOfPlayers().get(1).getNumberOfCorrectAnswers()<5){
+                categoriesToAsk = GameOptionsController.userController.getCategories().getRandomCategory();
+                DisplayCategoryController displayCategory = new DisplayCategoryController(categoriesToAsk);
+                displayCategory.showStage();
+            }
+        }else{
+            if(qcounter<WelcomeController.controller.getQuestions()) {
+                categoriesToAsk = GameOptionsController.userController.getCategories().getRandomCategory();
+                DisplayCategoryController displayCategory = new DisplayCategoryController(categoriesToAsk);
+                displayCategory.showStage();
+            }
         }
+
     }
 
 
     private void displayIfTheAnswerWasCorrect() {
-        DisplayCorrectAnswerController answerController=new DisplayCorrectAnswerController(questionSetUp.getCorrectAnswer(),qcounter);
+        DisplayCorrectAnswerController answerController=new DisplayCorrectAnswerController(questionSetUp.getCorrectAnswer(),qcounter,gamemode);
         answerController.showStage();
 
     }

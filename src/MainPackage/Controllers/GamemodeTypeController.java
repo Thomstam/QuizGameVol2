@@ -52,7 +52,7 @@ public class GamemodeTypeController {
             if(WelcomeController.controller.getPlayers()==1){
                 choice=UsernameInputController.game.gamemodePicker(2);
             }else{
-                choice=UsernameInputController.game.gamemodePicker(3);
+                choice=UsernameInputController.game.gamemodePicker(4);
             }
 
             if (choice == 0) {
@@ -62,6 +62,8 @@ public class GamemodeTypeController {
                 GamemodeType.setText("BETTING : Win or lose the amount of points you bet!");
             }else if (choice==2){
                 GamemodeType.setText("FASTEST WINS : First player to answer correctly gets 1000 points and the second 500!!! ");
+            }else if(choice==3){
+                GamemodeType.setText("HEAT UP: The player to answer 5 questions correctly wins 5000 points(Only the fastest answer counts)!!! ");
             }
             gamemode = UsernameInputController.game.start(choice);
 

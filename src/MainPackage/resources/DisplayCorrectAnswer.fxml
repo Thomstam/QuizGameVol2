@@ -51,5 +51,15 @@
             <Font size="20.0" />
          </font>
       </Label>
+      <Label fx:id="heatUpScore1" layoutX="34.0" layoutY="239.0" prefHeight="30.0" prefWidth="100.0">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Label>
+      <Label fx:id="heatUpScore2" layoutX="323.0" layoutY="239.0" prefHeight="30.0" prefWidth="100.0">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Label>
    </children>
 </AnchorPane>

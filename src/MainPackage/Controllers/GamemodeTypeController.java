@@ -21,15 +21,8 @@ public class GamemodeTypeController {
     private Stage thisStage;
     public Gamemode gamemode;
 
-
-
-
     public GamemodeTypeController(){
-
-
-
         thisStage=new Stage();
-
         try{
             FXMLLoader loader = new FXMLLoader(getClass().getResource("../resources/GamemodeType.fxml"));
             loader.setController(this);
@@ -47,7 +40,6 @@ public class GamemodeTypeController {
     public void closeStage(){thisStage.close();}
 
 
-
     @FXML
     private void initialize() {
         displayGamemode();
@@ -55,14 +47,21 @@ public class GamemodeTypeController {
 
     public boolean displayGamemode(){
         showStage();
-        System.out.println((roundcounter));
+        int choice;
         if(roundcounter<WelcomeController.controller.getRounds()) {
-            int choice=UsernameInputController.game.gamemodePicker();
+            if(WelcomeController.controller.getPlayers()==1){
+                choice=UsernameInputController.game.gamemodePicker(2);
+            }else{
+                choice=UsernameInputController.game.gamemodePicker(3);
+            }
+
             if (choice == 0) {
-                GamemodeType.setText("POINTBUILDER : Choose the correct answer \nand win 1000 points!");
+                GamemodeType.setText("POINTBUILDER : Choose the correct answer and win 1000 points!");
                 //gamemode.gamemodeSetUp(usernameController.listOfPlayers(),controller.getQuestions(),usernameController.getCategories());
-            } else {
-                GamemodeType.setText("BETTING : Win or lose the amount \nof points you bet!");
+            } else if (choice == 1) {
+                GamemodeType.setText("BETTING : Win or lose the amount of points you bet!");
+            }else if (choice==2){
+                GamemodeType.setText("FASTEST WINS : First player to answer correctly gets 1000 points and the second 500!!! ");
             }
             gamemode = UsernameInputController.game.start(choice);
 
@@ -74,17 +73,10 @@ public class GamemodeTypeController {
         roundcounter++;
         ((Node)mouseEvent.getSource()).getScene().getWindow().hide();
         startAskingQuestions(gamemode);
-
-
-
-
-
-
     }
 
     private void startAskingQuestions(Gamemode gamemode){
         AskQuestionController questionController = new AskQuestionController(gamemode);
-        //questionController.showStage();
 
     }
 

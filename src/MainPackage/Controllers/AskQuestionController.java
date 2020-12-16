@@ -142,6 +142,13 @@ public class AskQuestionController {
                 }
                 secondAnswered=true;
             }
+            if(firstAnswered&&!secondAnswered){
+                GameOptionsController.userController.listOfPlayers().get(0).setPlacement("First");
+                GameOptionsController.userController.listOfPlayers().get(1).setPlacement("Second");
+            }else if(!firstAnswered&&secondAnswered){
+                GameOptionsController.userController.listOfPlayers().get(1).setPlacement("First");
+                GameOptionsController.userController.listOfPlayers().get(0).setPlacement("Second");
+            }
             if(firstAnswered&&secondAnswered){
                 thisStage.close();
                 gamemode.callHandleTheScore(GameOptionsController.userController.listOfPlayers(),questionSetUp);

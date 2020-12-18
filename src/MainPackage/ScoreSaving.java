@@ -129,12 +129,8 @@ public class ScoreSaving {
 
     private void replaceLines(String lineToChance, int wins, Player player, int position) {
         try {
-            Scanner file2 = new Scanner(new File("MultiplayerFileScore.txt"));
             BufferedReader file = new BufferedReader(new FileReader("MultiplayerFileScore.txt"));
             StringBuffer inputBuffer = new StringBuffer();
-            while(file2.hasNextLine()){
-                file2.nextLine();
-            }
             String line;
             String theLineOfTheFileAfterModification = modifyTheStringToWrite(position, player, wins + 1 );
             while ((line = file.readLine()) != null) {

@@ -208,6 +208,8 @@ public class ScoreSaving {
                 line = br.readLine();
             }
             return sb.toString();
+        }catch (IOException e){
+            return " No scores made yet.";
         }
     }
 }

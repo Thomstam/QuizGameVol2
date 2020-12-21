@@ -197,7 +197,7 @@ public class ScoreSaving {
         return false;
     }
 
-    String readFile(String fileName) throws IOException {
+    public String readFile(String fileName) throws IOException {
         try (BufferedReader br = new BufferedReader(new FileReader(fileName))) {
             StringBuilder sb = new StringBuilder();
             String line = br.readLine();

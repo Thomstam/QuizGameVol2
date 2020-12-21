@@ -17,12 +17,12 @@
             <Font size="20.0" />
          </font>
       </Button>
-      <Button layoutX="196.0" layoutY="200.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="201.0" text="Singleplayer Scores">
+      <Button layoutX="196.0" layoutY="200.0" mnemonicParsing="false" onMouseClicked="#goToSingle" prefHeight="40.0" prefWidth="201.0" text="Singleplayer Scores">
          <font>
             <Font size="20.0" />
          </font>
       </Button>
-      <Button layoutX="196.0" layoutY="253.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="201.0" text="Multiplayer Scores">
+      <Button layoutX="196.0" layoutY="253.0" mnemonicParsing="false" onMouseClicked="#goToMulti" prefHeight="40.0" prefWidth="201.0" text="Multiplayer Scores">
          <font>
             <Font size="20.0" />
          </font>

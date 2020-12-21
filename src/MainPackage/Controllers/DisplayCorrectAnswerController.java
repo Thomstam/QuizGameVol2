@@ -87,9 +87,10 @@ public class DisplayCorrectAnswerController {
     public void clickToContinue(MouseEvent mouseEvent) {
         ((Node)mouseEvent.getSource()).getScene().getWindow().hide();
         if(gamemode instanceof HeatUp){
-            if(GameOptionsController.userController.listOfPlayers().get(0).getNumberOfCorrectAnswers()<5&&GameOptionsController.userController.listOfPlayers().get(1).getNumberOfCorrectAnswers()<5){
+            if(GameOptionsController.userController.listOfPlayers().get(0).getNumberOfCorrectAnswers()==5||GameOptionsController.userController.listOfPlayers().get(1).getNumberOfCorrectAnswers()==5){
                 boolean display=UsernameInputController.typeController.displayGamemode();
                 if(!display){
+                    System.out.println("hi");
                     UsernameInputController.typeController.closeStage();
                     EndGameScreenController endGameScreen=new EndGameScreenController();
                     endGameScreen.showStage();

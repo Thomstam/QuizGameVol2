@@ -3,21 +3,15 @@ package MainPackage.Controllers;
 import MainPackage.Gamemodes.Betting;
 import MainPackage.Gamemodes.Gamemode;
 import MainPackage.Gamemodes.HeatUp;
-import MainPackage.Player;
 import MainPackage.Question;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.print.JobSettings;
-import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
-import javafx.scene.control.TextArea;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
-import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 
-import java.awt.*;
 import java.io.IOException;
 import java.util.List;
 
@@ -189,8 +183,6 @@ public class AskQuestionController {
                 }
             }
         }
-
-
     }
 
     private void displayTheCategory(){

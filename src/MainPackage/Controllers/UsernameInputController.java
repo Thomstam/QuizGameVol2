@@ -66,11 +66,8 @@ public class UsernameInputController {
         players.add(new Player(username.getText()));
         username.setText("");
         if (counter==WelcomeController.controller.getPlayers()){
-            //printPlayers();
             ((Node)mouseEvent.getSource()).getScene().getWindow().hide();
             game = new Game(WelcomeController.controller.getPlayers(),WelcomeController.controller.getRounds(),WelcomeController.controller.getQuestions(),GameOptionsController.userController.listOfPlayers());
-//            Game game = new Game(controller.getPlayers(),controller.getRounds(),controller.getQuestions(),players);
-//            game.start();
             typeOfGamemode();
 
 

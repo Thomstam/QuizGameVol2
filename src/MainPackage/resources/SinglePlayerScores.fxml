@@ -6,7 +6,7 @@
 
 <AnchorPane prefHeight="820.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <Label fx:id="displayScores" alignment="TOP_CENTER" layoutY="1.0" prefHeight="820.0" prefWidth="800.0" textAlignment="JUSTIFY" wrapText="true">
+      <Label fx:id="displayScores" alignment="TOP_CENTER" layoutY="1.0" prefHeight="820.0" prefWidth="800.0" wrapText="true">
          <font>
             <Font size="18.0" />
          </font>

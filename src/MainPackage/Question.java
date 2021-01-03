@@ -12,11 +12,13 @@ public class Question {
     private String questionToASk;
     private List<String> possibleAnswersToAsk; //Contains 3 of the possible answers and the correct one.
     private String nameOfImage;
+    private boolean questionContainsImage;
 
 
     public Question(){
         possibleAnswers = new ArrayList<>();
-        possibleAnswers = new ArrayList<>();
+        questionContainsImage = false;
+
     }
 
     public void setCorrectAnswer(String correctAnswer) {
@@ -78,4 +80,13 @@ public class Question {
     public String getNameOfImage() {
         return nameOfImage;
     }
+
+    public void setQuestionContainsImage(){
+        questionContainsImage = true;
+    }
+
+    public String pathOfTheImage(){
+        return "src/Images/" + nameOfImage;
+    }
+
 }

@@ -2,13 +2,12 @@ package MainPackage;
 import java.io.*;
 import java.util.Scanner;
 
-
 public class ScoreSaving {
 
-    public void scoreToSave(Player player, int typeOfTheGame){
-        if (typeOfTheGame == 1){
+    public void scoreToSave(Player player, int typeOfTheGame) {
+        if (typeOfTheGame == 1) {
             scoreToSaveInSinglePlayer(player);
-        }else {
+        } else {
             scoreToSaveInMultiplayer(player);
         }
     }
@@ -17,12 +16,12 @@ public class ScoreSaving {
         try {
             File singlePlayerScoreFile = new File("SinglePlayerFileScore.txt");
             if (singlePlayerScoreFile.exists() && !singlePlayerScoreFile.isDirectory()) {
-                if (checkIfTheUserNameExists(player, 1, "SinglePlayerFileScore.txt")){
+                if (checkIfTheUserNameExists(player, 1, "SinglePlayerFileScore.txt")) {
 
-                }else{
+                } else {
                     FileWriter fileWriter = new FileWriter("SinglePlayerFileScore.txt", true);
                     BufferedWriter bufferedWriter = new BufferedWriter(fileWriter);
-                    String stringToBeWritten = formattedStringToWrite(player, 1, 0,  countLinesOld("SinglePlayerFileScore.txt"));
+                    String stringToBeWritten = formattedStringToWrite(player, 1, 0, countLinesOld("SinglePlayerFileScore.txt"));
                     bufferedWriter.write("\n");
                     bufferedWriter.write(stringToBeWritten);
                     bufferedWriter.close();
@@ -35,7 +34,7 @@ public class ScoreSaving {
                     fileWriter.write(" \t\t\t\tSingle Player Winners\n");
                     fileWriter.write("  Winners Name\t\t\t\t\t\t\t\t  Score\n");
                     BufferedWriter bufferedWriter = new BufferedWriter(fileWriter);
-                    String stringToBeWritten = formattedStringToWrite(player, 1, 0,  1);
+                    String stringToBeWritten = formattedStringToWrite(player, 1, 0, 1);
                     bufferedWriter.write(stringToBeWritten);
                     bufferedWriter.close();
                     fileWriter.close();
@@ -47,17 +46,17 @@ public class ScoreSaving {
         }
     }
 
-    private void scoreToSaveInMultiplayer(Player player){
+    private void scoreToSaveInMultiplayer(Player player) {
         try {
             File multiplayerScoreFile = new File("MultiplayerFileScore.txt");
             if (multiplayerScoreFile.exists() && !multiplayerScoreFile.isDirectory()) {
-                if (checkIfTheUserNameExists(player, 2, "MultiplayerFileScore.txt")){
+                if (checkIfTheUserNameExists(player, 2, "MultiplayerFileScore.txt")) {
 
-                }else{
+                } else {
                     FileWriter fileWriter = new FileWriter("MultiplayerFileScore.txt", true);
                     BufferedWriter bufferedWriter = new BufferedWriter(fileWriter);
                     bufferedWriter.write("\n");
-                    String stringToBeWritten = formattedStringToWrite(player, 2, 1,  countLinesOld("MultiplayerFileScore.txt"));
+                    String stringToBeWritten = formattedStringToWrite(player, 2, 1, countLinesOld("MultiplayerFileScore.txt"));
                     bufferedWriter.write(stringToBeWritten);
                     bufferedWriter.close();
                     fileWriter.close();
@@ -69,7 +68,7 @@ public class ScoreSaving {
                     fileWriter.write(" \t\t\t\t  Multiplayer Winners\n");
                     fileWriter.write("  Winners Name\t\t\t\t\t\t\t\t  Wins\t\t\t\t\t\t\t\tScore\n");
                     BufferedWriter bufferedWriter = new BufferedWriter(fileWriter);
-                    String stringToBeWritten = formattedStringToWrite(player, 2, 1,  1);
+                    String stringToBeWritten = formattedStringToWrite(player, 2, 1, 1);
                     bufferedWriter.write(stringToBeWritten);
                     bufferedWriter.close();
                     fileWriter.close();
@@ -81,8 +80,8 @@ public class ScoreSaving {
         }
     }
 
-    private String formattedStringToWrite(Player player, int typeOfTheGame, int  wins, int position){
-        StringBuilder stringBuilder= new StringBuilder();
+    private String formattedStringToWrite(Player player, int typeOfTheGame, int wins, int position) {
+        StringBuilder stringBuilder = new StringBuilder();
         stringBuilder.append(position).append(".").append(player.getUsername());
         stringBuilder.append(" ".repeat(Math.max(0, 44 - player.getUsername().length())));
         if (typeOfTheGame != 1) {
@@ -120,13 +119,13 @@ public class ScoreSaving {
             int lineOfTheFile = countLinesOld(nameOfTheFile);
             int counter = 0;
             String theLineOfTheFileAfterModification;
-            theLineOfTheFileAfterModification = modifyTheStringToWrite(typeOfTheGame, position, player, wins + 1, score );
+            theLineOfTheFileAfterModification = modifyTheStringToWrite(typeOfTheGame, position, player, wins + 1, score);
             while ((line = file.readLine()) != null && counter < lineOfTheFile + 1) {
-                if (line.equals(lineToChance)){
+                if (line.equals(lineToChance)) {
                     line = theLineOfTheFileAfterModification;
                 }
                 inputBuffer.append(line);
-                if (counter != lineOfTheFile){
+                if (counter != lineOfTheFile) {
                     inputBuffer.append('\n');
                 }
                 counter++;
@@ -144,12 +143,12 @@ public class ScoreSaving {
         }
     }
 
-    private String modifyTheStringToWrite(int typeOfTheGame, int position, Player player, int wins, double score ){
-        if (typeOfTheGame == 1){
+    private String modifyTheStringToWrite(int typeOfTheGame, int position, Player player, int wins, double score) {
+        if (typeOfTheGame == 1) {
             return position + "." + player.getUsername() +
                     " ".repeat(Math.max(0, 44 - player.getUsername().length())) +
                     ":" + score;
-        }else {
+        } else {
             return position + "." + player.getUsername() +
                     " ".repeat(Math.max(0, 44 - player.getUsername().length())) +
                     ":" + wins + " ".repeat(Math.max(0, 33 - String.valueOf(wins).length())) + ":" + score;
@@ -159,32 +158,32 @@ public class ScoreSaving {
     private boolean checkIfTheUserNameExists(Player player, int typeOfGame, String nameOfTheFile) throws IOException {
         File file = new File(nameOfTheFile);
         Scanner scanner = new Scanner(file);
-        while (scanner.hasNextLine()){
+        while (scanner.hasNextLine()) {
             String data = scanner.nextLine();
             String[] dataOfStr;
-            if (typeOfGame == 1){
+            if (typeOfGame == 1) {
                 dataOfStr = data.split("[.:]", 3);
-            }else {
+            } else {
                 dataOfStr = data.split("[.:]", 4);
             }
-            if (dataOfStr.length > 1){
+            if (dataOfStr.length > 1) {
                 dataOfStr[1] = dataOfStr[1].trim();
-                if (dataOfStr[1].equals(player.getUsername())){
+                if (dataOfStr[1].equals(player.getUsername())) {
                     scanner.close();
                     int position = Integer.parseInt(dataOfStr[0]);
-                    if (typeOfGame == 1){
+                    if (typeOfGame == 1) {
                         double score = Double.parseDouble(dataOfStr[2]);
                         String originalStringOfTheFile = modifyTheStringToWrite(typeOfGame, position, player, 0, score);
-                        if (player.getScore() > score){
+                        if (player.getScore() > score) {
                             score = player.getScore();
                             replaceLines(originalStringOfTheFile, 0, player, position, score, "SinglePlayerFileScore.txt", typeOfGame);
                         }
-                    }else {
+                    } else {
                         dataOfStr[2] = dataOfStr[2].trim();
                         int wins = Integer.parseInt(dataOfStr[2]);
                         double score = Double.parseDouble(dataOfStr[3]);
                         String originalStringOfTheFile = modifyTheStringToWrite(typeOfGame, position, player, wins, score);
-                        if (player.getScore() > score){
+                        if (player.getScore() > score) {
                             score = player.getScore();
                         }
                         replaceLines(originalStringOfTheFile, wins, player, position, score, "MultiplayerFileScore.txt", typeOfGame);
@@ -197,7 +196,7 @@ public class ScoreSaving {
         return false;
     }
 
-    public String readFile(String fileName) throws IOException {
+    public String readFile(String fileName) {
         try (BufferedReader br = new BufferedReader(new FileReader(fileName))) {
             StringBuilder sb = new StringBuilder();
             String line = br.readLine();
@@ -209,7 +208,8 @@ public class ScoreSaving {
             }
             return sb.toString();
         }catch (IOException e){
-            return " No scores made yet.";
+        return " No scores made yet.";
         }
     }
+
 }

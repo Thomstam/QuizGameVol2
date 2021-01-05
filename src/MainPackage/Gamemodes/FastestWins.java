@@ -3,9 +3,7 @@ package MainPackage.Gamemodes;
 import MainPackage.Controllers.GameOptionsController;
 import MainPackage.Player;
 import MainPackage.Question;
-
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.Collections;
 
 public class FastestWins extends Gamemode {
@@ -41,7 +39,7 @@ public class FastestWins extends Gamemode {
                     }
             }
         }
-        if(swapped==true){
+        if(swapped){
             Collections.swap(players,0,1);
         }
     }

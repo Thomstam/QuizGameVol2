@@ -11,7 +11,7 @@ public class Player {
     private String answer;
     private String placement;
     private boolean scoreAchieved;
-    private ArrayList<Integer> timeLeftFromEachAnswer;
+    private final ArrayList<Integer> timeLeftFromEachAnswer;
     private boolean isTheAnswerCorrect;
     private int numberOfCorrectAnswers;
 

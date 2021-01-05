@@ -3,8 +3,6 @@ package MainPackage;
 
 import MainPackage.Gamemodes.*;
 
-
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.InputMismatchException;
 import java.util.Scanner;
@@ -58,7 +56,7 @@ public class Game {
         Scanner scanner= new Scanner(System.in);
         System.out.format("GAME ENDED AFTER %d ROUNDS!\n",numberOfRounds);
         for(Player player:players){
-            System.out.format("Player %s has a final score of: %d points\n",player.getUsername(),player.getScore());
+            System.out.format("Player %s has a final score of: %s points\n",player.getUsername(),player.getScore());
         }
         System.out.println("Would you like to play again?(Y/N)");
         do {

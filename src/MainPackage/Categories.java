@@ -12,7 +12,7 @@ public class Categories {
     private List<Question> scienceArray;
     private List<Question> moviesArray;
     protected List<String> categories;
-    private Random random;
+    private final Random random;
 
     public Categories() {
         mathArray = new LinkedList<>();

@@ -41,7 +41,7 @@ public class HeatUp extends Gamemode {
                 //player.setNumberOfCorrectAnswers(0);
             }
         }
-        if(swapped==true){
+        if(swapped){
             Collections.swap(players,0,1);
         }
     }

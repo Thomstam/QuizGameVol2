@@ -89,4 +89,6 @@ public class Question {
         return "src/Images/" + nameOfImage;
     }
 
+    public boolean isQuestionContainsImage(){ return  questionContainsImage;}
+
 }

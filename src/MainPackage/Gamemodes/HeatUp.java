@@ -9,7 +9,7 @@ import java.util.Collections;
 public class HeatUp extends Gamemode {
 
     @Override
-    void handleTheScore(ArrayList<Player> players, Question question) {
+    public void handleTheScore(ArrayList<Player> players, Question question) {
 
         boolean swapped=false;
         if(players.get(1).getPlacement().equals("First")){

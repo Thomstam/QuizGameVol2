@@ -9,10 +9,7 @@ import MainPackage.Categories;
 public abstract class Gamemode {
 
     protected Scanner scanner;
-    protected String choice;
     protected Random random;
-    protected String categoriesToAsk;
-    protected int initialBet;
     protected Question questionToBeHandled;
 
     public Gamemode() {
@@ -29,10 +26,7 @@ public abstract class Gamemode {
      * @param numberOfQuestions The numbers of questions we going to ask for this round.
      */
     public Question gamemodeSetUp(ArrayList<Player> players, int numberOfQuestions,Categories categories,String categoriesToAsk){
-        //for (int i = 0; i < numberOfQuestions; i++) {
-            //categoriesToAsk = categories.getRandomCategory();
             Question questionToBeAsked = null;
-            //System.out.format("The category is %s\n",categoriesToAsk);
             switch (categoriesToAsk) {
                 case "Math":
                     if (categories.getMathArray().isEmpty()){
@@ -62,8 +56,6 @@ public abstract class Gamemode {
             }
             return questionToBeAsked;
         }
-        //scoreSumUp(players);
-    //}
 
     /**
      * @param choice The choice we got from the player

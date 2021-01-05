@@ -11,7 +11,7 @@ import java.util.Collections;
 public class FastestWins extends Gamemode {
 
     @Override
-    void handleTheScore(ArrayList<Player> players, Question question) {
+    public void handleTheScore(ArrayList<Player> players, Question question) {
         boolean swapped=false;
         if(players.get(1).getPlacement().equals("First")){
             Collections.swap(players,0,1);
@@ -44,6 +44,5 @@ public class FastestWins extends Gamemode {
         if(swapped==true){
             Collections.swap(players,0,1);
         }
-
     }
 }

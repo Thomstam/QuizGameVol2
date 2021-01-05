@@ -22,12 +22,6 @@ public abstract class Gamemode {
     }
 
     /**
-     * We control each game mode's difference.
-     * @param players List with all the players
-     * @return
-     */
-
-    /**
      * Managing the gamemode initialization. For each question we choose a random category. If the list of
      * the category we choose is empty we initialize and we fill it from a txt full of questions.
      * Then we just pass it to @setUpQuestion and then we start the game.
@@ -72,18 +66,6 @@ public abstract class Gamemode {
     //}
 
     /**
-     * @param question The current question of the game.
-     * @return A template of the how we are showing the player each question and his choices.
-     */
-//    protected String toString(Question question) {
-//        List<String> possibleAnswers = question.getPossibleAnswersToAsk();
-//        return "        " + question.getQuestionToASk() + "\n" +
-//                "A)" + possibleAnswers.get(0) + "                                                    " + "B)" + possibleAnswers.get(1) + "\n" +
-//                "C)" + possibleAnswers.get(2) + "                                                    " + "D)" + possibleAnswers.get(3) + "\n" +
-//                "           " + "Choose Between A,B,C,D";
-//    }
-
-    /**
      * @param choice The choice we got from the player
      * @return We return an int that points to the @getPossibleAnswersToAsk position
      *         so we can check if the given answer is the same with the correct one.
@@ -110,39 +92,6 @@ public abstract class Gamemode {
      */
     abstract void handleTheScore(ArrayList<Player> players, Question question);
 
-//    /**
-//     * Each players has to choose between the possible answers of the question A-D.
-//     * @param players List with all the players.
-//     * @return List with all the players choices updated
-//     */
-//    protected ArrayList<Player> settingPlayersChoice(ArrayList<Player> players){
-//        for (Player player : players) {
-//            do{
-//                try {
-//                    choice = scanner.nextLine();
-//                    if (!"A".equals(choice) && !"B".equals(choice) && !"C".equals(choice) && !"D".equals(choice)){
-//                        System.out.println("Wrong Input!!!");
-//                    }
-//                }catch (InputMismatchException e){
-//                    System.out.println("Wrong Input!!!");
-//                    System.out.println("Choose Between A,B,C,D");
-//                }
-//            }while(!"A".equals(choice) && !"B".equals(choice) && !"C".equals(choice) && !"D".equals(choice));
-//            player.setAnswer(choice);
-//            choice = "";
-//        }
-//        return players;
-//    }
-
-    /**
-     * Here we present each player's score
-     * @param players List with all the players
-     */
-    protected void scoreSumUp(ArrayList<Player> players){
-        for (Player player: players) {
-            System.out.println("The Player " + player.getUsername() + " has total points of " + player.getScore());
-        }
-    }
 
     /**
      *We take the a list from a specific category which contains all the questions.

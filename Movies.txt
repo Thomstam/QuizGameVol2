@@ -11,6 +11,6 @@ In which 1963 classic film did Charles Bronson appear?    /The Great Escape,The 
 In which film we find this gang of dwarfs?      /Hobbit,Blancanieves,Lord Of The Rings,Star Wars,dwarfsOfHobbit.jpg
 In which movie we can find this dragon?     /hobbit,Merlin,Maleficent,Harry Potter,smug.jpg
 Who was the actor who played batman in the original trilogy? /Cristian Bale,Orlando Bloom,Brand Pete,batman.jpg
-Which is the best movies ever made, based on the imdb rate?    /Shawshank Redemption,Godfather, The Dark Knight, 12 Angry Men,ShawShankRedemption.jpg
+Which is the best movies ever made based on the imdb rate?    /Shawshank Redemption,Godfather, The Dark Knight, 12 Angry Men,ShawShankRedemption.jpg
 Who is the creator of The Lord Of The Rings Universe?       /J. R. R. Tolkien,J. K. Rowling,George R. R. Martin,Stan Lee,lordOfTheRings.png
-Who was the actor played joker in Batman:The Dark Knight?   /Heath Ledger,Jack Nicholson,Joaquin Phoenix,Jared Leto,joker.jpg
+Who was the actor played joker in Batman The Dark Knight?   /Heath Ledger,Jack Nicholson,Joaquin Phoenix,Jared Leto,joker.jpg

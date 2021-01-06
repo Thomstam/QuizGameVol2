@@ -8,10 +8,10 @@ How many breaths does the human body take daily?    /20000,10000,50000,35000
 What is the chemical symbol for silver?    /Ag,S,Si,F
 What is the lifespan of a dragonfly?    /24 hours,72 hours,12 hours,48 hours
 Which year was the first Tonka truck made?    /1947,1945,1949,1952
-Whicj landmark we see in the picture?   /Big ben, Eiffel Tower, Pisa Tower,London Eye,bigben.jpg
+Which landmark we see in the picture?   /Big ben, Eiffel Tower, Pisa Tower,London Eye,bigben.jpg
 In which country we find this landmark?     /France,German,Italy,Spain,eiffel.jpg
-Name this planet:   /Saturn,Venus,Mercury,Neptune,saturn,jpg
-From which brand is this logo from??    /Macdonald,Wendy's,Subway,M&M's,macdonald.png
-Which state of America lights can you see from the space?   /las Vegas,Miami,California,Texas,lasvegas.jpg
-Name that country:  /Iraq,Iran,Turkey,Syria,iraq,jpg
+Name this planet:   /Saturn,Venus,Mercury,Neptune,saturn.jpg
+From which brand is this logo from?    /Macdonald's,Wendy's,Subway,M&M's,macdonald.png
+Which state of America lights can you see from the space?   /Las Vegas,Miami,California,Texas,lasvegas.jpg
+Name that country:  /Iraq,Iran,Turkey,Syria,iraq.jpg
 Who created this famous painting?   /Picasso,Leonardo da Vinci, Paul Cezanne,Wassily Kandinsky,guernica.jpg

@@ -6,5 +6,5 @@ infinity divided by infinity equals:    /infinity,1,2,0
 10^(-2) means:    /centi,milli,micro,deci
 The result is?      /50,62,21,54,50.jpg
 Which theory is represented in the picture?     /pythagorean theory, newton's 3d law,Abel's curve,Apollonius's theorem,pythagoreanTheory.png
-Which theory came from an apple falling into Newton's head:     /Gravity,Newtons First Law,Newtons Second LawNewtons Third Law,newton.jpg
+Which theory came from an apple falling into Newton's head:     /Gravity,Newtons First Law,Newtons Second Law,Newtons Third Law,newton.jpg
 Choose the correct answer:      /4,8,6,5,4.jpg

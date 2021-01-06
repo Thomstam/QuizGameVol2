@@ -34,7 +34,7 @@ public class ReadingFromFile {
                 for (int i = 2; i < dataOfStr.length; i++) {
                     if(dataOfStr[i].contains(".png") || dataOfStr[i].contains(".jpg")){
                         question.setNameOfImage(dataOfStr[i]);
-                        
+                        question.setQuestionContainsImage();
                     }else {
                         question.setPossibleAnswers(dataOfStr[i]);
                     }

@@ -86,7 +86,7 @@ public class Question {
     }
 
     public String pathOfTheImage(){
-        return "src/Images/" + nameOfImage;
+        return "Images/" + nameOfImage;
     }
 
     public boolean isQuestionContainsImage(){ return  questionContainsImage;}

@@ -8,6 +8,8 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.stage.Stage;
@@ -17,8 +19,8 @@ import java.util.List;
 
 public class AskQuestionController {
 
-
-
+    @FXML
+    private ImageView questionImage;
     Question questionSetUp;
     public int qcounter=0;
     public boolean firstAnswered=false;
@@ -79,6 +81,9 @@ public class AskQuestionController {
                 answerTwo.setText("B : "+possibleAnswers.get(1));
                 answerThree.setText("C : "+possibleAnswers.get(2));
                 answerFour.setText("D : "+possibleAnswers.get(3));
+                if(questionSetUp.isQuestionContainsImage()){
+                    questionImage.setImage(new Image(questionSetUp.pathOfTheImage()));
+                }
                 return true;
             }else{
                 GameOptionsController.userController.listOfPlayers().get(0).setNumberOfCorrectAnswers(0);
@@ -95,6 +100,9 @@ public class AskQuestionController {
                 answerTwo.setText("B : "+possibleAnswers.get(1));
                 answerThree.setText("C : "+possibleAnswers.get(2));
                 answerFour.setText("D : "+possibleAnswers.get(3));
+                if(questionSetUp.isQuestionContainsImage()){
+                    questionImage.setImage(new Image(questionSetUp.pathOfTheImage()));
+                }
                 return true;
             }
             return false;
@@ -123,6 +131,7 @@ public class AskQuestionController {
                 }
                 gamemode.callHandleTheScore(GameOptionsController.userController.listOfPlayers(),questionSetUp);
                 qcounter++;
+                questionImage.setImage(null);
                 displayIfTheAnswerWasCorrect();
                 displayTheCategory();
                 if(gamemode instanceof Betting && qcounter<WelcomeController.controller.getQuestions()){
@@ -166,6 +175,7 @@ public class AskQuestionController {
                 GameOptionsController.userController.listOfPlayers().get(0).setPlacement("Second");
             }
             if(firstAnswered&&secondAnswered){
+                questionImage.setImage(null);
                 thisStage.close();
                 gamemode.callHandleTheScore(GameOptionsController.userController.listOfPlayers(),questionSetUp);
                 qcounter++;

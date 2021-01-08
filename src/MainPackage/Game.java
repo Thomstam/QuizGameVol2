@@ -10,18 +10,14 @@ import java.util.Random;
 
 public class Game {
 
-    private int howManyPlayers;
-    private int numberOfRounds;
-    private int numberOfQuestions;
-    private ArrayList<Player> players;
+    private final int numberOfRounds;
+    private final ArrayList<Player> players;
     //private Categories categories;
 
 
     public  Game(int howManyPlayers, int numberOfRounds, int numberOfQuestions, ArrayList<Player> players){
 
-        this.howManyPlayers=howManyPlayers;
         this.numberOfRounds=numberOfRounds;
-        this.numberOfQuestions=numberOfQuestions;
         this.players=players;
     }
 

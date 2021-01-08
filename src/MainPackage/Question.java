@@ -7,7 +7,7 @@ import java.util.List;
 
 public class Question {
 
-    private List<String> possibleAnswers; //Contains all the wrong answers for the question.
+    private final List<String> possibleAnswers; //Contains all the wrong answers for the question.
     private String correctAnswer; //This is the correct answer for the question.
     private String questionToASk;
     private List<String> possibleAnswersToAsk; //Contains 3 of the possible answers and the correct one.
@@ -75,10 +75,6 @@ public class Question {
 
     public void setNameOfImage(String nameOfImage) {
         this.nameOfImage = nameOfImage;
-    }
-
-    public String getNameOfImage() {
-        return nameOfImage;
     }
 
     public void setQuestionContainsImage(){

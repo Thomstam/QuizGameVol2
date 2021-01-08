@@ -1,7 +1,5 @@
 package MainPackage.Controllers;
 
-import MainPackage.Categories;
-import MainPackage.Game;
 import MainPackage.Gamemodes.Gamemode;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -17,8 +15,8 @@ public class GamemodeTypeController {
 
     @FXML
     private Label GamemodeType;
-    public static int roundcounter=0;
-    private Stage thisStage;
+    public static int roundCounter =0;
+    private final Stage thisStage;
     public Gamemode gamemode;
 
     public GamemodeTypeController(){
@@ -48,7 +46,7 @@ public class GamemodeTypeController {
     public boolean displayGamemode(){
         showStage();
         int choice;
-        if(roundcounter<WelcomeController.controller.getRounds()) {
+        if(roundCounter <WelcomeController.controller.getRounds()) {
             if(WelcomeController.controller.getPlayers()==1){
                 choice=UsernameInputController.game.gamemodePicker(2);
             }else{
@@ -73,7 +71,7 @@ public class GamemodeTypeController {
     }
 
     public void onMouseClick(MouseEvent mouseEvent)  {
-        roundcounter++;
+        roundCounter++;
         ((Node)mouseEvent.getSource()).getScene().getWindow().hide();
         startAskingQuestions(gamemode);
     }

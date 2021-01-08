@@ -14,8 +14,8 @@ public class DisplayCategoryController {
 
     @FXML
     private Label categoryName;
-    private Stage thisStage;
-    private String categoriesToAsk;
+    private final Stage thisStage;
+    private final String categoriesToAsk;
 
     public DisplayCategoryController(String categoriesToAsk){
         thisStage=new Stage();

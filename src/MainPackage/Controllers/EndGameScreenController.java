@@ -1,6 +1,5 @@
 package MainPackage.Controllers;
 
-import MainPackage.Player;
 import MainPackage.ScoreSaving;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -24,7 +23,7 @@ public class EndGameScreenController {
     @FXML
     private Label playerUsername2;
 
-    private Stage thisStage;
+    private final Stage thisStage;
 
 
     public EndGameScreenController(){

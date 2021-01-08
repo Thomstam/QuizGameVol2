@@ -14,7 +14,7 @@ public class SetBetController {
 
     @FXML
     private Label playerUsername;
-    private Stage thisStage;
+    private final Stage thisStage;
     public int counter=0;
 
     public SetBetController(){

@@ -5,16 +5,14 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.stage.Stage;
-
-import java.awt.*;
 import java.io.IOException;
 
 public class SinglePlayerScoresController {
 
     @FXML
     private Label displayScores;
-    private String string;
-    private Stage thisStage;
+    private final String string;
+    private final Stage thisStage;
 
 
     public SinglePlayerScoresController(String string){

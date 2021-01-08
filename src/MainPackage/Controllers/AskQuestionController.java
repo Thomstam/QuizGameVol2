@@ -26,7 +26,7 @@ public class AskQuestionController {
     @FXML
     private ImageView questionImage;
     Question questionSetUp;
-    public int qcounter=0;
+    public int qCounter =0;
     public boolean firstAnswered=false;
     public boolean secondAnswered=false;
     public boolean answered=false;
@@ -43,7 +43,7 @@ public class AskQuestionController {
     private Label answerFour;
     @FXML
     private Label TimeLeft;
-    private Stage thisStage;
+    private final Stage thisStage;
     private String categoriesToAsk;
     private Timer timer;
 
@@ -99,7 +99,7 @@ public class AskQuestionController {
                 return false;
             }
         }else{
-            if (qcounter<WelcomeController.controller.getQuestions()) {
+            if (qCounter <WelcomeController.controller.getQuestions()) {
                 showStage();
                 questionSetUp = gamemode.gamemodeSetUp(GameOptionsController.userController.getCategories(),categoriesToAsk );
                 List<String> possibleAnswers = questionSetUp.getPossibleAnswersToAsk();
@@ -146,12 +146,12 @@ public class AskQuestionController {
                     GameOptionsController.userController.listOfPlayers().get(0).setAnswer("D");
                 }
                 gamemode.callHandleTheScore(GameOptionsController.userController.listOfPlayers(),questionSetUp);
-                qcounter++;
+                qCounter++;
                 questionImage.setImage(null);
                 displayIfTheAnswerWasCorrect();
                 answered=false;
                 displayTheCategory();
-                if(gamemode instanceof Betting && qcounter<WelcomeController.controller.getQuestions()){
+                if(gamemode instanceof Betting && qCounter <WelcomeController.controller.getQuestions()){
                     SetBetController setBet=new SetBetController();
                     setBet.showStage();
                 }
@@ -201,12 +201,12 @@ public class AskQuestionController {
                 questionImage.setImage(null);
                 thisStage.close();
                 gamemode.callHandleTheScore(GameOptionsController.userController.listOfPlayers(),questionSetUp);
-                qcounter++;
+                qCounter++;
                 displayIfTheAnswerWasCorrect();
                 firstAnswered=false;
                 secondAnswered=false;
                 displayTheCategory();
-                if(gamemode instanceof Betting && qcounter<WelcomeController.controller.getQuestions()){
+                if(gamemode instanceof Betting && qCounter <WelcomeController.controller.getQuestions()){
                     SetBetController setBet=new SetBetController();
                     setBet.showStage();
                 }
@@ -226,7 +226,7 @@ public class AskQuestionController {
                 displayCategory.showStage();
             }
         }else{
-            if(qcounter<WelcomeController.controller.getQuestions()) {
+            if(qCounter <WelcomeController.controller.getQuestions()) {
                 categoriesToAsk = GameOptionsController.userController.getCategories().getRandomCategory();
                 DisplayCategoryController displayCategory = new DisplayCategoryController(categoriesToAsk);
                 displayCategory.showStage();
@@ -237,7 +237,7 @@ public class AskQuestionController {
 
 
     private void displayIfTheAnswerWasCorrect() {
-        DisplayCorrectAnswerController answerController=new DisplayCorrectAnswerController(questionSetUp.getCorrectAnswer(),qcounter,gamemode);
+        DisplayCorrectAnswerController answerController=new DisplayCorrectAnswerController(questionSetUp.getCorrectAnswer(), qCounter,gamemode);
         answerController.showStage();
 
     }

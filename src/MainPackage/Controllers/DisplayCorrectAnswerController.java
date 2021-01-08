@@ -33,14 +33,14 @@ public class DisplayCorrectAnswerController {
     private Label heatUpScore2;
 
     private final Stage thisStage;
-    private String correctAnswer;
-    private int qcounter;
-    private Gamemode gamemode;
+    private final String correctAnswer;
+    private final int qCounter;
+    private final Gamemode gamemode;
 
-    public DisplayCorrectAnswerController(String correctAnswer, int qcounter, Gamemode gamemode){
+    public DisplayCorrectAnswerController(String correctAnswer, int qCounter, Gamemode gamemode){
         thisStage=new Stage();
         this.gamemode=gamemode;
-        this.qcounter=qcounter;
+        this.qCounter = qCounter;
         this.correctAnswer=correctAnswer;
         try{
             FXMLLoader loader = new FXMLLoader(getClass().getResource("../resources/DisplayCorrectAnswer.fxml"));
@@ -97,7 +97,7 @@ public class DisplayCorrectAnswerController {
                 }
             }
         }else{
-            if(qcounter==WelcomeController.controller.getQuestions()){
+            if(qCounter ==WelcomeController.controller.getQuestions()){
                 boolean display=UsernameInputController.typeController.displayGamemode();
                 if(!display){
                     UsernameInputController.typeController.closeStage();

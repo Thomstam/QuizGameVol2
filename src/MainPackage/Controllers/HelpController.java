@@ -10,7 +10,7 @@ import java.io.IOException;
 
 public class HelpController {
 
-    private Stage thisStage;
+    private final Stage thisStage;
 
     public HelpController(){
         thisStage = new Stage();

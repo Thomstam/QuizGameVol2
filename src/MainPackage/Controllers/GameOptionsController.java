@@ -51,7 +51,7 @@ public class GameOptionsController {
     }
 
 
-    public void onMouseClick(MouseEvent mouseEvent) throws IOException {
+    public void onMouseClick(MouseEvent mouseEvent)  {
         int players = Integer.parseInt(numberOfPlayers.getText());
         int questions = Integer.parseInt(numberOfQuestions.getText());
         int rounds = Integer.parseInt(numberOfRounds.getText());

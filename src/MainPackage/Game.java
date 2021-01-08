@@ -12,7 +12,6 @@ public class Game {
 
     private final int numberOfRounds;
     private final ArrayList<Player> players;
-    //private Categories categories;
 
 
     public  Game(int howManyPlayers, int numberOfRounds, int numberOfQuestions, ArrayList<Player> players){

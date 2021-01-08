@@ -16,11 +16,11 @@ import java.util.ArrayList;
 
 public class UsernameInputController {
 
-    private Stage thisStage;
-    private ArrayList<Player> players;
+    private final Stage thisStage;
+    private final ArrayList<Player> players;
     public int counter=0;
 
-    private Categories categories;
+    private final Categories categories;
     public static Game game;
     public static GamemodeTypeController typeController;
 

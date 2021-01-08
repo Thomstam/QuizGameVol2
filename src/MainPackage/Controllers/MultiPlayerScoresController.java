@@ -12,8 +12,8 @@ public class MultiPlayerScoresController {
 
     @FXML
     private Label displayScores;
-    private String string;
-    private Stage thisStage;
+    private final String string;
+    private final Stage thisStage;
 
     public MultiPlayerScoresController(String string){
 

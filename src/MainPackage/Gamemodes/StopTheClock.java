@@ -10,10 +10,13 @@ public class StopTheClock extends Gamemode {
     @Override
     void handleTheScore(ArrayList<Player> players, Question question) {
         for (Player player : players) {
-            for (Integer time : player.getTimeLeftFromEachAnswer()) {
-                player.setScore(player.getScore() + (time * 1000 * 0.2));
+            int indexOfChoice = handlePlayerChoice(player.getAnswer());
+            if (question.getPossibleAnswersToAsk().get(indexOfChoice).equals(question.getCorrectAnswer())) {
+                player.setScore(player.getScore() + (player.getTimeLeftFromAnswer() * 0.2));
+                player.setIsTheAnswerCorrect(true);
+            }else{
+                player.setIsTheAnswerCorrect(false);
             }
-            player.resetArrayWithTimLeft();
         }
     }
 }

@@ -25,7 +25,7 @@ public abstract class Gamemode {
      * @param players <String> elements with the names of all the players.
      * @param numberOfQuestions The numbers of questions we going to ask for this round.
      */
-    public Question gamemodeSetUp(ArrayList<Player> players, int numberOfQuestions,Categories categories,String categoriesToAsk){
+    public Question gamemodeSetUp(Categories categories,String categoriesToAsk){
             Question questionToBeAsked = null;
             switch (categoriesToAsk) {
                 case "Math":

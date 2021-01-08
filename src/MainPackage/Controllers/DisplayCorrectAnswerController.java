@@ -64,7 +64,7 @@ public class DisplayCorrectAnswerController {
         }else{
             correctAnswer1.setText("Wrong Answer");
         }
-        playerScore1.setText(Double.toString(GameOptionsController.userController.listOfPlayers().get(0).getScore()));
+        playerScore1.setText(String.format("%.1f",GameOptionsController.userController.listOfPlayers().get(0).getScore()));
         if(gamemode instanceof HeatUp){
             heatUpScore1.setText(Integer.toString(GameOptionsController.userController.listOfPlayers().get(0).getNumberOfCorrectAnswers()));
         }
@@ -75,7 +75,7 @@ public class DisplayCorrectAnswerController {
             }else{
                 correctAnswer2.setText("Wrong Answer");
             }
-            playerScore2.setText(Double.toString(GameOptionsController.userController.listOfPlayers().get(1).getScore()));
+            playerScore2.setText(String.format("%.1f",GameOptionsController.userController.listOfPlayers().get(1).getScore()));
             if(gamemode instanceof HeatUp){
                 heatUpScore2.setText(Integer.toString(GameOptionsController.userController.listOfPlayers().get(1).getNumberOfCorrectAnswers()));
             }

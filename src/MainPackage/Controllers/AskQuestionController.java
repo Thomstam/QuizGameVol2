@@ -3,7 +3,9 @@ package MainPackage.Controllers;
 import MainPackage.Gamemodes.Betting;
 import MainPackage.Gamemodes.Gamemode;
 import MainPackage.Gamemodes.HeatUp;
+import MainPackage.Gamemodes.StopTheClock;
 import MainPackage.Question;
+import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -16,6 +18,8 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.util.List;
+import java.util.Timer;
+import java.util.TimerTask;
 
 public class AskQuestionController {
 
@@ -25,6 +29,7 @@ public class AskQuestionController {
     public int qcounter=0;
     public boolean firstAnswered=false;
     public boolean secondAnswered=false;
+    public boolean answered=false;
     private final Gamemode gamemode;
     @FXML
     private Label question;
@@ -36,8 +41,12 @@ public class AskQuestionController {
     private Label answerTwo;
     @FXML
     private Label answerFour;
+    @FXML
+    private Label TimeLeft;
     private Stage thisStage;
     private String categoriesToAsk;
+    private Timer timer;
+
 
 
     public AskQuestionController(Gamemode gamemode) {
@@ -70,11 +79,10 @@ public class AskQuestionController {
     }
 
     private boolean displayQuestion(){
-
         if(gamemode instanceof HeatUp){
             if(GameOptionsController.userController.listOfPlayers().get(0).getNumberOfCorrectAnswers()<5&&GameOptionsController.userController.listOfPlayers().get(1).getNumberOfCorrectAnswers()<5){
                 showStage();
-                questionSetUp = gamemode.gamemodeSetUp(GameOptionsController.userController.listOfPlayers(), WelcomeController.controller.getQuestions(),GameOptionsController.userController.getCategories(),categoriesToAsk );
+                questionSetUp = gamemode.gamemodeSetUp(GameOptionsController.userController.getCategories(),categoriesToAsk );
                 List<String> possibleAnswers = questionSetUp.getPossibleAnswersToAsk();
                 question.setText(questionSetUp.getQuestionToASk());
                 answerOne.setText("A : "+possibleAnswers.get(0));
@@ -93,7 +101,7 @@ public class AskQuestionController {
         }else{
             if (qcounter<WelcomeController.controller.getQuestions()) {
                 showStage();
-                questionSetUp = gamemode.gamemodeSetUp(GameOptionsController.userController.listOfPlayers(), WelcomeController.controller.getQuestions(),GameOptionsController.userController.getCategories(),categoriesToAsk );
+                questionSetUp = gamemode.gamemodeSetUp(GameOptionsController.userController.getCategories(),categoriesToAsk );
                 List<String> possibleAnswers = questionSetUp.getPossibleAnswersToAsk();
                 question.setText(questionSetUp.getQuestionToASk());
                 answerOne.setText("A : "+possibleAnswers.get(0));
@@ -102,6 +110,10 @@ public class AskQuestionController {
                 answerFour.setText("D : "+possibleAnswers.get(3));
                 if(questionSetUp.isQuestionContainsImage()){
                     questionImage.setImage(new Image(questionSetUp.pathOfTheImage()));
+                }
+                if(gamemode instanceof StopTheClock){
+                    TimeLeft.setText("Time Left: 5000");
+                    setTimer();
                 }
                 return true;
             }
@@ -119,6 +131,10 @@ public class AskQuestionController {
 
         if(WelcomeController.controller.getPlayers()==1){
             if(keyEvent.getCode()== KeyCode.A||keyEvent.getCode()== KeyCode.S||keyEvent.getCode()== KeyCode.D||keyEvent.getCode()== KeyCode.F){
+                if(gamemode instanceof StopTheClock){
+                    GameOptionsController.userController.listOfPlayers().get(0).setTimeLeftFromAnswer(Integer.parseInt(TimeLeft.getText().replaceAll("\\D+","")));
+                }
+                answered=true;
                 thisStage.close();
                 if(keyEvent.getCode()== KeyCode.A){
                     GameOptionsController.userController.listOfPlayers().get(0).setAnswer("A");
@@ -133,6 +149,7 @@ public class AskQuestionController {
                 qcounter++;
                 questionImage.setImage(null);
                 displayIfTheAnswerWasCorrect();
+                answered=false;
                 displayTheCategory();
                 if(gamemode instanceof Betting && qcounter<WelcomeController.controller.getQuestions()){
                     SetBetController setBet=new SetBetController();
@@ -144,6 +161,9 @@ public class AskQuestionController {
             }
         }else{
             if((keyEvent.getCode()== KeyCode.A||keyEvent.getCode()== KeyCode.S||keyEvent.getCode()== KeyCode.D||keyEvent.getCode()== KeyCode.F)&& !firstAnswered){
+                if(gamemode instanceof StopTheClock) {
+                    GameOptionsController.userController.listOfPlayers().get(0).setTimeLeftFromAnswer(Integer.parseInt(TimeLeft.getText().replaceAll("\\D+", "")));
+                }
                 if(keyEvent.getCode()== KeyCode.A){
                     GameOptionsController.userController.listOfPlayers().get(0).setAnswer("A");
                 }else if(keyEvent.getCode()== KeyCode.S){
@@ -156,6 +176,9 @@ public class AskQuestionController {
                 firstAnswered=true;
             }
             if((keyEvent.getCode()== KeyCode.H||keyEvent.getCode()== KeyCode.J||keyEvent.getCode()== KeyCode.K||keyEvent.getCode()== KeyCode.L)&& !secondAnswered){
+                if(gamemode instanceof StopTheClock) {
+                    GameOptionsController.userController.listOfPlayers().get(1).setTimeLeftFromAnswer(Integer.parseInt(TimeLeft.getText().replaceAll("\\D+", "")));
+                }
                 if(keyEvent.getCode()== KeyCode.H){
                     GameOptionsController.userController.listOfPlayers().get(1).setAnswer("A");
                 }else if(keyEvent.getCode()== KeyCode.J){
@@ -218,4 +241,29 @@ public class AskQuestionController {
         answerController.showStage();
 
     }
+
+
+    public void setTimer() {
+        timer = new Timer();
+        timer.scheduleAtFixedRate(new TimerTask() {
+            int interval=5000;
+            public void run() {
+                if(WelcomeController.controller.getPlayers()==1) {
+                    if (interval > 0 && (!answered)) {
+                        Platform.runLater(() -> TimeLeft.setText("Time Left: " + interval));
+                        interval--;
+                    } else
+                        timer.cancel();
+                }else{
+                    if (interval > 0 && (!firstAnswered || !secondAnswered)) {
+                        Platform.runLater(() -> TimeLeft.setText("Time Left: " + interval));
+                        interval--;
+                    } else
+                        timer.cancel();
+                }
+            }
+        }, 2000,1);
+    }
 }
+
+

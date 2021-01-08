@@ -57,12 +57,13 @@ public class GamemodeTypeController {
 
             if (choice == 0) {
                 GamemodeType.setText("POINTBUILDER : Choose the correct answer and win 1000 points!");
-                //gamemode.gamemodeSetUp(usernameController.listOfPlayers(),controller.getQuestions(),usernameController.getCategories());
-            } else if (choice == 1) {
+            }else if(choice==1){
+                GamemodeType.setText("STOP THE CLOCK: Choose the correct answer (within 5 seconds) and win as much points as the milliseconds you had left multiplied by 0.2!!!");
+            }else if(choice==2) {
                 GamemodeType.setText("BETTING : Win or lose the amount of points you bet!");
-            }else if (choice==2){
-                GamemodeType.setText("FASTEST WINS : First player to answer correctly gets 1000 points and the second 500!!! ");
             }else if(choice==3){
+                GamemodeType.setText("FASTEST WINS : First player to answer correctly gets 1000 points and the second 500!!! ");
+            }else if(choice==4){
                 GamemodeType.setText("HEAT UP: The player to answer 5 questions correctly wins 5000 points(Only the fastest answer counts)!!! ");
             }
             gamemode = UsernameInputController.game.start(choice);

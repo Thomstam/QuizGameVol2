@@ -11,7 +11,7 @@ public class Player {
     private String answer;
     private String placement;
     private boolean scoreAchieved;
-    private final ArrayList<Integer> timeLeftFromEachAnswer;
+    private int timeLeftFromAnswer;
     private boolean isTheAnswerCorrect;
     private int numberOfCorrectAnswers;
 
@@ -21,7 +21,7 @@ public class Player {
         this.username=username;
         this.score=0;
         this.numberOfCorrectAnswers=0;
-        timeLeftFromEachAnswer = new ArrayList<>();
+
     }
 
     public String getUsername(){
@@ -72,17 +72,13 @@ public class Player {
         return scoreAchieved;
     }
 
-    public void setTimeLeftFromEachAnswer(int timeLeft) {
-        this.timeLeftFromEachAnswer.add(timeLeft);
+    public void setTimeLeftFromAnswer(int timeLeft) { this.timeLeftFromAnswer=timeLeft; }
+
+    public int getTimeLeftFromAnswer() {
+        return timeLeftFromAnswer;
     }
 
-    public ArrayList<Integer> getTimeLeftFromEachAnswer() {
-        return timeLeftFromEachAnswer;
-    }
-
-    public void resetArrayWithTimLeft(){
-        this.timeLeftFromEachAnswer.clear();
-    }
+    //public void resetArrayWithTimLeft(){this.timeLeftFromEachAnswer.clear();}
 
     public void setIsTheAnswerCorrect(boolean isTheAnswerCorrect){
         this.isTheAnswerCorrect=isTheAnswerCorrect;

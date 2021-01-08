@@ -34,11 +34,14 @@ public class Game {
             case 0:
                 return new PointBuilder();
             case 1:
-                return new Betting();
+                return new StopTheClock();
             case 2:
-                return new FastestWins();
+                return new Betting();
             case 3:
+                return new FastestWins();
+            case 4:
                 return new HeatUp();
+
         }
 
         return null;

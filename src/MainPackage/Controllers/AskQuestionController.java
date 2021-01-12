@@ -14,6 +14,7 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
+
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -23,14 +24,17 @@ import java.util.TimerTask;
 
 public class AskQuestionController {
 
-    @FXML
-    private ImageView questionImage;
     Question questionSetUp;
     public int qCounter =0;
     public boolean firstAnswered=false;
     public boolean secondAnswered=false;
     public boolean answered=false;
+    private final Stage thisStage;
+    private String categoriesToAsk;
+    private Timer timer;
     private final Gamemode gamemode;
+    @FXML
+    private ImageView questionImage;
     @FXML
     private Label question;
     @FXML
@@ -43,9 +47,7 @@ public class AskQuestionController {
     private Label answerFour;
     @FXML
     private Label TimeLeft;
-    private final Stage thisStage;
-    private String categoriesToAsk;
-    private Timer timer;
+
 
 
 
@@ -66,6 +68,11 @@ public class AskQuestionController {
         }
     }
 
+    /***
+     * Before even the question gets displayed, the function which creates the Display Category Stage object
+     * gets called. If the gamemode is betting the Set Bet Stage object gets called and displayed for the
+     * players to choose their bet. After that the function which displays the question gets called
+     */
     @FXML
     private void initialize(){
 
@@ -77,6 +84,7 @@ public class AskQuestionController {
 
         displayQuestion();
     }
+
 
     private boolean displayQuestion(){
         if(gamemode instanceof HeatUp){
@@ -131,9 +139,6 @@ public class AskQuestionController {
 
         if(WelcomeController.controller.getPlayers()==1){
             if(keyEvent.getCode()== KeyCode.A||keyEvent.getCode()== KeyCode.S||keyEvent.getCode()== KeyCode.D||keyEvent.getCode()== KeyCode.F){
-                if(gamemode instanceof StopTheClock){
-                    GameOptionsController.userController.listOfPlayers().get(0).setTimeLeftFromAnswer(Integer.parseInt(TimeLeft.getText().replaceAll("\\D+","")));
-                }
                 answered=true;
                 thisStage.close();
                 if(keyEvent.getCode()== KeyCode.A){
@@ -145,6 +150,7 @@ public class AskQuestionController {
                 }else {
                     GameOptionsController.userController.listOfPlayers().get(0).setAnswer("D");
                 }
+
                 gamemode.callHandleTheScore(GameOptionsController.userController.listOfPlayers(),questionSetUp);
                 qCounter++;
                 questionImage.setImage(null);
@@ -252,18 +258,25 @@ public class AskQuestionController {
                     if (interval > 0 && (!answered)) {
                         Platform.runLater(() -> TimeLeft.setText("Time Left: " + interval));
                         interval--;
-                    } else
+                    } else{
                         timer.cancel();
+                    }
                 }else{
                     if (interval > 0 && (!firstAnswered || !secondAnswered)) {
                         Platform.runLater(() -> TimeLeft.setText("Time Left: " + interval));
                         interval--;
-                    } else
+                    } else {
                         timer.cancel();
+                    }
                 }
             }
         }, 2000,1);
     }
+
+
 }
+
+
+
 
 

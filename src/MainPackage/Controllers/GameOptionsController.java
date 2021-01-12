@@ -33,24 +33,39 @@ public class GameOptionsController {
     @FXML
     private Label questionsError;
 
+
+    /***
+     * Links the controller of the game options stage with the corresponding FXML file and then loads it
+     */
     public GameOptionsController(){
 
         thisStage = new Stage();
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("../resources/GameOptions.fxml"));
+            // Set this class as the controller
             loader.setController(this);
+            // Load the scene
             thisStage.setScene(new Scene(loader.load()));
+            // Setup the window/stage
             thisStage.setTitle("Buzz Quiz");
         }catch (IOException e){
             e.printStackTrace();
         }
     }
 
+    /***
+     * Displays the current stage
+     */
     public void showStage(){
         thisStage.showAndWait();
     }
 
-
+    /***
+     * Gets the text typed by the user in the stage labels (Options of the Game), when the submitOptions button
+     * is clicked. If the options are correct then the current stage is hidden and a function for creating the
+     * next scene is called. If the options are wrong the corresponding error message is displayed.
+     * @param mouseEvent the click of the mouse
+     */
     public void onMouseClick(MouseEvent mouseEvent)  {
         int players = Integer.parseInt(numberOfPlayers.getText());
         int questions = Integer.parseInt(numberOfQuestions.getText());
@@ -78,20 +93,32 @@ public class GameOptionsController {
 
     }
 
+    /***
+     * An Username Input Stage object gets created and displayed
+     */
     private void openUsernameInput(){
         userController = new UsernameInputController();
         userController.showStage();
 
     }
 
+    /***
+     * @return the number of players that the users typed in the options label
+     */
     public int getPlayers(){
         return Integer.parseInt(numberOfPlayers.getText());
     }
 
+    /***
+     * @return the number of rounds that the users typed in the options label
+     */
     public int getRounds(){
         return Integer.parseInt(numberOfRounds.getText());
     }
 
+    /***
+     * @return the number of questions that the users typed in the options label
+     */
     public int getQuestions(){
         return Integer.parseInt(numberOfQuestions.getText());
     }

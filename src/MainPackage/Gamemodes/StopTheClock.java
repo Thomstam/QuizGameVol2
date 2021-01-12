@@ -8,7 +8,7 @@ import java.util.ArrayList;
 public class StopTheClock extends Gamemode {
 
     @Override
-    void handleTheScore(ArrayList<Player> players, Question question) {
+    public void handleTheScore(ArrayList<Player> players, Question question) {
         for (Player player : players) {
             int indexOfChoice = handlePlayerChoice(player.getAnswer());
             if (question.getPossibleAnswersToAsk().get(indexOfChoice).equals(question.getCorrectAnswer())) {

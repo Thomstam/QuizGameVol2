@@ -8,6 +8,12 @@ import org.junit.Test;
 import java.util.ArrayList;
 
 import static org.junit.Assert.*;
+/**
+ * Test class for FastestWins. We use standard input from ExamplesImport class for a question and a
+ * arrayList of players and we set the bet for both of our players their placement. The first players is
+ * simulated to answer correctly and the second wrong. So we check the result of players score to see
+ * if the expected result is correct.
+ */
 
 public class FastestWinsTest {
 

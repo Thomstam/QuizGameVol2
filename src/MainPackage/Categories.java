@@ -5,6 +5,10 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Random;
 
+/**
+ * This class contains all the questions in arraylists based in the category the belong that we read them from a file
+ * unique to each category.
+ */
 public class Categories {
 
     private List<Question> mathArray;

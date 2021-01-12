@@ -1,6 +1,8 @@
 package MainPackage;
 
-
+/**
+ * In this class we represent a player of the game and we set all the needed variables
+ */
 public class Player {
 
     private String username;

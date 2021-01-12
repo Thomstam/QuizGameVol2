@@ -37,6 +37,12 @@ public class DisplayCorrectAnswerController {
     private final int qCounter;
     private final Gamemode gamemode;
 
+    /***
+     * Links the controller of the game options stage with the corresponding FXML file and then loads it
+     * @param correctAnswer the correct answer of the current question
+     * @param qCounter the number of the question being asked on this round
+     * @param gamemode the type of game mode picked in this round
+     */
     public DisplayCorrectAnswerController(String correctAnswer, int qCounter, Gamemode gamemode){
         thisStage=new Stage();
         this.gamemode=gamemode;
@@ -52,10 +58,17 @@ public class DisplayCorrectAnswerController {
         }
     }
 
+    /***
+     * Displays the current stage
+     */
     public void showStage(){
         thisStage.showAndWait();
     }
 
+    /***
+     * Displays the username of each player, if the answer given is correct, the current score of the player, (if the game mode
+     * is heat up then the number of correct answer of this round is also displayed) and the correct answer.
+     */
     @FXML
     private void initialize(){
         playerName1.setText(GameOptionsController.userController.listOfPlayers().get(0).getUsername());
@@ -84,13 +97,18 @@ public class DisplayCorrectAnswerController {
         answerField.setText(correctAnswer);
     }
 
+    /***
+     * When the mouse gets clicked the current stage gets closed. Then if all of the question of this round have been asked, we check
+     * if there are more rounds to be played. If there are we just continue normally with our new round, else the stage where the type
+     * of game mode is being displayed gets closed and the End Game Screen Stage object gets created and displayed
+     * @param mouseEvent click of the mouse
+     */
     public void clickToContinue(MouseEvent mouseEvent) {
         ((Node)mouseEvent.getSource()).getScene().getWindow().hide();
         if(gamemode instanceof HeatUp){
             if(GameOptionsController.userController.listOfPlayers().get(0).getNumberOfCorrectAnswers()==5||GameOptionsController.userController.listOfPlayers().get(1).getNumberOfCorrectAnswers()==5){
                 boolean display=UsernameInputController.typeController.displayGamemode();
                 if(!display){
-                    System.out.println("hi");
                     UsernameInputController.typeController.closeStage();
                     EndGameScreenController endGameScreen=new EndGameScreenController();
                     endGameScreen.showStage();

@@ -49,18 +49,21 @@ public class AskQuestionController {
     private Label TimeLeft;
 
 
-
-
+    /***
+     * Links the controller of the game options stage with the corresponding FXML file and then loads it
+     * @param gamemode the game mode which is currently being played in this round
+     */
     public AskQuestionController(Gamemode gamemode) {
-
-
         this.gamemode=gamemode;
         thisStage = new Stage();
         try{
             FXMLLoader loader = new FXMLLoader(getClass().getResource("../resources/askQuestion.fxml"));
+            // Set this class as the controller
             loader.setController(this);
+            // Load the scene
             Scene scene= new Scene(loader.load());
             thisStage.setScene(scene);
+            // Setup the window/stage
             thisStage.setTitle("Buzz Quiz");
             scene.setOnKeyPressed(this::onAnswerPicked);
         }catch (IOException e){
@@ -85,7 +88,14 @@ public class AskQuestionController {
         displayQuestion();
     }
 
-
+    /***
+     * The question and the four answer get set up and displayed to their corresponding labels, if there exists
+     * an image is also displayed and if the game mode is Stop The Clock a timer is set to 5000 ms and the function which
+     * starts it gets called. If the game mode is Heat Up then the questions keep getting asked until someone reaches
+     * five correct answers, before ending the round the correct answers of the players are set back to zero. For any other
+     * game mode the questions keep getting asked for how many times the users picked at the start of the game.
+     * @return true if there are more questions to be asked untill the round ends and false when the round is over
+     */
     private boolean displayQuestion(){
         if(gamemode instanceof HeatUp){
             if(GameOptionsController.userController.listOfPlayers().get(0).getNumberOfCorrectAnswers()<5&&GameOptionsController.userController.listOfPlayers().get(1).getNumberOfCorrectAnswers()<5){
@@ -131,10 +141,24 @@ public class AskQuestionController {
 
     }
 
+    /***
+     * Displays the current stage
+     */
     public void showStage(){
         thisStage.show();
     }
 
+
+    /***
+     * If One-Player-Mode is played then when the player presses one of the keys corresponding to an answer the function
+     * which handles the score for each game mode gets called, the counter of the questions gets increased, the FXML imageview
+     * gets set to null so that it won't interfere with the next question, the function which creates the Display if the Answer
+     * Was Correct Stage object gets called and the next category gets displayed. Then the next question is ready to get asked,
+     * or if the game mode is betting the Set Bet Stage object gets called prior to that. The same things happens with the
+     * Two-Player-Mode with the only difference that both of the players should answer before the game continues. If the round
+     * is over (displayQuestion==false) then the current stage gets closed.
+     * @param keyEvent the button the player presses to answer the question
+     */
     public void onAnswerPicked(KeyEvent keyEvent) {
 
         if(WelcomeController.controller.getPlayers()==1){
@@ -224,6 +248,11 @@ public class AskQuestionController {
         }
     }
 
+    /***
+     * If the game mode is Heat Up then a Display the Category Stage object gets created, before displaying the question, for how many times it
+     * takes until at least one of the players answers correctly five questions. For any other game mode do the same thing but for
+     * how many times have picked at the start of the game
+     */
     private void displayTheCategory(){
         if(gamemode instanceof HeatUp){
             if(GameOptionsController.userController.listOfPlayers().get(0).getNumberOfCorrectAnswers()<5&&GameOptionsController.userController.listOfPlayers().get(1).getNumberOfCorrectAnswers()<5){
@@ -241,14 +270,19 @@ public class AskQuestionController {
 
     }
 
-
+    /***
+     * Create a Display if the Answer Was Correct Stage object and display it
+     */
     private void displayIfTheAnswerWasCorrect() {
         DisplayCorrectAnswerController answerController=new DisplayCorrectAnswerController(questionSetUp.getCorrectAnswer(), qCounter,gamemode);
         answerController.showStage();
 
     }
 
-
+    /***
+     * Sets a timer for 5000 ms and starts it after 2 seconds. If there is more time in the Timer and the players haven't
+     * yet answered decrease the time left else cancel the timer.
+     */
     public void setTimer() {
         timer = new Timer();
         timer.scheduleAtFixedRate(new TimerTask() {

@@ -22,8 +22,8 @@ public abstract class Gamemode {
      * Managing the gamemode initialization. For each question we choose a random category. If the list of
      * the category we choose is empty we initialize and we fill it from a txt full of questions.
      * Then we just pass it to @setUpQuestion and then we start the game.
-     * @param players <String> elements with the names of all the players.
-     * @param numberOfQuestions The numbers of questions we going to ask for this round.
+     * @param categories
+     * @param categoriesToAsk
      */
     public Question gamemodeSetUp(Categories categories,String categoriesToAsk){
             Question questionToBeAsked = null;

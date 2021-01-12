@@ -12,6 +12,9 @@ public class HelpController {
 
     private final Stage thisStage;
 
+    /***
+     * Links the controller of the game options stage with the corresponding FXML file and then loads it
+     */
     public HelpController(){
         thisStage = new Stage();
         try {
@@ -24,10 +27,17 @@ public class HelpController {
         }
     }
 
+    /***
+     * Displays the current stage
+     */
     public void showStage(){
         thisStage.showAndWait();
     }
 
+    /***
+     * When the mouse is clicked the current stage gets closed
+     * @param mouseEvent click of the mouse
+     */
     public void backToMenu(MouseEvent mouseEvent) {
         ((Node)(mouseEvent.getSource())).getScene().getWindow().hide();
     }

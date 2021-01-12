@@ -25,7 +25,9 @@ public class EndGameScreenController {
 
     private final Stage thisStage;
 
-
+    /***
+     * Links the controller of the game options stage with the corresponding FXML file and then loads it
+     */
     public EndGameScreenController(){
 
         thisStage=new Stage();
@@ -39,11 +41,16 @@ public class EndGameScreenController {
         }
     }
 
+    /***
+     * Displays the current stage
+     */
     public void showStage(){
         thisStage.show();
     }
 
-
+    /***
+     * Displays the name of each player, the score and some text with who is the winner
+     */
     @FXML
     private void initialize(){
         playerUsername1.setText(GameOptionsController.userController.listOfPlayers().get(0).getUsername());
@@ -64,6 +71,12 @@ public class EndGameScreenController {
 
     }
 
+    /***
+     * When the user clicks on the end screen a ScoreSaving object gets created. If One-Player-Mode was played then the score of
+     * the player gets saved, for Two-Player-Mode only the score of the winner gets saved. In the end the stage gets closed and the
+     * game is over.
+     * @param mouseEvent the click of the mouse
+     */
     public void clickToQuit(MouseEvent mouseEvent) {
         ScoreSaving score = new ScoreSaving();
         if(GameOptionsController.userController.listOfPlayers().size()==1){

@@ -14,7 +14,11 @@ public class SinglePlayerScoresController {
     private final String string;
     private final Stage thisStage;
 
-
+    /***
+     * Links the controller of the game options stage with the corresponding FXML file and then loads it
+     * @param string a string which contains all the scores in the single/multi player file specifically formatted
+     *               to be displayed
+     */
     public SinglePlayerScoresController(String string){
 
         this.string=string;
@@ -30,8 +34,14 @@ public class SinglePlayerScoresController {
 
     }
 
+    /***
+     * Displays the current stage
+     */
     public void showStage(){thisStage.show();}
 
+    /***
+     * Display all the scores of the single player mode
+     */
     @FXML
     private void initialize(){
         displayScores.setText(string);

@@ -17,6 +17,10 @@ public class DisplayCategoryController {
     private final Stage thisStage;
     private final String categoriesToAsk;
 
+    /***
+     * Links the controller of the game options stage with the corresponding FXML file and then loads it
+     * @param categoriesToAsk the randomly picked category of question that is going to be asked
+     */
     public DisplayCategoryController(String categoriesToAsk){
         thisStage=new Stage();
         this.categoriesToAsk=categoriesToAsk;
@@ -30,14 +34,23 @@ public class DisplayCategoryController {
         }
     }
 
+    /***
+     * Displays the current stage
+     */
     public void showStage(){thisStage.showAndWait();}
 
+    /***
+     * Sets the FXML label to the name of the category which was picked
+     */
     @FXML
     private void initialize(){
         categoryName.setText("The category is: "+categoriesToAsk);
     }
 
-
+    /***
+     * When the mouse gets clicked this stage gets hidden
+     * @param mouseEvent the click of the mouse
+     */
     public void clickToContinue(MouseEvent mouseEvent) {
 
         ((Node)mouseEvent.getSource()).getScene().getWindow().hide();

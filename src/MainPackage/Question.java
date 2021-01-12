@@ -5,6 +5,9 @@ import java.util.Collections;
 import java.util.LinkedList;
 import java.util.List;
 
+/**
+ * In this class we set all the attributes of the question to be setup later.
+ */
 public class Question {
 
     private final List<String> possibleAnswers; //Contains all the wrong answers for the question.

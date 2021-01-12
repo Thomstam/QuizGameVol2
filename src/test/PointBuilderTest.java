@@ -9,6 +9,11 @@ import java.util.ArrayList;
 
 import static org.junit.Assert.*;
 
+/**
+ * Test class for Pointbuilder. We use standard input from ExamplesImport class for a question and a
+ * arrayList of player. The first players is simulated to answer correctly and the second wrong.
+ * So we check the result of players score to see if the expected result is correct.
+ */
 public class PointBuilderTest {
 
     @Test

@@ -5,10 +5,16 @@ import MainPackage.Question;
 
 import java.util.ArrayList;
 
+/**
+ * This class contains the samples that we use for all the test class so we can complete our tests.
+ */
 public class ExamplesImport {
 
     public ExamplesImport(){}
 
+    /**
+     * @return A standard template of a question to use in our tests.
+     */
     public Question getQuestionToExample(){
         Question question = new Question();
         question.setQuestionToASk("10 squared equals:");
@@ -20,6 +26,11 @@ public class ExamplesImport {
         return question;
     }
 
+    /**
+     * @param question
+     * @return An arrayList of players with an answer> The first players has answered correctly and
+     * the second one wrong.
+     */
     public ArrayList<Player> getPlayersToExample(Question question){
         ArrayList<Player> players = new ArrayList<>();
         Player player1 = new Player("thomas");

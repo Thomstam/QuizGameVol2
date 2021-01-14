@@ -10,6 +10,10 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 
+
+/**
+ * This class sets up the scene in which the player will choose his bet if the game mode of the round is "Betting".
+ */
 public class SetBetController {
 
     @FXML

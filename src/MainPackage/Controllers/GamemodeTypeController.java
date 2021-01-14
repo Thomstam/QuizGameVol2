@@ -11,6 +11,10 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 
+
+/**
+ * This class sets up the scene where the name of the game mode, that will be played in the current round, gets displayed.
+ */
 public class GamemodeTypeController {
 
     @FXML

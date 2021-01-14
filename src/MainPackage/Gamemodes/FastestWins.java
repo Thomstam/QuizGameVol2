@@ -8,6 +8,15 @@ import java.util.Collections;
 
 public class FastestWins extends Gamemode {
 
+    /***
+     * If the last player in the list has answered first then we put him first in the list.
+     * Then for each player we check his placement in the list, if he is first in the placement and his answer is right then he gets 1000 points.
+     * If he is wrong then we set the placement of the next player on the list to "First", so that he can get the 1000 point
+     * if he is right. If he is second and his answer is correct then he gets 500 points, else nothing happens.
+     * If the players' position had been changed at the start they are put back in order.
+     * @param players List with all the players.
+     * @param question The current question being played.
+     */
     @Override
     public void handleTheScore(ArrayList<Player> players, Question question) {
         boolean swapped=false;

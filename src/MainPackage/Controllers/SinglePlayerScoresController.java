@@ -7,6 +7,9 @@ import javafx.scene.control.Label;
 import javafx.stage.Stage;
 import java.io.IOException;
 
+/**
+ * This class sets up the scene in which all the single player mode scores will be displayed.
+ */
 public class SinglePlayerScoresController {
 
     @FXML

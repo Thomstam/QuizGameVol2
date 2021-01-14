@@ -8,6 +8,11 @@ import javafx.stage.Stage;
 
 public class Main extends Application{
 
+    /**
+     * The function that sets up the starting window of the application.
+     * @param stage The window of the application.
+     * @throws Exception
+     */
     @Override
     public void start(Stage stage) throws Exception {
         Parent root;
@@ -18,6 +23,10 @@ public class Main extends Application{
         stage.show();
     }
 
+    /**
+     * Calls the start function that starts the whole app.
+     * @param args
+     */
     public static void main(String[] args) {
         launch(args);
     }

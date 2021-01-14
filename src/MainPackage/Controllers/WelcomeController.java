@@ -6,6 +6,9 @@ import javafx.scene.input.MouseEvent;
 
 import java.io.IOException;
 
+/**
+ * This class sets up the Welcome Scene of the app.
+ */
 public class WelcomeController {
 
     public static GameOptionsController controller;

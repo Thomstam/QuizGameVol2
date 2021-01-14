@@ -12,6 +12,7 @@ public class PointBuilder extends Gamemode {
      * For each player we are getting his answer we and we compare it with the correct one.
      * If the player is right we are giving him 1000 points. Otherwise nothing happens.
      * @param players List with all the players.
+     * @param question The current question being played.
      */
     @Override
     public void handleTheScore(ArrayList<Player> players, Question question) {

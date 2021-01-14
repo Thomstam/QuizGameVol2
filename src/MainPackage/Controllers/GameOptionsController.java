@@ -13,6 +13,10 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 
+
+/**
+ * This class sets up the scene in which the players choose the options of the whole game.
+ */
 public class GameOptionsController {
 
     private final Stage thisStage;

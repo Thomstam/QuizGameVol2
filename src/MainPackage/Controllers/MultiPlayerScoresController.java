@@ -8,6 +8,9 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 
+/**
+ * This class sets up the scene in which all the multi player mode scores will be displayed.
+ */
 public class MultiPlayerScoresController {
 
     @FXML

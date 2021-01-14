@@ -10,6 +10,9 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 
+/**
+ * This class sets up the scene in which the category of the question will be displayed.
+ */
 public class DisplayCategoryController {
 
     @FXML

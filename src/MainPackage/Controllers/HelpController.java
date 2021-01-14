@@ -8,6 +8,9 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 
+/**
+ * This class sets up the scene in which all the controls of each player will be displayed.
+ */
 public class HelpController {
 
     private final Stage thisStage;

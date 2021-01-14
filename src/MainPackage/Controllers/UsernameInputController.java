@@ -14,6 +14,10 @@ import javafx.stage.Stage;
 import java.io.IOException;
 import java.util.ArrayList;
 
+
+/**
+ * This class sets up the scene where the players choose their usernames.
+ */
 public class UsernameInputController {
 
     private final Stage thisStage;

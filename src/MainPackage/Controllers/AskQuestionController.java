@@ -22,6 +22,9 @@ import java.util.List;
 import java.util.Timer;
 import java.util.TimerTask;
 
+/**
+ * This class sets up the scene in which each question will be displayed .
+ */
 public class AskQuestionController {
 
     Question questionSetUp;

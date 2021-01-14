@@ -11,6 +11,9 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 
+/**
+ * This class sets up the scene in which the final points of each player and who won will be displayed.
+ */
 public class EndGameScreenController {
     @FXML
     private Label winner;

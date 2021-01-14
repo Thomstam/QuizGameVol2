@@ -12,6 +12,10 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 
+
+/**
+ * Sets up the scene in which the correct answer of the question and the points of each player will be displayed.
+ */
 public class DisplayCorrectAnswerController {
     @FXML
     private Label answerField;
